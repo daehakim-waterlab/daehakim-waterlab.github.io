@@ -13,9 +13,7 @@ nav_order: 2
 
 Associate Professor, Department of Civil Engineering, Jeonbuk National University
 
-I am an instructor and researcher focused on scientific and engineering challenges in hydrologic processes and water resources management. Over more than 15 years, I have worked on water-related problems under climatic and socioeconomic uncertainty at a research center and at universities. I have authored and co-authored over 50 peer-reviewed journal articles aimed at practical solutions for water resources management, addressing large-scale drought monitoring, the prediction of water availability at local, regional, and global scales, and strategies for managing water resources under climatic challenges.
-
-I have also worked in international collaborations, including programs with Southeast Asian organizations and official sessions of the Intergovernmental Panel on Climate Change. I share ideas with fellow researchers and students to foster innovation and collaboration, and keep working to bridge scientific research and real-world water issues.
+I have worked in water resources since starting graduate school in 2005. For more than 20 years, that work has taken me from Korea University and Korea's Hydrological Survey Center to the Utah Water Research Laboratory at Utah State University, and then to the APEC Climate Center in Busan, before I joined Jeonbuk National University in 2020. Along the way I have worked with hydrologists, climate scientists, and water managers in Korea, the United States, and Southeast Asia on one recurring question: how a changing climate affects water, and how we can manage water better in response.
 
 #### Education
 
@@ -30,23 +28,11 @@ I have also worked in international collaborations, including programs with Sout
 - **2011–2015** Research Assistant, Utah Water Research Laboratory, Utah State University, USA
 - **2007–2010** Researcher, Hydrological Survey Center, Goyang, Korea
 
-#### Honors and awards
-
-- Jeonbuk State Governor's Commendation for Construction Revitalization, 2025
-- Best Research Paper Award, Korea Water Resources Association, 2024
-- Best Research Paper Award, APEC Climate Center, 2019
-
 #### Editorial service
 
+- Editor, _Scientific Reports_
 - Editor, _Advances in Meteorology_
 - Editor, _Journal of Korea Water Resources Association_
-
-#### Professional activities
-
-- Participant, 42nd and 43rd Sessions of the Intergovernmental Panel on Climate Change (IPCC)
-- Participant, 4th and 5th Board of Council Meetings, Asia Water Council
-- Board committee member: Korea Water Resources Association; Korean Wetlands Society; Korean Society of Climate Change Research
-- Member: American Geophysical Union; European Geosciences Union; European Meteorological Society; Korean Meteorological Society
 
 {% if site.data.people.members.size > 0 %}
 
