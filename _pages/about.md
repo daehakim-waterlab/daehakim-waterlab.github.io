@@ -25,7 +25,7 @@ latest_posts:
   .home-hero { display: block; width: 100%; height: auto; border-radius: 0.75rem; margin: 0.5rem 0 1.75rem; }
 </style>
 
-<img class="home-hero" src="/assets/img/home/hero.webp" width="1024" height="572"
+<img class="home-hero" src="/assets/img/home/hero.webp" width="2000" height="661"
      alt="Hydrology & Water Resources Lab, Department of Civil Engineering, Jeonbuk National University. Illustration of a faucet, rain and the Earth feeding a river that restores cracked, dry ground, with groundwater flowing beneath.">
 
 **We study how water moves between the land and the atmosphere, and how to manage it when the climate and society are both changing.**
