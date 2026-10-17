@@ -44,7 +44,7 @@ The five most recent items appear on Home; all of them are at `/news/`.
 
 **Write a blog post.** Add `_posts/YYYY-MM-DD-title.md` with `categories: paper-highlights` or `categories: notes` (see the first post for the front matter). If the post has a code-generated figure, put the script in `scripts/blog/` and run it from the repository root; it writes the PNG to `assets/img/blog/`.
 
-**Set the lab name.** Change `title:` in `_config.yml` (navbar and browser tabs). The name is also drawn into the Home illustration `assets/img/home/hero.webp`, so replace that image too; keep the same file name, or update the `<img>` tag in `_pages/about.md`.
+**Set the lab name.** Change `title:` in `_config.yml` (navbar and browser tabs). The name is also drawn into the Home illustration `assets/img/home/hero.webp`, so replace that image too. Keep the file name and bump the `?v=` tag on the `<img>` in `_pages/about.md` (for example `?v=2026-11-01`) so browsers fetch the new image instead of a cached copy.
 
 ## Building locally
 
