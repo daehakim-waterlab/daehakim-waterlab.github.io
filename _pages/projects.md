@@ -1,65 +1,36 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Funded research projects, ongoing and completed.
 nav: true
-nav_order: 3
-display_categories: [work, fun]
-horizontal: false
+nav_order: 4
 ---
 
-<!-- pages/projects.md -->
-<div class="projects">
-{% if site.enable_project_categories and page.display_categories %}
-  <!-- Display categorized projects -->
-  {% for category in page.display_categories %}
-  <a id="{{ category }}" href=".#{{ category }}">
-    <h2 class="category">{{ category }}</h2>
-  </a>
-  {% assign categorized_projects = site.projects | where: "category", category %}
-  {% assign sorted_projects = categorized_projects | sort: "importance" %}
-  <!-- Generate cards for each project -->
-  {% if page.horizontal %}
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
-    {% for project in sorted_projects %}
-      {% include projects.liquid %}
-    {% endfor %}
-  </div>
-  {% endif %}
+{% assign this_year = site.time | date: "%Y" | plus: 0 %}
+{% assign projects = site.data.projects | sort: "start" | reverse %}
+
+{% for section in (1..2) %}
+{% if section == 1 %}{% assign heading = "Ongoing" %}{% else %}{% assign heading = "Completed" %}{% endif %}
+
+<h2>{{ heading }}</h2>
+
+<table class="table table-sm table-borderless">
+  <thead>
+    <tr><th>Project</th><th>Funding agency</th><th style="white-space: nowrap">Period</th></tr>
+  </thead>
+  <tbody>
+  {% for p in projects %}
+    {% assign ongoing = false %}
+    {% if p.end >= this_year %}{% assign ongoing = true %}{% endif %}
+    {% if section == 1 and ongoing == false %}{% continue %}{% endif %}
+    {% if section == 2 and ongoing %}{% continue %}{% endif %}
+    <tr>
+      <td>{{ p.title }}</td>
+      <td>{{ p.funder }}</td>
+      <td style="white-space: nowrap">{% if p.start == p.end %}{{ p.start }}{% else %}{{ p.start }}–{{ p.end }}{% endif %}</td>
+    </tr>
   {% endfor %}
-
-{% else %}
-
-<!-- Display projects without categories -->
-
-{% assign sorted_projects = site.projects | sort: "importance" %}
-
-  <!-- Generate cards for each project -->
-
-{% if page.horizontal %}
-
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
-    {% for project in sorted_projects %}
-      {% include projects.liquid %}
-    {% endfor %}
-  </div>
-  {% endif %}
-{% endif %}
-</div>
+  </tbody>
+</table>
+{% endfor %}

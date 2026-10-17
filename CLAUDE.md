@@ -4,45 +4,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
-`AGENTS.md` (imported above) is the **authoritative** agent entry point: change routing, the stop sign for gem-owned paths, the three silent failure modes, and the validated command set. Keep it short and ecosystem-neutral. Cross-repo architecture — the wrapper/tag/gem delegation table, feature gating, the v1 config contract, local overrides — lives in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md); area-to-gem ownership lives in [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md).
+This is the homepage of Daeha Kim's hydrology and water resources group (Department of Civil Engineering, Jeonbuk National University), built from the al-folio v1.x template and served at <https://daehakim-waterlab.github.io>. `AGENTS.md` (imported above) describes how the theme works: layouts, includes, and styles live in the `al_*` gems, not here. [`README.md`](README.md) maps each menu item to the files behind it and lists common editing tasks.
 
-**Read those three before editing anything.** Everything below is Claude-specific or longer-form operational detail that does not belong in the short entry point. Do not restate facts from those files here — link to them.
+## Menu structure
 
-## Daily dev loop
+Home · Research · People · Publications ▾ · Projects · Teaching ▾ · Blog · Join us
 
-```bash
-bundle install                                # ruby gems
-bundle exec jekyll serve                      # dev server → http://localhost:4000/al-folio/  (NOTE baseurl)
-bundle exec jekyll build --baseurl /al-folio  # production-style build to _site/
-bash test/integration_distill.sh              # run ONE integration test (any of the seven in test/)
-npm run test:visual:update                    # refresh playwright snapshots after intentional UI change
-bundle exec al-folio upgrade apply --safe     # deterministic codemods (font-weight-* → font-*, remote→local URLs)
-bundle exec al-folio upgrade overrides diff <path>    # then `overrides accept <path>` to acknowledge an override
-```
+- **Home** (`_pages/about.md`, title "Home"): one-line lab introduction, PI title and affiliation, a photo slot (`image:` commented out until a photo is added), contact block, and the five latest items from `_news/`.
+- **Research**: six themes (evapotranspiration/CR/Budyko; droughts and flash droughts; adaptation and decision-centric assessment; ungauged basins and machine learning; climate services for agriculture; wetlands), each with representative publications linked by DOI.
+- **People**: PI bio and CV summary. Members and alumni are rendered from `_data/people.yml`; a section appears only when it has entries.
+- **Publications ▾**: dropdown with four sub-pages, one per BibTeX entry type in `_bibliography/papers.bib`: `@article` → Peer-reviewed Journal Articles, `@incollection` → Book Chapters, `@techreport` → Technical Reports, `@misc` → Conference Presentations (selected). The parent page `/publications/` links to the four.
+- **Projects**: rendered from `_data/projects.yml`; split into Ongoing/Completed by comparing each project's `end` year with the build year.
+- **Teaching ▾**: dropdown with the four courses in `_teachings/` (Engineering Hydrology, Hydraulics, Physical Hydrology (graduate), Statistical Hydrology). Each has an English and a Korean paragraph (`summary_en`, `summary_ko`). Online textbooks are separate Jupyter Book sites: setting `textbook:` in a course's front matter replaces "Online textbook — coming soon" with the link.
+- **Blog**: al-folio blog with categories `paper-highlights` and `notes`. Hidden from the menu (`nav: false` in `_pages/blog.md`) until the first post; then set `nav: true` there and `latest_posts.enabled: true` in `_pages/about.md`.
+- **Join us**: What we expect / What I commit / How to apply, in English and Korean.
+- Contact details are in the site footer (`footer_text` in `_config.yml`) and on Home, not in the menu.
 
-## Optional toolchains
+## Content rules
 
-- **Jupyter posts.** `bin/setup-python-deps` installs _only_ `jupyter` and `nbconvert` (via `pip --user --break-system-packages`) for `jekyll-jupyter-notebook`. It does **not** read `requirements.txt`. Missing `jupyter-nbconvert` is warn-and-continue; notebook rendering is skipped.
-- **Everything else Python.** [`requirements.txt`](requirements.txt) is the fuller list and must be installed separately (`python3 -m pip install -r requirements.txt`): `rendercv[full]` for CV rendering, `scholarly` for `bin/update_scholar_citations.py`, plus `nbconvert` and `pyyaml`.
-- **Responsive images.** `imagemagick.enabled: true` needs ImageMagick `convert` on `PATH`.
-- **Manual deploy.** `bin/deploy` is the manual `gh-pages` build + purgecss + force-push path; CI normally deploys. `purgecss` is not a devDependency — install it with `npm install -g purgecss`.
+- **English is the main language.** Korean appears only in the Teaching course descriptions and the Join us page.
+- **Public contact details only:** the lab address, the office phone, and the JBNU email address, as already set in `_config.yml`, `_pages/about.md`, and `_data/socials.yml`. Never add a mobile number or a personal email address. Do not copy contact details into other files, including this one.
+- **Publications:** list published and in-press papers only, never papers under review. Mark in-press papers with `note = {In press}`. Journal articles carry a verified DOI; the owner's name (`Kim, D.`) is highlighted through `scholar.last_name`/`first_name` in `_config.yml`. A co-author with the same surname and initial is written with a full given name (for example `Kim, Doyoung`) so that only the owner is highlighted.
+- **People:** add lab members and alumni only after they have agreed to be listed.
+- **No placeholder text** such as "[Placeholder]" or "coming soon" lists. If information is missing, leave the item out. The single exception is "Online textbook — coming soon" on course pages, which is intentional.
+- **No copyrighted third-party material:** no figures from papers, publisher images, or abstracts copied from publishers. Use the owner's own figures and photos.
+- **No large files in the repository** (slides, videos, datasets such as netCDF). Link them from Google Drive. `.gitignore` blocks common large formats.
+- Google Scholar and ORCID links stay commented out in `_data/socials.yml` until the owner provides them.
 
-## Docker serving model (v1-specific)
+## How to work in this repo
 
-`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with the `/al-folio` baseurl: `curl -fsS http://127.0.0.1:8080/al-folio/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
-
-## CI gates and the style contract
-
-`npm run lint:style-contract` (`test/style_contract.js`) is the automated enforcement of the thin-starter boundary and will fail CI if you cross it. Beyond the forbidden paths listed in `AGENTS.md`, it also asserts that `_config.yml` keeps `theme: al_folio_core` and the required plugins, that the `third_party_libraries` SRI pins are present, and that the `al_math` Gemfile pin stays on a released version rather than a git branch.
-
-Other gates:
-
-- `unit-tests.yml` — style contract plus all seven `test/integration_*.sh` scripts (`comments`, `plugin_toggles`, `distill`, `bootstrap_compat`, `upgrade_cli`, `css_minify`, `new_plugins`).
-- `visual-regression.yml` — Playwright on chromium + webkit, diffing the candidate build against a `v0.16.3` baseline worktree served on `:4100` via `BASELINE_URL`.
-- `upgrade-check.yml` — `bundle exec al-folio upgrade audit`.
-- `prettier.yml` — Prettier with `@shopify/prettier-plugin-liquid` and `printWidth: 150`. Run `npm run lint:prettier` before pushing; `npx prettier . --write` fixes.
-- `update-tocs.yml` — regenerates `<!--ts-->…<!--te-->` blocks in changed root and `docs/` Markdown files. If you add or rename a heading, expect a follow-up auto-commit on `main`.
+- Build and check locally before pushing (see README). CI runs `bundle exec jekyll build`, then PurgeCSS, then deploys; after deploy, `broken-links-site.yml` fails on any broken **internal** link, so every local link must resolve. Links to the blog are wrapped in `{% if site.posts.size > 0 %}` while it has no posts.
+- `upgrade-check.yml` runs `bundle exec al-folio upgrade audit`; keep the `al_folio` contract keys in `_config.yml` (see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#the-v1-config-contract)).
+- `_includes/hook/bib.liquid` is a site hook that the theme's bib layout calls; it is not an override of a gem file. Prefer config, data, and page front matter (such as `_styles`) over overriding gem files.
+- The template's sample content and the CI workflows that tested it (`unit-tests`, `visual-regression`, `prettier`, `lighthouse-badger`, `render-cv`, `update-tocs`) were removed. `test/` remains only because `package.json`/`package-lock.json` are kept as upstream so that `npm ci` works.
+- GitHub Pages must serve the `gh-pages` branch (Settings → Pages), not `main`: GitHub's built-in Jekyll build cannot load the `al_folio_core` theme. The root `.nojekyll` file (listed under `include:` in `_config.yml`) is copied into the build so Pages serves it as-is.
+- Active workflows are pinned to `runs-on: ubuntu-24.04` because `ubuntu-latest` moves to Ubuntu 26 on 2026-10-19; revisit once `ruby/setup-ruby` supports it.
+- `assets/json/resume.json` is a stub kept because `jekyll_get_json` in `_config.yml` reads it.
 
 ## Gem version pins
 
-`Gemfile` pins every `al-*` gem to an exact released version in `group :al_folio_plugins`, and `_config.yml` lists the same gems under `plugins:`. Read the current pins from the `Gemfile` rather than trusting any version quoted in prose — including here. To test a gem fix against this site, repoint the `Gemfile` at a sibling checkout (`path:`, `git:`, or `branch:`) and `bundle install`; see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#working-on-a-gem-alongside-the-starter). Revert the pin before committing.
+`Gemfile` pins every `al-*` gem to an exact released version in `group :al_folio_plugins`, and `_config.yml` lists the same gems under `plugins:`. A plugin present in only one of the two is inert.

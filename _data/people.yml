@@ -1,0 +1,16 @@
+# Lab members and alumni for the People page. Add a person only after they
+# have agreed to be listed. Each section appears on the page as soon as it has
+# at least one entry.
+#
+# Example entries:
+#   members:
+#     - name: Firstname Lastname
+#       role: Ph.D. student          # or M.S. student, postdoctoral researcher, ...
+#       since: 2025
+#       topic: Flash drought projections
+#   alumni:
+#     - name: Firstname Lastname
+#       degree: M.S. 2025
+#       now: Engineer, Company name   # optional
+members: []
+alumni: []

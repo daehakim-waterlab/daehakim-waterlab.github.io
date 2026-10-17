@@ -19,3 +19,19 @@ vendor
 # Python bytecode from bin/ helper scripts
 __pycache__/
 *.pyc
+
+# Large or binary files: share these through Google Drive links instead of
+# committing them (see "Content rules" in README.md).
+*.zip
+*.tar.gz
+*.7z
+*.ppt
+*.pptx
+*.mp4
+*.mov
+*.nc
+*.nc4
+*.h5
+*.hdf
+*.grib
+*.grib2

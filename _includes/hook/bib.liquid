@@ -1,0 +1,6 @@
+{%- comment -%}
+  Site hook called by al_folio_core's bib layout (not an override of a gem file).
+  `additional_info` is run through markdownify, which leaves a trailing newline
+  and renders as "..., 135813 , 2026". Strip it before the year is appended.
+{%- endcomment -%}
+{%- capture entrytype -%}{{ entrytype | strip }}{%- endcapture -%}

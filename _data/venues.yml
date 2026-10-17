@@ -1,9 +1,48 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
-
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+# Badges on the Publications pages. A BibTeX entry shows a badge when its
+# `abbr` matches a key here; `url` makes the badge a link to the journal.
+"CliServ":
+  url: https://www.sciencedirect.com/journal/climate-services
+"SciData":
+  url: https://www.nature.com/sdata/
+"HP":
+  url: https://onlinelibrary.wiley.com/journal/10991085
+"JoH":
+  url: https://www.sciencedirect.com/journal/journal-of-hydrology
+"WACE":
+  url: https://www.sciencedirect.com/journal/weather-and-climate-extremes
+"npjCAS":
+  url: https://www.nature.com/npjclimatsci/
+"JHRS":
+  url: https://www.sciencedirect.com/journal/journal-of-hydrology-regional-studies
+"JKWRA":
+  url: https://jkwra.or.kr/
+"JHM":
+  url: https://journals.ametsoc.org/view/journals/hydr/hydr-overview.xml
+"AFM":
+  url: https://www.sciencedirect.com/journal/agricultural-and-forest-meteorology
+"WAF":
+  url: https://journals.ametsoc.org/view/journals/wefo/wefo-overview.xml
+"ERL":
+  url: https://iopscience.iop.org/journal/1748-9326
+"HESS":
+  url: https://www.hydrology-and-earth-system-sciences.net/
+"AWM":
+  url: https://www.sciencedirect.com/journal/agricultural-water-management
+"WRR":
+  url: https://agupubs.onlinelibrary.wiley.com/journal/19447973
+"JAM":
+  url: https://www.jstage.jst.go.jp/browse/agrmet
+"EF":
+  url: https://agupubs.onlinelibrary.wiley.com/journal/23284277
+"GRL":
+  url: https://agupubs.onlinelibrary.wiley.com/journal/19448007
+"BAMS":
+  url: https://journals.ametsoc.org/view/journals/bams/bams-overview.xml
+"EcolEng":
+  url: https://www.sciencedirect.com/journal/ecological-engineering
+"Water":
+  url: https://www.mdpi.com/journal/water
+"SciHort":
+  url: https://www.sciencedirect.com/journal/scientia-horticulturae
+"AWR":
+  url: https://www.sciencedirect.com/journal/advances-in-water-resources
