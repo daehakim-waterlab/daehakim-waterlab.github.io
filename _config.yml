@@ -233,6 +233,7 @@ exclude:
   - purgecss.config.js
   - README.md
   - test/
+  - scripts/ # figure scripts for blog posts; kept in the repo, not published
   - gems/
   - migrations/
   - vendor

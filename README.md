@@ -42,7 +42,7 @@ The five most recent items appear on Home; all of them are at `/news/`.
 
 **Link an online textbook.** In the course file in `_teachings/`, uncomment the `textbook:` line and set the URL. "Online textbook — coming soon" is replaced by the link on the course page and on the Teaching page.
 
-**Publish the first blog post.** Add `_posts/YYYY-MM-DD-title.md` with `categories: paper-highlights` or `categories: notes`, then set `nav: true` in `_pages/blog.md` and `latest_posts.enabled: true` in `_pages/about.md`.
+**Write a blog post.** Add `_posts/YYYY-MM-DD-title.md` with `categories: paper-highlights` or `categories: notes` (see the first post for the front matter). If the post has a code-generated figure, put the script in `scripts/blog/` and run it from the repository root; it writes the PNG to `assets/img/blog/`.
 
 **Set the lab name.** Change `title:` in `_config.yml`. It is shown at the top of Home, in the navbar, and in browser tabs.
 

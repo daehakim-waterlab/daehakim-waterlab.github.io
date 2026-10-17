@@ -25,7 +25,9 @@ announcements:
   limit: 5
 
 latest_posts:
-  enabled: false # set to true after the first blog post
+  enabled: true
+  scrollable: true
+  limit: 3
 ---
 
 **We study how water moves between the land and the atmosphere, and how to manage it when the climate and society are both changing.**

@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /blog/
-title: blog
-nav: false # set to true when the first post is published, so the menu shows Blog
+title: Blog
+nav: true
 nav_order: 6
 pagination:
   enabled: true
@@ -44,8 +44,9 @@ pagination:
       {% if site.display_categories.size > 0 and site.display_tags.size > 0 %}
         <p>&bull;</p>
       {% endif %}
-      {% for category in site.display_categories %}
-        {% unless site.categories[category] %}{% continue %}{% endunless %}
+      {% assign shown_categories = '' | split: '' %}
+      {% for c in site.display_categories %}{% if site.categories[c] %}{% assign shown_categories = shown_categories | push: c %}{% endif %}{% endfor %}
+      {% for category in shown_categories %}
         <li>
           <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
         </li>
