@@ -4,13 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
-This is the homepage of Daeha Kim's hydrology and water resources group (Department of Civil Engineering, Jeonbuk National University), built from the al-folio v1.x template and served at <https://daehakim-waterlab.github.io>. `AGENTS.md` (imported above) describes how the theme works: layouts, includes, and styles live in the `al_*` gems, not here. [`README.md`](README.md) maps each menu item to the files behind it and lists common editing tasks.
+This is a **lab homepage** (decided 2026-10-16), not a personal one: the hydrology and water resources lab led by Daeha Kim (Department of Civil Engineering, Jeonbuk National University), built from the al-folio v1.x template and served at <https://daehakim-waterlab.github.io>. `AGENTS.md` (imported above) describes how the theme works: layouts, includes, and styles live in the `al_*` gems, not here. [`README.md`](README.md) maps each menu item to the files behind it and lists common editing tasks.
 
 ## Menu structure
 
 Home · Research · People · Publications ▾ · Projects · Teaching ▾ · Blog · Join us
 
-- **Home** (`_pages/about.md`, title "Home"): one-line lab introduction, PI title and affiliation, a photo slot (`image:` commented out until a photo is added), contact block, and the five latest items from `_news/`.
+- **Home** (`_pages/about.md`, title "Home"): the lab name (`title:` in `_config.yml`), a one-line lab introduction, the PI introduced as the lab lead, contact block, and the five latest items from `_news/`. The current title "Hydrology & Water Resources Lab" is an interim description; replace it with the official lab name once the owner provides it.
+- **No photos** of the PI or members (owner's decision).
 - **Research**: six themes (evapotranspiration/CR/Budyko; droughts and flash droughts; adaptation and decision-centric assessment; ungauged basins and machine learning; climate services for agriculture; wetlands), each with representative publications linked by DOI.
 - **People**: PI bio and CV summary. Members and alumni are rendered from `_data/people.yml`; a section appears only when it has entries.
 - **Publications ▾**: dropdown with three sub-pages, one per BibTeX entry type in `_bibliography/papers.bib`: `@article` → Peer-reviewed Journal Articles, `@incollection` → Book Chapters, `@techreport` → Technical Reports. The parent page `/publications/` links to the three. Conference presentations are deliberately not listed (owner's decision, 2026-10-16).

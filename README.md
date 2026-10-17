@@ -1,6 +1,6 @@
 # daehakim-waterlab.github.io
 
-Homepage of Daeha Kim's hydrology and water resources group, Department of Civil Engineering, Jeonbuk National University: <https://daehakim-waterlab.github.io>
+Homepage of the hydrology and water resources lab led by Daeha Kim, Department of Civil Engineering, Jeonbuk National University: <https://daehakim-waterlab.github.io>
 
 Built with the [al-folio](https://github.com/alshedivat/al-folio) Jekyll template (v1.x). `.github/workflows/deploy.yml` builds the site on every push to `main` and publishes it to the `gh-pages` branch.
 
@@ -44,7 +44,7 @@ The five most recent items appear on Home; all of them are at `/news/`.
 
 **Publish the first blog post.** Add `_posts/YYYY-MM-DD-title.md` with `categories: paper-highlights` or `categories: notes`, then set `nav: true` in `_pages/blog.md` and `latest_posts.enabled: true` in `_pages/about.md`.
 
-**Add the PI photo.** Save it as `assets/img/prof_pic.jpg` and uncomment `image: prof_pic.jpg` in `_pages/about.md`.
+**Set the lab name.** Change `title:` in `_config.yml`. It is shown at the top of Home, in the navbar, and in browser tabs.
 
 ## Building locally
 

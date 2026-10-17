@@ -2,12 +2,10 @@
 layout: about
 title: Home
 permalink: /
-subtitle: Associate Professor, Department of Civil Engineering, <a href='https://www.jbnu.ac.kr'>Jeonbuk National University</a>
+subtitle: Department of Civil Engineering, <a href='https://www.jbnu.ac.kr'>Jeonbuk National University</a>
 
 profile:
   align: right
-  # Photo slot: save the photo as assets/img/prof_pic.jpg and uncomment the next line.
-  # image: prof_pic.jpg
   image_circular: false
   more_info: >
     <p>Department of Civil Engineering</p>
@@ -32,4 +30,6 @@ latest_posts:
 
 **We study how water moves between the land and the atmosphere, and how to manage it when the climate and society are both changing.**
 
-Our group in the Department of Civil Engineering at Jeonbuk National University works on evapotranspiration and the land water balance, droughts and flash droughts, climate change adaptation for water infrastructure, streamflow prediction in ungauged basins, climate services for agriculture, and wetlands. Read more on the [research](/research/) page, see our [publications](/publications/), or find out how to [join us](/join/).
+The lab is led by [Daeha Kim](/people/), Associate Professor in the Department of Civil Engineering at Jeonbuk National University. We work on evapotranspiration and the land water balance, droughts and flash droughts, climate change adaptation for water infrastructure, streamflow prediction in ungauged basins, climate services for agriculture, and wetlands.
+
+Read more on the [research](/research/) page, see our [publications](/publications/), meet the [people](/people/), or find out how to [join us](/join/).

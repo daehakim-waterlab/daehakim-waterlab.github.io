@@ -2,14 +2,14 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: "Hydrology & Water Resources Lab" # lab site title shown on Home, in the navbar and browser tabs; interim descriptive title until the official lab name is set
 first_name: Daeha
 middle_name:
 last_name: Kim
 contact_note: >
-  Email is the best way to reach me.
+  For inquiries, please email Prof. Daeha Kim.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Daeha Kim's hydrology and water resources group, Department of Civil Engineering, Jeonbuk National University.
+  Hydrology and water resources lab led by Daeha Kim, Department of Civil Engineering, Jeonbuk National University.
 footer_text: >
   Department of Civil Engineering, Jeonbuk National University &middot;
   #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br>
