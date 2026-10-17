@@ -75,9 +75,10 @@ Representative publications
 
 ## Wetlands under climate change
 
-Wetlands store water and carbon and support biodiversity, and their extent depends on the same water and energy balance that controls evapotranspiration. We estimate where wetlands can exist under current and future climates, how far those estimates diverge across warming scenarios, and how much carbon restored wetlands in South Korea could sequester. This work supports a national project on adaptive management practices for wetland ecosystems under climate change.
+Wetlands store water and carbon and support biodiversity, and their extent depends on the same water and energy balance that controls evapotranspiration. We map where wetlands can exist by combining a topographic wetness index with the climatic water balance, and project how that extent changes under warming. Our results show that present-day wetland identification is robust to how atmospheric evaporative demand is formulated, whereas future projections diverge strongly under high-emission scenarios; accounting for vegetation physiology and land–atmosphere feedbacks moderates the projected wetland loss. We also estimate how much carbon restored wetlands in South Korea could sequester. This work supports a national project on adaptive management practices for wetland ecosystems under climate change.
 
-Representative presentations
+Representative work
 
 - Kim, D., and Kim, E. (2024). Diverging estimates of future global wetland areas under warming scenarios. European Meteorological Society Annual Meeting 2024, Barcelona, Spain.
 - Lee, S., Kim, D., and Jang, S. H. (2026). Quantifying carbon sequestration capacity of potential wetland restoration in South Korea using a high-resolution dynamic vegetation model. European Geosciences Union General Assembly 2026, Vienna, Austria.
+- Kim, D., and Kim, E. (in revision). Influence of potential evaporation formulations on global wetland projections derived from a topo–climate index. _Journal of Hydrology_.
