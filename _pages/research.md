@@ -45,9 +45,9 @@ We have extended this approach in several ways: replacing response surfaces with
 
 Representative publications
 
-- Kim, D., Chun, J. A., and Choi, S. J. (2019). Incorporating the logistic regression into a decision-centric assessment of climate change impacts on a complex river system. _Hydrology and Earth System Sciences_, 23, 1145–1162. [doi:10.5194/hess-23-1145-2019](https://doi.org/10.5194/hess-23-1145-2019)
 - Kim, D., Chun, J. A., and Aikins, C. M. (2018). An hourly-scale scenario-neutral flood risk assessment in a mesoscale catchment under climate change. _Hydrological Processes_, 32, 3416–3430. [doi:10.1002/hyp.13273](https://doi.org/10.1002/hyp.13273)
 - Kim, D., Eum, H.-I., Kaluarachchi, J. J., and Chun, J. A. (2019). A sensitivity-based analysis for managing storage capacity of a small agricultural reservoir under drying climate. _Agricultural Water Management_, 213, 410–418. [doi:10.1016/j.agwat.2018.10.040](https://doi.org/10.1016/j.agwat.2018.10.040)
+- Kim, D., Chun, J. A., and Choi, S. J. (2019). Incorporating the logistic regression into a decision-centric assessment of climate change impacts on a complex river system. _Hydrology and Earth System Sciences_, 23, 1145–1162. [doi:10.5194/hess-23-1145-2019](https://doi.org/10.5194/hess-23-1145-2019)
 
 ## Streamflow prediction in ungauged basins and machine learning
 
@@ -58,8 +58,8 @@ More recently we test where machine learning helps and where it does not. Our st
 Representative publications
 
 - Kim, D., Jung, I. W., and Chun, J. A. (2017). A comparative assessment of rainfall–runoff modelling against regional flow duration curves for ungauged catchments. _Hydrology and Earth System Sciences_, 21, 5647–5661. [doi:10.5194/hess-21-5647-2017](https://doi.org/10.5194/hess-21-5647-2017)
-- Lee, S. C., and Kim, D. (2025). A comparative assessment of a hybrid approach against conventional and machine-learning daily streamflow prediction in ungauged basins. _Journal of Hydrology: Regional Studies_, 62, 102854. [doi:10.1016/j.ejrh.2025.102854](https://doi.org/10.1016/j.ejrh.2025.102854)
 - Kim, D., Kim, E., and Kim, E. (2023). Performance of decision-tree-based ensemble classifiers in predicting fog frequency in ungauged areas. _Weather and Forecasting_, 38, 2379–2393. [doi:10.1175/WAF-D-23-0024.1](https://doi.org/10.1175/WAF-D-23-0024.1)
+- Lee, S. C., and Kim, D. (2025). A comparative assessment of a hybrid approach against conventional and machine-learning daily streamflow prediction in ungauged basins. _Journal of Hydrology: Regional Studies_, 62, 102854. [doi:10.1016/j.ejrh.2025.102854](https://doi.org/10.1016/j.ejrh.2025.102854)
 
 ## Climate services for agriculture
 
@@ -71,7 +71,7 @@ Representative publications
 
 - Kim, D., Chun, J. A., and Inthavong, T. (2021). Managing climate risks in a nutrient-deficient paddy rice field using seasonal climate forecasts and AquaCrop. _Agricultural Water Management_, 256, 107073. [doi:10.1016/j.agwat.2021.107073](https://doi.org/10.1016/j.agwat.2021.107073)
 - Park, S., Chun, J. A., Kim, D., and Sitthikone, M. (2022). Climate risk management for the rainfed rice yield in Lao PDR using APCC MME seasonal forecasts. _Agricultural Water Management_, 274, 107976. [doi:10.1016/j.agwat.2022.107976](https://doi.org/10.1016/j.agwat.2022.107976)
-- Kim, D., Chun, J. A., and Kim, S. T. (2019). Overcoming the challenges of an uncertain future with enhanced climate information and services. _Bulletin of the American Meteorological Society_, 100, ES133–ES136. [doi:10.1175/BAMS-D-18-0327.1](https://doi.org/10.1175/BAMS-D-18-0327.1)
+- Park, S., Lee, S., Chun, J. A., Leo, P., Kader, M. A., and Kim, D. (2026). Integrating crop simulation and climate service delivery for food security in Pacific Island Countries: a taro case study in Vanuatu. _Climate Services_, 44, 100708. [doi:10.1016/j.cliser.2026.100708](https://doi.org/10.1016/j.cliser.2026.100708)
 
 ## Wetlands under climate change
 
