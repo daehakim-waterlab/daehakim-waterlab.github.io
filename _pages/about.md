@@ -4,18 +4,6 @@ title: Home
 permalink: /
 subtitle: Department of Civil Engineering, <a href='https://www.jbnu.ac.kr'>Jeonbuk National University</a>
 
-profile:
-  align: right
-  image_circular: false
-  more_info: >
-    <p>Department of Civil Engineering</p>
-    <p>Jeonbuk National University</p>
-    <p>#257, Engineering Building I</p>
-    <p>567 Baekje-daero, Deokjin-gu, Jeonju-si</p>
-    <p>Jeonbuk State 54896, Republic of Korea</p>
-    <p>Office +82-63-270-2426</p>
-    <p><a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a></p>
-
 selected_papers: false
 social: true
 
@@ -29,6 +17,16 @@ latest_posts:
   scrollable: true
   limit: 3
 ---
+
+<style>
+  /* The hero image already shows the lab name and department, so the text header is
+     hidden visually but kept for search engines and screen readers. */
+  .post-header { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .home-hero { display: block; width: 100%; height: auto; border-radius: 0.75rem; margin: 0.5rem 0 1.75rem; }
+</style>
+
+<img class="home-hero" src="/assets/img/home/hero.webp" width="1024" height="572"
+     alt="Hydrology & Water Resources Lab, Department of Civil Engineering, Jeonbuk National University. Illustration of a faucet, rain and the Earth feeding a river that restores cracked, dry ground, with groundwater flowing beneath.">
 
 **We study how water moves between the land and the atmosphere, and how to manage it when the climate and society are both changing.**
 
