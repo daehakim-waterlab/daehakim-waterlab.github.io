@@ -54,7 +54,7 @@ I have also worked in international collaborations, including programs with Sout
 
 <ul>
 {% for person in site.data.people.members %}
-  <li><strong>{{ person.name }}</strong>{% if person.role %}, {{ person.role }}{% endif %}{% if person.since %} (since {{ person.since }}){% endif %}{% if person.topic %}. {{ person.topic }}{% endif %}</li>
+  <li><strong>{{ person.name }}</strong>{% if person.role %}, {{ person.role }}{% endif %}{% if person.since %} (since {{ person.since }}){% endif %}{% if person.topic %}. {{ person.topic }}{% endif %}{% if person.scholar %} · <a href="{{ person.scholar }}">Google Scholar</a>{% endif %}</li>
 {% endfor %}
 </ul>
 {% endif %}
@@ -65,7 +65,7 @@ I have also worked in international collaborations, including programs with Sout
 
 <ul>
 {% for person in site.data.people.alumni %}
-  <li><strong>{{ person.name }}</strong>{% if person.degree %}, {{ person.degree }}{% endif %}{% if person.now %}. Now: {{ person.now }}{% endif %}</li>
+  <li><strong>{{ person.name }}</strong>{% if person.degree %}, {{ person.degree }}{% endif %}{% if person.now %}. Now {{ person.now }}{% endif %}</li>
 {% endfor %}
 </ul>
 {% endif %}

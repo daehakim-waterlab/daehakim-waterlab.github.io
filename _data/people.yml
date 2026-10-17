@@ -1,16 +1,24 @@
-# Lab members and alumni for the People page. Add a person only after they
-# have agreed to be listed. Each section appears on the page as soon as it has
-# at least one entry.
-#
-# Example entries:
-#   members:
-#     - name: Firstname Lastname
-#       role: Ph.D. student          # or M.S. student, postdoctoral researcher, ...
-#       since: 2025
-#       topic: Flash drought projections
-#   alumni:
-#     - name: Firstname Lastname
-#       degree: M.S. 2025
-#       now: Engineer, Company name   # optional
-members: []
-alumni: []
+# Lab members and alumni for the People page (names as listed on the lab's
+# previous site, hydroclimatol.com). No personal email addresses or photos.
+# Optional fields: scholar (profile URL), since, topic for members; now for alumni.
+members:
+  - name: Shivam Agarwal
+    role: Postdoctoral researcher
+    scholar: https://scholar.google.com/citations?user=BEsgmxIAAAAJ
+  - name: Seoungcheol Lee
+    role: Ph.D. student
+    scholar: https://scholar.google.com/citations?user=Cl8mB2gAAAAJ
+  - name: Koulemou Jonas
+    role: M.S. student
+  - name: Seunghee Jang
+    role: Undergraduate researcher
+  - name: Ki Yeon Seok
+    role: Undergraduate researcher
+alumni:
+  - name: Malcom Lee
+    degree: B.S. in Civil Engineering, 2025 (undergraduate researcher, 2024–2025)
+    now: M.S. student, Seoul National University
+  - name: Eunji Kim
+    degree: M.S. in Civil Engineering, 2025
+  - name: Mohammad Reza Fatihe
+    degree: M.S. in Civil Engineering, 2024

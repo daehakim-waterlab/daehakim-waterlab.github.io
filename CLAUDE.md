@@ -26,7 +26,7 @@ Home · Research · People · Publications ▾ · Projects · Teaching ▾ · Bl
 - **English is the main language.** Korean appears only in the Teaching course descriptions and the Join us page.
 - **Public contact details only:** the lab address, the office phone, and the JBNU email address, as already set in `_config.yml`, `_pages/about.md`, and `_data/socials.yml`. Never add a mobile number or a personal email address. Do not copy contact details into other files, including this one.
 - **Publications:** list published and in-press papers only, never papers under review. Mark in-press papers with `note = {In press}`. Journal articles carry a verified DOI; the owner's name (`Kim, D.`) is highlighted through `scholar.last_name`/`first_name` in `_config.yml`. A co-author with the same surname and initial is written with a full given name (for example `Kim, Doyoung`) so that only the owner is highlighted.
-- **People:** add lab members and alumni only after they have agreed to be listed.
+- **People:** names, roles, and degrees only; never students' email addresses or photos. Everyone listed on the lab's previous site (hydroclimatol.com) was approved for listing by the owner on 2026-10-16; ask the owner before adding anyone else.
 - **No placeholder text** such as "[Placeholder]" or "coming soon" lists. If information is missing, leave the item out. The single exception is "Online textbook — coming soon" on course pages, which is intentional.
 - **No copyrighted third-party material:** no figures from papers, publisher images, or abstracts copied from publishers. Use the owner's own figures and photos.
 - **No large files in the repository** (slides, videos, datasets such as netCDF). Link them from Google Drive. `.gitignore` blocks common large formats.
