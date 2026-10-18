@@ -63,10 +63,14 @@
   font-size: 0.95rem;
 }
 
-// Blog and archive header: keep the category links close to the subtitle, and leave
-// a little more room before the first post (the theme spaced them 73px / 17px).
+// Blog and archive header: less space under the top bar, the category links close to the
+// subtitle, and a little more room before the first post (the theme spaced these widely).
 .header-bar {
+  padding-top: 0;
   padding-bottom: 0.75rem;
+  h1 {
+    line-height: 1.05;
+  }
   h2 {
     margin-bottom: 0;
   }
@@ -152,7 +156,7 @@
     width: 5.5rem;
   }
   .header-bar {
-    padding-top: 1.25rem;
+    padding-top: 0;
     h1 {
       font-size: 3.25rem;
     }
