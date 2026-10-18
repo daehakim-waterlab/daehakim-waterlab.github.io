@@ -23,5 +23,7 @@ module.exports = {
     // and page chrome (scroll-progress bar, ToC) bleeds through a zoomed image.
     "medium-zoom-overlay",
     "medium-zoom-image--opened",
+    // vanilla-back-to-top creates #back-to-top at runtime; keep the site styles for it.
+    "back-to-top",
   ],
 };

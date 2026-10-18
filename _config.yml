@@ -2,6 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
+short_title: HWR Lab # shown in the navbar where the full title does not fit
 title: "Hydrology & Water Resources Lab" # lab site title shown on Home, in the navbar and browser tabs; interim descriptive title until the official lab name is set
 first_name: Daeha
 middle_name:

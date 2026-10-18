@@ -1,0 +1,132 @@
+// Site-specific styles, loaded last from assets/css/main.scss (a site override of the
+// al_folio_core entry point). Keep page-specific styles in the page itself.
+
+// Top bar: fully opaque, so text never shows through it while scrolling.
+#navbar {
+  opacity: 1;
+  background-color: var(--global-bg-color);
+}
+
+// Lab name in the top bar: the full title where it fits, the short title (site.short_title)
+// next to the expanded desktop menu (where the full title would push the menu onto a
+// second line) and on very narrow phones.
+.navbar-brand .brand-short {
+  display: none;
+}
+@media (max-width: 359.98px), (min-width: 992px) {
+  .navbar-brand .brand-full {
+    display: none;
+  }
+  .navbar-brand .brand-short {
+    display: inline;
+  }
+}
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.05rem;
+  }
+}
+
+// Keep the collapsed (hamburger) menu up to 991px. The theme expands it from 576px, where
+// eight menu items no longer fit on one line and the bar wrapped onto two or three lines.
+// The theme's rule is `!important` inside the "components" cascade layer, which outranks an
+// unlayered `!important`, so this override lives in the same layer with higher specificity.
+@layer components {
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .navbar.navbar-expand-sm .navbar-collapse {
+      display: none !important;
+      flex-basis: 100%;
+      width: 100%;
+    }
+    .navbar.navbar-expand-sm .navbar-collapse.show {
+      display: block !important;
+    }
+    .navbar.navbar-expand-sm .navbar-nav {
+      flex-direction: column;
+    }
+    .navbar.navbar-expand-sm .navbar-nav .dropdown-menu {
+      position: static;
+    }
+    .navbar.navbar-expand-sm .navbar-toggler {
+      display: block;
+    }
+  }
+}
+
+// News and latest posts (Home and /news/): short dates kept on one line.
+.news .news-date {
+  width: 6.5rem;
+  white-space: nowrap;
+}
+.news .news-more {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+// Back-to-top button: smaller and tucked into the corner so it does not cover links.
+#back-to-top {
+  width: 40px !important;
+  height: 40px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  opacity: 0.8;
+}
+
+// Blog posts: figures fit the column; an italic-only paragraph (a caption) is set smaller.
+.post-content img {
+  max-width: 100%;
+  height: auto;
+}
+.post-content p:has(> em:only-child) {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+// Phones.
+@media (max-width: 576px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  article p {
+    margin-bottom: 0.85rem;
+  }
+  article ul,
+  article ol {
+    margin-bottom: 0.85rem;
+    padding-left: 1.25rem;
+  }
+  .post-header .post-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+  .post-header .post-description,
+  .post-header .post-meta {
+    font-size: 0.95rem;
+  }
+  article h2 {
+    font-size: 1.4rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  article h3 {
+    font-size: 1.2rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+  article h4 {
+    font-size: 1.05rem;
+    margin-top: 1rem;
+  }
+  .news .table th,
+  .news .table td {
+    padding: 0.35rem 0.25rem;
+  }
+  .news .news-date {
+    width: 5.5rem;
+  }
+  // Leave room under the footer for the back-to-top button (12px offset + 40px button).
+  footer.sticky-bottom {
+    padding-bottom: 4.5rem;
+  }
+}
