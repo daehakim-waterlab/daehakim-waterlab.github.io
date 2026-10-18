@@ -11,7 +11,14 @@
         {% else %}
           {% assign news_limit = news_size %}
         {% endif %}
-        {% for item in news limit: news_limit %}
+        {%- comment -%} Site override: on Home, show every item from the current year, and at
+          least `announcements.limit` items (the most recent ones) when the year has fewer. {%- endcomment -%}
+        {% assign this_year = site.time | date: '%Y' %}
+        {% for item in news %}
+          {% assign item_year = item.date | date: '%Y' %}
+          {% if forloop.index > news_limit %}
+            {% unless include.limit and item_year == this_year %}{% break %}{% endunless %}
+          {% endif %}
           <tr>
             <th scope="row" class="news-date">{{ item.date | date: '%b %Y' }}</th>
             <td>
