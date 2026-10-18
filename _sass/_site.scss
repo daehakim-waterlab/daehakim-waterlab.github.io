@@ -66,10 +66,13 @@
 // Blog and archive header: keep the category links close to the subtitle, and leave
 // a little more room before the first post (the theme spaced them 73px / 17px).
 .header-bar {
-  padding-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  h2 {
+    margin-bottom: 0;
+  }
 }
 .tag-category-list {
-  padding: 0.6rem 0;
+  padding: 0.35rem 0;
   ul {
     margin-bottom: 0;
   }
@@ -83,7 +86,7 @@
 }
 .tag-category-list + .post-list,
 .tag-category-list ~ .post-list {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 // Back-to-top button: smaller and tucked into the corner so it does not cover links.
