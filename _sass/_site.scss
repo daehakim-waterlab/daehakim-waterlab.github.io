@@ -63,6 +63,29 @@
   font-size: 0.95rem;
 }
 
+// Blog and archive header: keep the category links close to the subtitle, and leave
+// a little more room before the first post (the theme spaced them 73px / 17px).
+.header-bar {
+  padding-bottom: 1.25rem;
+}
+.tag-category-list {
+  padding: 0.6rem 0;
+  ul {
+    margin-bottom: 0;
+  }
+  ul li,
+  ul p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+.tag-category-list + .post-list,
+.tag-category-list ~ .post-list {
+  margin-top: 1.5rem;
+}
+
 // Back-to-top button: smaller and tucked into the corner so it does not cover links.
 #back-to-top {
   width: 40px !important;
@@ -124,6 +147,15 @@
   }
   .news .news-date {
     width: 5.5rem;
+  }
+  .header-bar {
+    padding-top: 1.25rem;
+    h1 {
+      font-size: 3.25rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
   }
   // Leave room under the footer for the back-to-top button (12px offset + 40px button).
   footer.sticky-bottom {
