@@ -36,6 +36,7 @@ Home · Research · People · Publications ▾ · Projects · Teaching ▾ · Bl
 ## How to work in this repo
 
 - Build and check locally before pushing (see README). CI runs `bundle exec jekyll build`, then PurgeCSS, then deploys; after deploy, `broken-links-site.yml` fails on any broken **internal** link, so every local link must resolve. Links to the blog are wrapped in `{% if site.posts.size > 0 %}` while it has no posts.
+- `deploy.yml` only runs when files matching its `paths` list change; `**.scss` was added (2026-10-18) after style-only pushes were silently not deployed. If you add a new kind of source file, add it there too.
 - `upgrade-check.yml` runs `bundle exec al-folio upgrade audit`; keep the `al_folio` contract keys in `_config.yml` (see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#the-v1-config-contract)).
 - `_includes/hook/bib.liquid` is a site hook that the theme's bib layout calls; it is not an override of a gem file. Prefer config, data, and page front matter (such as `_styles`) over overriding gem files.
 - **Theme overrides** (acknowledged in `.al-folio-overrides.yml`; after a gem update run `bundle exec al-folio upgrade overrides audit` and re-check them):
