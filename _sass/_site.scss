@@ -58,6 +58,13 @@
   width: 6.5rem;
   white-space: nowrap;
 }
+.news-archive .news-year {
+  font-size: 1.4rem;
+  margin: 1.5rem 0 0.25rem;
+}
+.news-archive .news-year:first-child {
+  margin-top: 0;
+}
 .news .news-more {
   margin: 0.25rem 0 0;
   font-size: 0.95rem;
