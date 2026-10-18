@@ -11,14 +11,7 @@
         {% else %}
           {% assign news_limit = news_size %}
         {% endif %}
-        {%- comment -%} Site override: on Home, show every item from the last six months (183 days
-          before the build), and at least `announcements.limit` items when there are fewer. {%- endcomment -%}
-        {% assign news_cutoff = site.time | date: '%s' | minus: 15811200 %}
-        {% for item in news %}
-          {% assign item_time = item.date | date: '%s' | plus: 0 %}
-          {% if forloop.index > news_limit %}
-            {% unless include.limit and item_time >= news_cutoff %}{% break %}{% endunless %}
-          {% endif %}
+        {% for item in news limit: news_limit %}
           <tr>
             <th scope="row" class="news-date">{{ item.date | date: '%b %Y' }}</th>
             <td>

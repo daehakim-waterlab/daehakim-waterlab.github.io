@@ -10,12 +10,12 @@ social: true
 announcements:
   enabled: true
   scrollable: false
-  limit: 4
+  limit: 5
 
 latest_posts:
   enabled: true
   scrollable: false
-  limit: 3
+  limit: 5
 ---
 
 <style>
