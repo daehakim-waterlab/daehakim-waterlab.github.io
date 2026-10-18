@@ -65,6 +65,29 @@
 .news-archive .news-year:first-child {
   margin-top: 0;
 }
+// Full text and photos of photo items on the News page, with photos as thumbnails.
+.news-archive .news-body {
+  margin-top: 0.35rem;
+  p,
+  ul {
+    margin-bottom: 0.5rem;
+  }
+  img {
+    display: inline-block;
+    width: auto !important;
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    border-radius: 0.375rem;
+    cursor: zoom-in;
+  }
+}
+@media (max-width: 576px) {
+  .news-archive .news-body img {
+    max-height: 140px;
+  }
+}
 .news .news-more {
   margin: 0.25rem 0 0;
   font-size: 0.95rem;
