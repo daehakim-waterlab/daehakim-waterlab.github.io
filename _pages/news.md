@@ -2,7 +2,7 @@
 layout: page
 title: News
 permalink: /news/
-description: All lab news, newest first. Click a photo to enlarge it.
+description: All lab news, newest first.
 ---
 
 {%- comment -%} Archive of every item in _news/, grouped by year (Home shows only the latest few). {%- endcomment -%}
@@ -20,7 +20,6 @@ description: All lab news, newest first. Click a photo to enlarge it.
           {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
         {% else %}
           <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-          <div class="news-body">{{ item.content }}</div>
         {% endif %}
       </td>
     </tr>
