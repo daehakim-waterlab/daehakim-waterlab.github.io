@@ -28,7 +28,7 @@ The most quantitative message is also the simplest. Warming scales almost linear
 
 Because about 220 GtCO₂ produces 0.1°C of warming (the IPCC best estimate), every five years of emissions at today's level adds roughly 0.1°C to whatever peak we eventually reach. The figure below is my own back-of-the-envelope version of that arithmetic. It is not a figure from the report.
 
-![Emission pathways with a 30-year decline starting in 2026, 2031 or 2036 (left), and the resulting peak warming (right)](/assets/img/blog/2026-10-17-overshoot-delay.png){: style="width: 100%; height: auto;" }
+![Emission pathways with a 30-year decline starting in 2026, 2031 or 2036 (left), and the resulting peak warming (right)](/assets/img/blog/2026-10-17-overshoot-delay.png){: style="width: 100%; height: auto;" data-zoomable="" }
 
 _**Figure.** (a) Three idealized CO₂ pathways that all take 30 years to fall from 40 GtCO₂ per year to net zero, starting in 2026, 2031 or 2036. The dashed line is what staying within the 1.5°C budget would require. (b) The resulting peak warming, computed as 1.5°C plus the warming from CO₂ emitted beyond the 130 GtCO₂ budget, using the IPCC AR6 transient climate response to cumulative emissions (best estimate 0.45°C per 1000 GtCO₂; bars show the likely range of 0.27–0.63). Non-CO₂ gases and CO₂ removal are held fixed, so this is an illustration of the budget logic, not a projection. Figure by Daeha Kim, based on numbers reported in UNEP (2026)._
 
@@ -71,7 +71,7 @@ The report closes on a point worth repeating: overshoot is an argument for urgen
 
 ---
 
-**한 줄 요약 (Korean summary).** 지구 온난화는 몇 년 안에 1.5°C를 넘어설 전망이며, UNEP 보고서는 이제 1.5°C 목표에 "위에서부터" 접근해야 한다고 강조한다. 감축이 5년 늦어질 때마다 최고 기온은 약 0.1°C 높아지고, 이산화탄소 제거로 되돌릴 수 있는 온도는 이번 세기 안에 수십 분의 1°C 정도에 그친다. 수자원 분야에서는 기후가 오르고, 정점을 찍고, 다시 내려가는 과정 전체를 견딜 수 있도록 시설을 설계하고 적응 전략을 계속 수정해 나가야 한다.
+**한 줄 요약 (Korean summary).** 지구 온난화는 몇 년 안에 1.5°C를 넘어설 전망이며, UNEP 보고서는 이제 1.5°C 목표에 “위로부터” 접근해야 한다고 강조한다. 감축이 5년 늦어질 때마다 최고 기온은 약 0.1°C 높아지고, 이산화탄소 감축으로 되돌릴 수 있는 온도는 이번 세기 안에 수십 분의 1°C 정도에 그친다. 기후가 오르고, 정점을 찍고, 다시 내려가는 과정 전체를 견딜 수 있도록 기후관련 인프라를 설계하고 적응 전략을 지속적으로 수정해 나가야 한다.
 
 ---
 
