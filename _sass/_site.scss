@@ -98,9 +98,13 @@ $page: ".post:has(> .post-header .post-description)";
 .publications ol.bibliography > li:last-child {
   border-bottom: none;
 }
-#{$page} article table.table-borderless tr + tr > td,
-#{$page} article table.table-borderless tr + tr > th {
-  border-top: 1px solid var(--global-divider-color);
+// The theme's `.table-borderless td { border: 0 !important }` lives in the "components" cascade
+// layer, so this rule sits in the same layer, also `!important`, with higher specificity.
+@layer components {
+  #{$page} article table.table-borderless tr + tr > td,
+  #{$page} article table.table-borderless tr + tr > th {
+    border-top: 1px solid var(--global-divider-color) !important;
+  }
 }
 #{$page} article table.table-borderless td,
 #{$page} article table.table-borderless th {
