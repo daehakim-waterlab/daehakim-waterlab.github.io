@@ -1,6 +1,15 @@
 // Site-specific styles, loaded last from assets/css/main.scss (a site override of the
 // al_folio_core entry point). Keep page-specific styles in the page itself.
 
+// Accent colour: USU navy ("Aggie Blue", #0f2439) instead of the theme's purple (#b509ac) in
+// light mode, for links, the active menu item, badges and the reading-progress bar. Dark mode keeps
+// the theme's cyan: html[data-theme="dark"] is more specific than :root, so it still wins there.
+:root {
+  --global-theme-color: #0f2439;
+  --global-hover-color: #0f2439;
+  --global-code-bg-color: rgba(15, 36, 57, 0.05);
+}
+
 // Top bar: fully opaque, so text never shows through it while scrolling.
 #navbar {
   opacity: 1;
