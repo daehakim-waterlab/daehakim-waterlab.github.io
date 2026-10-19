@@ -17,4 +17,7 @@
     Thumbnail: {{ entry.preview_figure | default: 'Figure' }} of this article,
     <a href="https://creativecommons.org/licenses/{{ license_slug }}/{{ license_version }}/">{{ entry.preview_license }}</a>
   </div>
+{%- elsif entry.preview and entry.preview_figure -%}
+  {%- comment -%} No CC licence stated for the article: credit the figure only. {%- endcomment -%}
+  <div class="preview-credit">Thumbnail: {{ entry.preview_figure }} of this article</div>
 {%- endif -%}
