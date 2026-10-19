@@ -7,6 +7,20 @@ nav: true
 nav_order: 2
 ---
 
+<style>
+  /* People: a rule and extra space between the three sections, smaller PI sub-headings */
+  .post article > h2 { font-size: 1.9rem; margin-top: 0; margin-bottom: 1rem; }
+  .post article > h2 ~ h2 { margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--global-divider-color); }
+  .post article > h3 { font-size: 1.4rem; margin: 0 0 0.3rem; }
+  .post article > h4 { font-size: 1.05rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+  @media (max-width: 576px) {
+    .post article > h2 { font-size: 1.55rem; }
+    .post article > h2 ~ h2 { margin-top: 2.25rem; padding-top: 1.25rem; }
+    .post article > h3 { font-size: 1.25rem; }
+    .post article > h4 { font-size: 1rem; margin-top: 1.25rem; }
+  }
+</style>
+
 ## Principal investigator
 
 ### Daeha Kim
