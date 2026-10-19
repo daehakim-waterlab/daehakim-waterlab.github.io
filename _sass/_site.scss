@@ -68,6 +68,53 @@ table.table a:hover {
   }
 }
 
+// Menu pages (page layout: a title with a one-line description; not Home or blog posts):
+// a rule under the page header, a rule above each section heading after the first, and thin
+// rules between items in publication lists and tables, as on the Blog page.
+$page: ".post:has(> .post-header .post-description)";
+.post > .post-header:has(.post-description) {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+#{$page} > article > h2,
+#{$page} .course > h2 {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+// The first section heading sits right under the header rule (a page may start with a <style>).
+#{$page} > article > h2:first-child,
+#{$page} > article > style:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.publications ol.bibliography > li {
+  margin-bottom: 0;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+.publications ol.bibliography > li:last-child {
+  border-bottom: none;
+}
+#{$page} article table.table-borderless tr + tr > td,
+#{$page} article table.table-borderless tr + tr > th {
+  border-top: 1px solid var(--global-divider-color);
+}
+#{$page} article table.table-borderless td,
+#{$page} article table.table-borderless th {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+@media (max-width: 576px) {
+  #{$page} > article > h2,
+  #{$page} .course > h2 {
+    margin-top: 2.25rem;
+    padding-top: 1.25rem;
+  }
+}
+
 // News and latest posts (Home and /news/): short dates kept on one line.
 .news .news-date {
   width: 6.5rem;
