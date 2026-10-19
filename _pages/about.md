@@ -2,7 +2,7 @@
 layout: about
 title: Home
 permalink: /
-subtitle: Department of Civil Engineering, <a href='https://www.jbnu.ac.kr'>Jeonbuk National University</a>
+subtitle: Department of Civil Engineering,<br><a href='https://www.jbnu.ac.kr'>Jeonbuk National University</a>
 
 selected_papers: false
 social: true
