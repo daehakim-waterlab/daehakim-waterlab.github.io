@@ -126,6 +126,12 @@ $page: ".post:has(> .post-header .post-description)";
   }
 }
 
+// Table of contents beside long pages (Research): room between topics so multi-line titles read
+// as separate entries.
+#toc-sidebar .toc-list-item + .toc-list-item {
+  margin-top: 0.6rem;
+}
+
 // News and latest posts (Home and /news/): short dates kept on one line.
 .news .news-date {
   width: 6.5rem;
