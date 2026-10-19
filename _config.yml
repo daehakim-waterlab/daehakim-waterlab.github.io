@@ -398,6 +398,8 @@ filtered_bibtex_keywords:
     pmid,
     poster,
     preview,
+    preview_figure,
+    preview_license,
     selected,
     slides,
     supp,

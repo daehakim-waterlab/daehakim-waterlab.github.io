@@ -208,3 +208,22 @@
     padding-bottom: 4.5rem;
   }
 }
+
+// Publication thumbnails (bib `preview`, open-access articles only). The bib hook prints
+// the credit line between the author list and the journal; move it to the end of the entry.
+.publications ol.bibliography li .row > div:has(> .preview-credit) {
+  display: flex;
+  flex-direction: column;
+}
+.publications .preview-credit {
+  order: 1;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+}
+// On phones the abbr column spans the full width; keep the thumbnail from filling it.
+@media (max-width: 575.98px) {
+  .publications img.preview {
+    max-width: 240px;
+  }
+}

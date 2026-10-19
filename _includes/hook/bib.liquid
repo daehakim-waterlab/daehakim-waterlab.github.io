@@ -4,3 +4,17 @@
   and renders as "..., 135813 , 2026". Strip it before the year is appended.
 {%- endcomment -%}
 {%- capture entrytype -%}{{ entrytype | strip }}{%- endcapture -%}
+{%- comment -%}
+  Credit line for a publication thumbnail (`preview`) taken from an open-access
+  article: `preview_figure` names the figure, `preview_license` its CC licence.
+  The hook runs between the author list and the journal line, so CSS
+  (`.preview-credit` in _sass/_site.scss) moves the line to the end of the entry.
+{%- endcomment -%}
+{%- if entry.preview and entry.preview_license -%}
+  {%- assign license_slug = entry.preview_license | remove: 'CC ' | split: ' ' | first | downcase -%}
+  {%- assign license_version = entry.preview_license | split: ' ' | last -%}
+  <div class="preview-credit">
+    Thumbnail: {{ entry.preview_figure | default: 'Figure' }} of this article,
+    <a href="https://creativecommons.org/licenses/{{ license_slug }}/{{ license_version }}/">{{ entry.preview_license }}</a>
+  </div>
+{%- endif -%}
