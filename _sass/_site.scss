@@ -77,6 +77,13 @@ $page: ".post:has(> .post-header .post-description)";
   margin-bottom: 1.75rem;
   border-bottom: 1px solid var(--global-divider-color);
 }
+// A page that opens with an introduction (Research, Join us) keeps it with the title: no header
+// rule there; the first section heading below the introduction still gets its rule.
+.post:has(> article > p:first-child) > .post-header {
+  padding-bottom: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: none;
+}
 #{$page} > article > h2,
 #{$page} .course > h2 {
   margin-top: 3rem;
