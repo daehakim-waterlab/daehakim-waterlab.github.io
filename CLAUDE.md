@@ -55,6 +55,8 @@ Every post in `_posts/` follows the same structure, so that fonts and sizes stay
 4. Commit with a short message, push to `main`, and stop if the push is rejected (pull and retry). Confirm that the "Deploy site" run for that commit succeeded and that the live page shows the change.
 5. Tell the owner that GitHub Pages caches pages for up to 10 minutes (`⌘ + Shift + R`).
 
+**Preferred blog routine (owner's choice, 2026-10-19):** when the owner supplies a paper (PDF or DOI), read it, write the post following the style guide (with code-generated original figures and scripts in `scripts/blog/`), show the full draft in the conversation, and publish it once the owner approves.
+
 **New blog post from the owner's [POST]/[SCRIPT] blocks:** create the files exactly as given; adjust only front matter if needed (date with `+0900`; it must not be in the future at build time). Run each script from the repo root to write `assets/img/blog/`, commit scripts and PNGs together, apply the style guide above (image line, caption pattern, GitHub links to the scripts in the closing line, `post_url` for links to earlier posts), check every DOI against Crossref/doi.org and report mismatches without silently changing the owner's text. A new paper by the owner also gets a News item (see News rules above).
 
 ## How to work in this repo
