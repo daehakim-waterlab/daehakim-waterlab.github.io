@@ -139,7 +139,10 @@
   max-width: 100%;
   height: auto;
 }
-.post-content p:has(> em:only-child) {
+// Figure captions only: a paragraph that is entirely italic and starts with bold
+// ("_**Figure 1.** ..._"). Do not widen this selector: an earlier version (any paragraph whose
+// only child element is <em>) also shrank reference entries that contain one italic journal name.
+.post-content p:has(> em:only-child > strong:first-child) {
   font-size: 0.9rem;
   line-height: 1.5;
 }
