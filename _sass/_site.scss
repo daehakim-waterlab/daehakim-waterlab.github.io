@@ -300,9 +300,11 @@ $page: ".post:has(> .post-header .post-description)";
   font-size: 0.75rem;
   color: var(--global-text-color-light);
 }
-// On phones the abbr column spans the full width; keep the thumbnail from filling it.
+// On phones the abbr column spans the full width; keep the thumbnail from filling it,
+// and give the journal badge above it the same width.
 @media (max-width: 575.98px) {
-  .publications img.preview {
+  .publications img.preview,
+  .publications .abbr .badge {
     max-width: 240px;
   }
 }
