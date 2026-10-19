@@ -12,7 +12,7 @@ summary_en: >-
 summary_ko: >-
   토목공학 문제에 적용되는 유체역학의 기초를 다룬다. 유체의 성질, 정수압과 잠긴 면에 작용하는 힘, 연속·에너지·운동량 방정식, 관수로와 관망의 흐름, 개수로의 등류와 점변류를 학습한다.
 # Online textbook (Jupyter Book, repository daehakim-waterlab/hydraulics).
-textbook: https://daehakim-waterlab.github.io/hydraulics/
+textbook: /hydraulics/
 ---
 
 {{ page.summary_en }}

@@ -17,7 +17,7 @@ children:
   - title: Statistical Hydrology
     permalink: /teaching/statistical-hydrology/
   - title: A Brief History of Fluid Mechanics and Water Sciences
-    permalink: https://daehakim-waterlab.github.io/water-history/
+    permalink: /water-history/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:

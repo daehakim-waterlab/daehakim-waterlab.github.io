@@ -12,7 +12,7 @@ summary_en: >-
 summary_ko: >-
   수문 순환의 기본 개념과 수자원 시설의 설계·운영에 필요한 정량적 해석 방법을 다룬다. 강수 자료의 분석, 증발과 침투에 의한 손실, 유출과 수문곡선 해석, 단위유량도, 저수지와 하도의 홍수추적, 설계홍수량 산정을 학습한다.
 # Online textbook (Jupyter Book, repository daehakim-waterlab/engineering-hydrology).
-textbook: https://daehakim-waterlab.github.io/engineering-hydrology/
+textbook: /engineering-hydrology/
 ---
 
 {{ page.summary_en }}

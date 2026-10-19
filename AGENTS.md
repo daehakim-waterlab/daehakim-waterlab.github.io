@@ -43,7 +43,7 @@ Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#failure-modes-that-produce-no
 
 1. **Features fail silently.** A feature renders only when its gem is loaded _and_ its flag is on _and_ the page opts in. Otherwise the Liquid tag emits an empty string — no warning, no error.
 2. **`Gemfile` and `_config.yml` are two lists that must agree.** A plugin in only one of them is inert. Adding or removing a plugin means editing both. Repo dirs use hyphens (`al-folio-core`); gem/plugin ids use underscores (`al_folio_core`).
-3. **This site's baseurl is blank.** It is a user site (`daehakim-waterlab.github.io`) served from the domain root, so `_config.yml` leaves `baseurl` empty and a plain `bundle exec jekyll build` is correct — that is what `deploy.yml`, `broken-links-site.yml` and `axe.yml` run. Setting a baseurl such as `/al-folio` is what renders the site unstyled with broken links. Dev server is at `http://localhost:4000/`.
+3. **This site's baseurl is blank.** It is a user site (`daehakim-waterlab.github.io`, custom domain `hydroclimatol.com`) served from the domain root, so `_config.yml` leaves `baseurl` empty and a plain `bundle exec jekyll build` is correct — that is what `deploy.yml`, `broken-links-site.yml` and `axe.yml` run. Setting a baseurl such as `/al-folio` is what renders the site unstyled with broken links. Dev server is at `http://localhost:4000/`.
 
 ## Validated local command set
 

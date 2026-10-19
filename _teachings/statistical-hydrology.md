@@ -13,7 +13,7 @@ summary_ko: >-
   수문 자료의 해석과 설계에 필요한 확률·통계 기법을 다룬다. 수문학에서 쓰이는 확률분포, 모멘트법·L-모멘트법·최우도법에 의한 매개변수 추정, 홍수·강우·가뭄의 빈도해석, 적합도 검정, 강우강도-지속기간-빈도 관계, 경향성과 비정상성의 처리를 학습한다.
 # Online textbook (Jupyter Book). Uncomment and set the URL when it is published;
 # the course pages then show the link instead of "coming soon".
-# textbook: https://daehakim-waterlab.github.io/statistical-hydrology/
+# textbook: /statistical-hydrology/
 ---
 
 {{ page.summary_en }}

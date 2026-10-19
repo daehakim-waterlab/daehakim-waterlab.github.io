@@ -1,6 +1,6 @@
 # daehakim-waterlab.github.io
 
-Homepage of the hydrology and water resources lab led by Daeha Kim, Department of Civil Engineering, Jeonbuk National University: <https://daehakim-waterlab.github.io>
+Homepage of the hydrology and water resources lab led by Daeha Kim, Department of Civil Engineering, Jeonbuk National University: <https://hydroclimatol.com>
 
 Built with the [al-folio](https://github.com/alshedivat/al-folio) Jekyll template (v1.x). `.github/workflows/deploy.yml` builds the site on every push to `main` and publishes it to the `gh-pages` branch.
 
