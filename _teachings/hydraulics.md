@@ -11,9 +11,8 @@ summary_en: >-
   The fundamentals of fluid mechanics applied to civil engineering problems. Topics include fluid properties, hydrostatic pressure and forces on submerged surfaces, the continuity, energy, and momentum equations, flow in pipes and pipe networks, and uniform and gradually varied flow in open channels.
 summary_ko: >-
   토목공학 문제에 적용되는 유체역학의 기초를 다룬다. 유체의 성질, 정수압과 잠긴 면에 작용하는 힘, 연속·에너지·운동량 방정식, 관수로와 관망의 흐름, 개수로의 등류와 점변류를 학습한다.
-# Online textbook (Jupyter Book). Uncomment and set the URL when it is published;
-# the course pages then show the link instead of "coming soon".
-# textbook: https://daehakim-waterlab.github.io/hydraulics/
+# Online textbook (Jupyter Book, repository daehakim-waterlab/hydraulics).
+textbook: https://daehakim-waterlab.github.io/hydraulics/
 ---
 
 {{ page.summary_en }}
