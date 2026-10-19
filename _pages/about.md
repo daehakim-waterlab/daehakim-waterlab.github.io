@@ -30,8 +30,8 @@ latest_posts:
   .post > .post-header .desc { color: #3b3a37; font-size: 1.1rem; margin: 0; }
   .post > .post-header .desc a { color: #0f2439; }
   .post > .post-header .desc a:hover { color: #246bac; }
-  /* Section headings ("News", "Latest posts") at body-heading size */
-  .post article > h2 { font-size: 1.6rem; font-weight: 400; margin-top: 2rem; margin-bottom: 0.5rem; }
+  /* Section headings ("News", "Latest posts") at body-heading size, each with a rule above it */
+  .post article > h2 { font-size: 1.6rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 0.5rem; padding-top: 1.5rem; border-top: 1px solid var(--global-divider-color); }
   .post article > h2::first-letter { text-transform: uppercase; }
   @media (min-width: 768px) and (max-width: 991.98px) {
     .post > .post-header { min-height: 15rem; padding: 2rem 53% 2rem 2rem; }
@@ -45,7 +45,7 @@ latest_posts:
   }
   @media (max-width: 576px) {
     .post > .post-header .post-title { font-size: 1.75rem; }
-    .post article > h2 { font-size: 1.4rem; margin-top: 1.6rem; }
+    .post article > h2 { font-size: 1.4rem; margin-top: 2rem; padding-top: 1.25rem; }
   }
 </style>
 
