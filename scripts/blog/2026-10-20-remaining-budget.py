@@ -17,7 +17,7 @@ light, mid, dark = "#a9c8ec", "#5b9be0", "#1f5fae"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12, "axes.edgecolor": ink2,
                      "xtick.color": ink2, "ytick.color": ink})
 
-targets = ["1.5 °C", "1.7 °C", "2.0 °C"]
+targets = ["1.5°C", "1.7°C", "2.0°C"]
 ipcc = [250, 600, 1100]
 forster = [90, 450, 1010]
 avg = [170, 525, 1055]
