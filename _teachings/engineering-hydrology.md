@@ -18,8 +18,6 @@ summary_ko: >-
 
 {{ page.summary_en }}
 
-<p lang="ko">{{ page.summary_ko }}</p>
+## Course content
 
-## Online textbook
-
-{% if page.textbook %}[Online textbook]({{ page.textbook }}){% else %}Online textbook — coming soon{% endif %}
+{% if page.textbook %}<a class="textbook-link" href="{{ page.textbook }}">Online textbook &rarr;</a>{% else %}<span class="textbook-link">Online textbook — coming soon</span>{% endif %}

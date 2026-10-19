@@ -100,6 +100,31 @@
   margin-top: 1.25rem;
 }
 
+// Course pages (_teachings): a tighter header block, roomier body text, and a section
+// heading sized like other body headings with clear space above it.
+.post:has(.course) .post-header .post-description {
+  margin-bottom: 1.25rem;
+}
+.course .course-info {
+  margin-bottom: 1.25rem;
+  p {
+    margin-bottom: 0;
+  }
+}
+.course > p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.course > h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+}
+.course .textbook-link {
+  font-size: 1.05rem;
+}
+
 // Back-to-top button: smaller and tucked into the corner so it does not cover links.
 #back-to-top {
   width: 40px !important;
@@ -161,6 +186,10 @@
   }
   .news .news-date {
     width: 5.5rem;
+  }
+  .course > h2 {
+    font-size: 1.3rem;
+    margin-top: 1.75rem;
   }
   .header-bar {
     padding-top: 0;
