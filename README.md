@@ -13,7 +13,7 @@ Built with the [al-folio](https://github.com/alshedivat/al-folio) Jekyll templat
 | People | `/people/` | `_pages/people.md`; members and alumni in `_data/people.yml` |
 | Publications ▾ | `/publications/…` | `_bibliography/papers.bib`; pages in `_pages/publications/` |
 | Projects | `/projects/` | `_data/projects.yml` |
-| Teaching ▾ | `/teaching/…` | one file per course in `_teachings/` |
+| Teaching ▾ | `/teaching/…` | one file per course in `_teachings/`; the last item links to the water-history textbook (`children:` in `_pages/teaching.md`) |
 | Blog (hidden) | `/blog/` | posts in `_posts/`; menu switch in `_pages/blog.md` |
 | Join us | `/join/` | `_pages/join.md` |
 
