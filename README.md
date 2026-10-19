@@ -36,7 +36,7 @@ New paper in _Journal Name_: one-sentence summary. [DOI](https://doi.org/...)
 
 The five most recent items appear on Home; all of them are at `/news/`.
 
-**Add a publication.** Add an entry to `_bibliography/papers.bib`. The entry type decides the sub-page: `@article` (journal articles), `@incollection` (book chapters), `@techreport` (technical reports). Conference presentations are not listed on the site. Copy a neighbouring entry so the `abbr`, `doi`, and `additional_info` fields stay consistent. The site lists entries in file order, so put a new paper above the older entries of its type. Only list papers that are published or in press; for an in-press paper add `note = {In press}`.
+**Add a publication.** Add an entry to `_bibliography/papers.bib`. The entry type decides the sub-page: `@article` (journal articles), `@incollection` (book chapters), `@techreport` (technical reports). Conference presentations are not listed on the site. Copy a neighbouring entry so the `abbr`, `doi`, and `additional_info` fields stay consistent. The site lists entries in file order, so put a new paper above the older entries of its type. Only list papers that are published or in press; for an in-press paper add `note = {In press}`. To show a thumbnail under the journal badge, add the `preview`, `preview_figure` and `preview_license` fields described in `CLAUDE.md` (Publications); only open-access figures or the owner's own originals may be used.
 
 **Add a lab member or alumnus.** After the person agrees to be listed, add them to `_data/people.yml`. The Lab members and Alumni sections appear automatically once they have an entry.
 
