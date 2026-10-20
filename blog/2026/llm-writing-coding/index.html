@@ -1,0 +1,306 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Writing and coding with LLMs: what we gain, what we lose, and how to catch the errors | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | Writing and coding with LLMs: what we gain, what we lose, and how to catch the errors"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/llm-writing-coding/"> <meta property="og:description" content="What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Writing and coding with LLMs: what we gain, what we lose, and how to catch the errors"> <meta name="twitter:description" content="What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/llm-writing-coding/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Writing and coding with LLMs: what we gain, what we lose, and how to catch the errors</h1> <p class="post-meta"> Created on October 21, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/llm"> <i class="fa-solid fa-hashtag fa-sm"></i> llm</a>   <a href="/blog/tag/writing"> <i class="fa-solid fa-hashtag fa-sm"></i> writing</a>   <a href="/blog/tag/coding"> <i class="fa-solid fa-hashtag fa-sm"></i> coding</a>   <a href="/blog/tag/research-integrity"> <i class="fa-solid fa-hashtag fa-sm"></i> research-integrity</a>   <a href="/blog/tag/education"> <i class="fa-solid fa-hashtag fa-sm"></i> education</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>Large language models (LLMs) are now part of how many researchers write papers and code analyses. One large study estimates that by late 2024 up to 22% of the text in computer science papers showed signs of LLM modification (Liang et al. 2025), and more than 40% of the code submitted in one introductory programming course in 2024 was flagged as LLM-generated, up from almost none in 2022 (Baek et al. 2026). The question for a research group is no longer whether to use these tools, but how to use them without losing what makes the work ours, and how to catch the mistakes they make. In <a href="/blog/2026/from-chatbot-to-coworker/">an earlier post</a> I looked at what LLM agents can already do in hydrologic modeling; this one is about the person using them.</p> <p>This post collects what I consider the most useful evidence, from controlled experiments rather than opinion pieces. It is longer than usual, because the topic deserves care. I have tried to report every number as the original authors did, and to say when a study is small, preliminary or not yet peer-reviewed.</p> <h2 id="what-llms-do-well">What LLMs do well</h2> <p>The gains are real, and they are largest for well-defined tasks.</p> <ul> <li> <strong>Speed and polish on routine writing.</strong> In a preregistered experiment with 453 professionals, access to ChatGPT cut the time needed for occupation-specific writing tasks by 40% and raised the rated quality by 18% (Noy &amp; Zhang 2023). The least skilled writers gained the most, so the gap between workers narrowed.</li> <li> <strong>Speed on self-contained coding tasks.</strong> In a controlled experiment with 95 developers, those using GitHub Copilot finished a small web-server task 55.8% faster (Peng et al. 2023). This was a short, clearly specified task, and the study was run by researchers at GitHub and Microsoft.</li> <li> <strong>Better results inside the “frontier.”</strong> In an experiment with 758 consultants at Boston Consulting Group, GPT-4 users completed 12.2% more tasks, 25.1% faster and with more than 40% higher quality on tasks that the model handles well. Below-average performers improved most (Dell’Acqua et al. 2023).</li> <li> <strong>More ideas.</strong> Writers who received ideas from an LLM produced short stories rated more novel and more useful, especially writers who were less creative to begin with (Doshi &amp; Hauser 2024).</li> <li> <strong>Useful critique.</strong> When GPT-4 commented on thousands of published papers, the overlap between its points and those of human reviewers was similar to the overlap between two human reviewers (Liang et al. 2024).</li> <li> <strong>Structure.</strong> Asking a model to plan before it writes (outline, characters, key events, then revision of the plan) produces stories that human raters preferred in 68.5% of comparisons, although that evaluation had only 35 responses (Lewenberg et al. 2025).</li> </ul> <h2 id="what-is-lost-compared-with-writing-it-ourselves">What is lost compared with writing it ourselves</h2> <p>The costs are less visible, and that is what makes them dangerous.</p> <p><strong>The meaning shifts, not only the style.</strong> The most striking recent study is a preprint by Abdulhai and colleagues (2026). In a randomized study, 100 people wrote an essay on “Does money lead to happiness?”, some with an LLM available. People who let the model write most of the text were far more likely to end up with no clear position at all: 67% of their essays were neutral, compared with 40% of essays written without an LLM. People who used the model only for advice or as a search tool wrote essays that looked like the human-only ones.</p> <p><img src="/assets/img/blog/2026-10-21-llm-stance.png" alt="Stance of essays written with and without an LLM" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> Stance of essays on “Does money lead to happiness?” in a randomized study with 100 participants, by how much the writer relied on an LLM. Heavy reliance pushed essays toward neutrality; using the model only for advice or search did not. Figure by Daeha Kim, drawn from numbers reported in Abdulhai et al. (2026).</em></p> <p>The same authors then asked three current LLMs to revise 86 student essays written in 2021, before ChatGPT existed, giving the models the same expert feedback the students had received. Even when told to fix only grammar, the models changed the content: they replaced far more words than the students did when revising their own drafts, cut pronouns by 40–60%, removed personal examples, made the tone more emotional and pushed every essay in the same semantic direction. In one example, a student’s cautious “perhaps America is not ready for self-driving cars” became a firmer statement. The heavy LLM users in the user study also said their essays were less creative and less in their own voice, yet they were just as satisfied with the result. In science the same effect is already visible: in peer reviews for a major machine learning conference, reviews generated by LLMs gave scores about 10% higher and judged papers by different criteria, mentioning clarity and relevance less and reproducibility and scalability more.</p> <p><strong>Everyone starts to sound the same.</strong> Stories written with LLM ideas were individually better but more similar to one another (Doshi &amp; Hauser 2024). An explainable detector of machine text found that human news articles cover a wider variety of themes and vocabulary, while newer models produce text concentrated in a narrow part of the space that human writing occupies (Liebe et al. 2026). Even teams of LLM agents become more alike when they read each other’s drafts. Interestingly, one remedy works for machines as it does for people: in “blind peer review,” each agent receives feedback but revises its own draft without seeing the others’, which preserves diversity (Li et al. 2026). The parallel with brainstorming research, where people who work alone first produce more original ideas than groups, is hard to miss.</p> <p><strong>Learning suffers when the model does the thinking.</strong> In a field experiment with nearly 1,000 high school students, unrestricted access to a GPT-4 tutor raised practice scores by 48%, but on the later exam without AI those students scored 17% worse than students who never had it. A version designed to give hints rather than answers avoided the harm (Bastani et al. 2025). In a survey of 319 knowledge workers, higher confidence in AI went with less critical thinking, and the work shifted from producing to checking (Lee et al. 2025). A small EEG study reported that most essay writers who used ChatGPT could not quote a sentence from the essay they had just written (Kosmyna et al. 2025); it is a preprint with 54 participants and its methods have been criticized, so I treat it as a warning sign rather than a result.</p> <p><strong>Outside the frontier, AI makes us worse.</strong> In the consultant experiment, on a task that looked similar but lay outside what GPT-4 could do well, AI users were 19 percentage points less likely to reach the correct answer than those working alone (Dell’Acqua et al. 2023). The difficulty is that the boundary is invisible: the model sounds equally confident on both sides of it.</p> <h2 id="our-sense-of-how-well-it-went-is-unreliable">Our sense of how well it went is unreliable</h2> <p>This, to me, is the most important finding in the whole literature. In a randomized trial with 16 experienced open-source developers working on their own large projects, allowing AI tools made them 19% <em>slower</em>. Before the study they expected to be 24% faster, and afterwards they still believed they had been 20% faster (Becker et al. 2025). Outside experts predicted even larger gains.</p> <p><img src="/assets/img/blog/2026-10-21-perception-gap.png" alt="Expected versus measured effect of AI tools on developer speed" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 2.</strong> Predicted and measured change in the time experienced developers needed to complete tasks in their own projects when AI tools were allowed. Negative values mean faster. Figure by Daeha Kim, drawn from numbers reported in Becker et al. (2025).</em></p> <p>The direction is not always the same. A 2026 follow-up with newer tools produced estimates whose confidence intervals include zero, and the authors themselves call those data unreliable, because many developers refused to work without AI. And in the Copilot experiment, users underestimated their gain. The lesson is not that AI always slows us down; it is that our feelings about it are not measurements. The same gap appears in security: people with an AI assistant wrote less secure code and were more likely to believe it was secure (Perry et al. 2023), and the heavy LLM users in the essay study were satisfied with essays that no longer said what they thought.</p> <h2 id="how-often-llm-output-is-wrong">How often LLM output is wrong</h2> <p>Error rates depend on the task and the model, and they fall as models improve. But in every study I found, they are well above zero.</p> <p><img src="/assets/img/blog/2026-10-21-llm-error-rates.png" alt="Error rates measured in LLM output in published studies" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 3.</strong> Error rates of LLM output reported in published studies. Each bar comes from a different study, model, task and year (2021–2024), so the bars should not be compared with one another; newer models generally do better. The point is that none is negligible. Figure by Daeha Kim, drawn from numbers reported in Walters &amp; Wilder (2023), Kabir et al. (2024), Bastani et al. (2025), Pearce et al. (2022) and Spracklen et al. (2025).</em></p> <p>Some of these errors are easy to miss. More than half of ChatGPT’s answers to Stack Overflow questions contained incorrect information, yet in a small user study people overlooked the misinformation 39% of the time (Kabir et al. 2024). Code models invent package names that do not exist: among 576,000 code samples, at least 5.2% from commercial models and 21.7% from open-source models referred to a non-existent package (Spracklen et al. 2025). Attackers can register those names and wait for someone to install them. In writing, the classic failure is the invented citation: in 2023, 55% of the references produced by GPT-3.5 and 18% of those produced by GPT-4 did not exist, and 24% of GPT-4’s real references contained substantive errors (Walters &amp; Wilder 2023). Industry surveys point the same way at a larger scale: the DORA 2024 survey of about 39,000 software professionals found that higher AI adoption was associated with slightly better code quality and documentation, but lower delivery stability (Google Cloud DORA 2024).</p> <p>One gap in the evidence should be stated plainly. I found no rigorous trial comparing the factual error rate or peer-review outcome of scientific manuscripts written with and without LLM help. We are all, in effect, running that experiment on ourselves.</p> <h2 id="detecting-the-errors">Detecting the errors</h2> <p>None of the following is new to anyone trained in science. LLMs simply make it more necessary.</p> <p><strong>For code</strong></p> <ul> <li> <strong>Write the test before you ask for the code.</strong> Decide what the correct output is, ideally with a case you can solve by hand, and run it. In hydrology that means checking that a water balance closes, that a model reproduces an analytical solution, or that it gives the published result for a benchmark catchment.</li> <li> <strong>Run everything, and read every line you keep.</strong> If you cannot explain a line, you do not yet own it.</li> <li> <strong>Check that every imported package actually exists</strong> and is the one you intended, before installing it.</li> <li> <strong>Work in small steps.</strong> Ask for one function at a time and inspect the change, rather than accepting a whole script.</li> <li> <strong>Pay extra attention to security, file handling and anything that deletes or overwrites data</strong>, where the studies above found the most problems.</li> </ul> <p><strong>For writing</strong></p> <ul> <li> <strong>Open every reference.</strong> Look up each DOI and confirm that the paper exists and says what the sentence claims. Never cite a paper you have not opened.</li> <li> <strong>Trace every number</strong> back to its source table or figure.</li> <li> <strong>Compare meaning, not only grammar.</strong> After an LLM edits a paragraph, compare it with your original sentence by sentence and ask whether each claim is still the one you intended, at the strength you intended.</li> <li> <strong>Ask for critique, not a rewrite.</strong> “What is unclear or unsupported here?” keeps your text and your argument intact. “Improve this” invites the model to replace them.</li> </ul> <p><strong>Signals in the model’s own words.</strong> In a study of 30,300 classroom utterances labeled by several LLMs, wrong labels came with explanations that were five times more likely to hedge (“might,” “could”) and twice as likely to narrate the model’s own thinking (“I think,” “I realize”), and they were usually longer. Correct ones linked evidence to conclusions with words like “because” and “therefore” (Ahtisham et al. 2026). That study is about classifying text, not about code, but the rule of thumb transfers: a long, hedging, self-narrating explanation is a reason to check more carefully.</p> <p><strong>Ask more than once.</strong> If you ask the same factual question several times and get different answers, the model is probably guessing. This idea underlies “semantic entropy,” which detects many confabulations from the disagreement among repeated answers (Farquhar et al. 2024). A related technique, chain-of-verification, has the model draft an answer, write its own fact-checking questions, answer them independently and then revise; in benchmark tests it cut the number of hallucinated items in list-style answers by more than three quarters (Dhuliawala et al. 2024). Both catch inconsistency, not errors the model makes consistently, so they complement rather than replace checking against sources.</p> <p><strong>Detecting AI-written text is a different problem, and a risky one.</strong> Detectors of machine-written text are improving, but they wrongly flag human writing. One recent detector labeled 25% of randomly collected human news articles as machine-written (Liebe et al. 2026). A detector of LLM-generated code that was more than 99% accurate still flagged one of five reference solutions written by the course instructor (Baek et al. 2026). People are not reliable judges either: most cannot tell AI-written from human-written self-descriptions (Jakesch et al. 2023), although people who use LLMs often for writing are much better at it (Russell et al. 2025). Baek and colleagues draw a sensible conclusion for teaching: when code looks generated, ask the student a few conceptual questions about it rather than imposing a penalty.</p> <h2 id="a-working-attitude">A working attitude</h2> <p>Putting the evidence together, this is the approach I suggest to students in my group.</p> <ul> <li> <strong>Think first, then prompt.</strong> Decide what you want to say, or what the code must do, before you open the chat window. The essay study shows that using an LLM for advice preserves your voice and your conclusions; letting it draft does not.</li> <li> <strong>Use the model as a critic, a tutor or a student, not as a ghostwriter.</strong> In a small preliminary study, students who taught rhetorical strategies to an LLM playing a novice student used more of those strategies in their own essays and made fewer errors on a delayed test than after a video lecture (Miller &amp; Bosch, in press). Explaining to the model is good for you; letting the model explain to the reader is not.</li> <li> <strong>Stay inside the frontier, or verify harder outside it.</strong> LLMs are most reliable on common tasks with checkable answers. The further you are from that, the more you must check.</li> <li> <strong>Match the checking to the stakes.</strong> A plotting script and a figure for a paper do not need the same scrutiny as a flood frequency analysis that will inform a design.</li> <li> <strong>Keep some work unaided.</strong> Skills that are never exercised fade. Write some first drafts, derivations and functions yourself, especially while you are still learning them.</li> <li> <strong>Keep the responsibility.</strong> The model is not an author. Whatever goes out under your name, you must be able to explain and defend line by line, and you should disclose how you used AI.</li> </ul> <h2 id="bottom-line">Bottom line</h2> <ul> <li>LLMs make routine writing and coding faster and often better, especially for less experienced people, on tasks within their competence.</li> <li>They also change what we say, make our writing more alike, can weaken learning, and make us worse on tasks just beyond their competence.</li> <li>Our own impression of how much they helped is unreliable; only measurement and checking tell us.</li> <li>Error rates in LLM output are well above zero. Tests for code and source checks for writing are not optional.</li> <li>Use LLMs to think better, not to think less.</li> </ul> <p><strong>Questions to think about</strong></p> <ol> <li>Pick a recent piece of your own writing that an LLM edited. Compare the two versions sentence by sentence. Did any claim change in strength or meaning?</li> <li>For the hydrological model you use most, what simple test (a water balance, an analytical case, a benchmark catchment) would tell you that AI-generated code is wrong?</li> <li>The developers in Figure 2 felt faster but were slower. How could you measure, honestly, whether an AI tool is helping your own research?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> LLM은 정해진 글쓰기와 코딩 작업을 빠르고 매끄럽게 해 주며, 특히 경험이 적은 사람에게 도움이 크다(전문직 글쓰기 시간 40% 단축·품질 18% 향상, 간단한 코딩 과제 55.8% 단축). 그러나 사람이 직접 쓴 글과 비교하면 잃는 것도 분명하다. 무작위 실험에서 LLM이 글 대부분을 쓰게 한 사람들의 에세이는 67%가 입장 없는 중립으로 끝났고(직접 쓴 경우 40%), 문법만 고치라고 해도 LLM은 단어와 주장, 어조를 바꾸었다. LLM과 함께 쓴 글은 서로 비슷해지고, 답을 그대로 주는 AI를 쓴 학생들은 AI 없이 치른 시험에서 17% 낮은 점수를 받았으며, 모델이 잘하지 못하는 과제에서는 오히려 정답률이 19%p 떨어졌다. 더 중요한 것은 체감과 실제가 다르다는 점이다. 숙련 개발자들은 AI 덕분에 20% 빨라졌다고 믿었지만 실제로는 19% 느려졌다. 연구마다 차이는 있지만 LLM 출력의 오류율(가짜 인용, 틀린 답, 보안 취약점, 존재하지 않는 패키지)은 결코 0이 아니다. 따라서 코드는 먼저 검증 기준(물수지, 해석해, 벤치마크)을 정하고 테스트하며, 글은 모든 인용과 수치를 원문에서 확인하고 수정 전후의 의미를 비교해야 한다. 같은 질문을 여러 번 해 답이 달라지거나 설명이 길고 얼버무리는 표현이 많으면 더 의심해야 한다. LLM은 대필자가 아니라 비평가·튜터·학생으로 쓰고, 먼저 스스로 생각한 뒤에 사용하며, 결과에 대한 책임은 끝까지 자신이 져야 한다.</p> <hr> <p><strong>References</strong></p> <p>Abdulhai, M., White, I., Wan, Y., Qureshi, I., Leibo, J. Z., Kleiman-Weiner, M., &amp; Jaques, N. (2026). How LLMs distort our written language. arXiv:2603.18161. <a href="https://doi.org/10.48550/arXiv.2603.18161" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2603.18161</a></p> <p>Ahtisham, B., Vanacore, K., Zhou, Z., Lee, J., &amp; Kizilcec, R. F. (2026). LLM reasoning predicts when models are right: Evidence from coding classroom discourse. arXiv:2602.09832. <a href="https://doi.org/10.48550/arXiv.2602.09832" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2602.09832</a></p> <p>Baek, J., Yamazaki, T., Morihata, A., Mori, J., Yamakata, Y., Taura, K., &amp; Chiba, S. (2026). LLM-based explainable detection of LLM-generated code in Python programming courses. In <em>Proceedings of the 57th ACM Technical Symposium on Computer Science Education V.1</em>, 80–86. <a href="https://doi.org/10.1145/3770762.3772605" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/3770762.3772605</a></p> <p>Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>Proceedings of the National Academy of Sciences</em>, 122(26), e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122" rel="external nofollow noopener" target="_blank">https://doi.org/10.1073/pnas.2422633122</a></p> <p>Becker, J., Rush, N., Barnes, E., &amp; Rein, D. (2025). Measuring the impact of early-2025 AI on experienced open-source developer productivity. arXiv:2507.09089. <a href="https://doi.org/10.48550/arXiv.2507.09089" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2507.09089</a></p> <p>Dell’Acqua, F., McFowland III, E., Mollick, E. R., et al. (2023). Navigating the jagged technological frontier: Field experimental evidence of the effects of AI on knowledge worker productivity and quality. Harvard Business School Working Paper 24-013. <a href="https://doi.org/10.2139/ssrn.4573321" rel="external nofollow noopener" target="_blank">https://doi.org/10.2139/ssrn.4573321</a></p> <p>Dhuliawala, S., Komeili, M., Xu, J., Raileanu, R., Li, X., Celikyilmaz, A., &amp; Weston, J. (2024). Chain-of-verification reduces hallucination in large language models. In <em>Findings of the Association for Computational Linguistics: ACL 2024</em>, 3563–3578. <a href="https://doi.org/10.18653/v1/2024.findings-acl.212" rel="external nofollow noopener" target="_blank">https://doi.org/10.18653/v1/2024.findings-acl.212</a></p> <p>Doshi, A. R., &amp; Hauser, O. P. (2024). Generative AI enhances individual creativity but reduces the collective diversity of novel content. <em>Science Advances</em>, 10(28), eadn5290. <a href="https://doi.org/10.1126/sciadv.adn5290" rel="external nofollow noopener" target="_blank">https://doi.org/10.1126/sciadv.adn5290</a></p> <p>Farquhar, S., Kossen, J., Kuhn, L., &amp; Gal, Y. (2024). Detecting hallucinations in large language models using semantic entropy. <em>Nature</em>, 630, 625–630. <a href="https://doi.org/10.1038/s41586-024-07421-0" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/s41586-024-07421-0</a></p> <p>Google Cloud DORA (2024). <em>Accelerate State of DevOps Report 2024</em>. Industry survey report. <a href="https://dora.dev/research/2024/dora-report/" rel="external nofollow noopener" target="_blank">https://dora.dev/research/2024/dora-report/</a></p> <p>Jakesch, M., Hancock, J. T., &amp; Naaman, M. (2023). Human heuristics for AI-generated language are flawed. <em>Proceedings of the National Academy of Sciences</em>, 120(11), e2208839120. <a href="https://doi.org/10.1073/pnas.2208839120" rel="external nofollow noopener" target="_blank">https://doi.org/10.1073/pnas.2208839120</a></p> <p>Kabir, S., Udo-Imeh, D. N., Kou, B., &amp; Zhang, T. (2024). Is Stack Overflow obsolete? An empirical study of the characteristics of ChatGPT answers to Stack Overflow questions. In <em>Proceedings of the CHI Conference on Human Factors in Computing Systems</em>, 1–17. <a href="https://doi.org/10.1145/3613904.3642596" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/3613904.3642596</a></p> <p>Kosmyna, N., Hauptmann, E., Yuan, Y. T., et al. (2025). Your brain on ChatGPT: Accumulation of cognitive debt when using an AI assistant for essay writing task. arXiv:2506.08872. <a href="https://doi.org/10.48550/arXiv.2506.08872" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2506.08872</a></p> <p>Lee, H.-P., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., &amp; Wilson, N. (2025). The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers. In <em>Proceedings of the CHI Conference on Human Factors in Computing Systems</em>, 1–22. <a href="https://doi.org/10.1145/3706598.3713778" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/3706598.3713778</a></p> <p>Lewenberg, Y., Sheftel, H., &amp; Karov, Y. (2025). Plan before you write: Improve LLM writing by planning. <em>Advances in Neural Information Processing Systems 38 (NeurIPS 2025), Creative AI Track</em>.</p> <p>Li, W., Song, M., Shen, Z., Zhao, D., Long, Y., Li, Y., Li, Y., Yang, R., &amp; Wang, M. (2026). LLM Review: Enhancing creative writing via blind peer review feedback. arXiv:2601.08003. <a href="https://doi.org/10.48550/arXiv.2601.08003" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2601.08003</a></p> <p>Liang, W., Zhang, Y., Cao, H., et al. (2024). Can large language models provide useful feedback on research papers? A large-scale empirical analysis. <em>NEJM AI</em>, 1(8). <a href="https://doi.org/10.1056/AIoa2400196" rel="external nofollow noopener" target="_blank">https://doi.org/10.1056/AIoa2400196</a></p> <p>Liang, W., Zhang, Y., Wu, Z., et al. (2025). Quantifying large language model usage in scientific papers. <em>Nature Human Behaviour</em>, 9, 2599–2609. <a href="https://doi.org/10.1038/s41562-025-02273-8" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/s41562-025-02273-8</a></p> <p>Liebe, L., Baum, J., Barz-Cech, T., Scheibel, W., &amp; Döllner, J. (2026). Detecting and comparing LLM capabilities to human writers through linguistic analysis. <em>SN Computer Science</em>, 7, 621. <a href="https://doi.org/10.1007/s42979-026-05131-0" rel="external nofollow noopener" target="_blank">https://doi.org/10.1007/s42979-026-05131-0</a></p> <p>Miller, S., &amp; Bosch, N. (in press). Learning by teaching an LLM: A new approach to writing instruction.</p> <p>Noy, S., &amp; Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. <em>Science</em>, 381(6654), 187–192. <a href="https://doi.org/10.1126/science.adh2586" rel="external nofollow noopener" target="_blank">https://doi.org/10.1126/science.adh2586</a></p> <p>Pearce, H., Ahmad, B., Tan, B., Dolan-Gavitt, B., &amp; Karri, R. (2022). Asleep at the keyboard? Assessing the security of GitHub Copilot’s code contributions. In <em>2022 IEEE Symposium on Security and Privacy</em>, 754–768. <a href="https://doi.org/10.1109/SP46214.2022.9833571" rel="external nofollow noopener" target="_blank">https://doi.org/10.1109/SP46214.2022.9833571</a></p> <p>Peng, S., Kalliamvakou, E., Cihon, P., &amp; Demirer, M. (2023). The impact of AI on developer productivity: Evidence from GitHub Copilot. arXiv:2302.06590. <a href="https://doi.org/10.48550/arXiv.2302.06590" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2302.06590</a></p> <p>Perry, N., Srivastava, M., Kumar, D., &amp; Boneh, D. (2023). Do users write more insecure code with AI assistants? In <em>Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security</em>, 2785–2799. <a href="https://doi.org/10.1145/3576915.3623157" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/3576915.3623157</a></p> <p>Russell, J., Karpinska, M., &amp; Iyyer, M. (2025). People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text. In <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics</em>. arXiv:2501.15654. <a href="https://doi.org/10.48550/arXiv.2501.15654" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2501.15654</a></p> <p>Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., &amp; Jadliwala, M. (2025). We have a package for you! A comprehensive analysis of package hallucinations by code generating LLMs. In <em>34th USENIX Security Symposium</em>, 3687–3706. arXiv:2406.10279. <a href="https://doi.org/10.48550/arXiv.2406.10279" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2406.10279</a></p> <p>Walters, W. H., &amp; Wilder, E. I. (2023). Fabrication and errors in the bibliographic citations generated by ChatGPT. <em>Scientific Reports</em>, 13, 14045. <a href="https://doi.org/10.1038/s41598-023-41032-5" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/s41598-023-41032-5</a></p> <p><em>All three figures are original. The Python scripts that produce them are available on GitHub: <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-21-llm-stance.py" rel="external nofollow noopener" target="_blank">Figure 1</a>, <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-21-perception-gap.py" rel="external nofollow noopener" target="_blank">Figure 2</a> and <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-21-llm-error-rates.py" rel="external nofollow noopener" target="_blank">Figure 3</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
