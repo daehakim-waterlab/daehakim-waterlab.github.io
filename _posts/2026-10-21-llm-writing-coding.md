@@ -10,7 +10,7 @@ related_posts: false
 
 Large language models (LLMs) are now part of how many researchers write papers and code analyses. One large study estimates that by late 2024 up to 22% of the text in computer science papers showed signs of LLM modification (Liang et al. 2025), and more than 40% of the code submitted in one introductory programming course in 2024 was flagged as LLM-generated, up from almost none in 2022 (Baek et al. 2026). The question for a research group is no longer whether to use these tools, but how to use them without losing what makes the work ours, and how to catch the mistakes they make. In [an earlier post]({% post_url 2026-10-18-from-chatbot-to-coworker %}) I looked at what LLM agents can already do in hydrologic modeling; this one is about the person using them.
 
-This post collects what I consider the most useful evidence, from controlled experiments rather than opinion pieces. It is longer than usual, because the topic deserves care. I have tried to report every number as the original authors did, and to say when a study is small, preliminary or not yet peer-reviewed.
+This post collects what I consider the most useful evidence, from controlled experiments rather than opinion pieces. It is longer than usual, because the topic deserves care. I have tried to report every number as the original authors did, and to say when a study is small, preliminary or not yet peer-reviewed. One caveat applies throughout: most of these experiments used models from 2023 and 2024, and the tools have improved much faster than the evidence about them. I come back to this near the end.
 
 ## What LLMs do well
 
@@ -49,7 +49,7 @@ This, to me, is the most important finding in the whole literature. In a randomi
 
 _**Figure 2.** Predicted and measured change in the time experienced developers needed to complete tasks in their own projects when AI tools were allowed. Negative values mean faster. Figure by Daeha Kim, drawn from numbers reported in Becker et al. (2025)._
 
-The direction is not always the same. A 2026 follow-up with newer tools produced estimates whose confidence intervals include zero, and the authors themselves call those data unreliable, because many developers refused to work without AI. And in the Copilot experiment, users underestimated their gain. The lesson is not that AI always slows us down; it is that our feelings about it are not measurements. The same gap appears in security: people with an AI assistant wrote less secure code and were more likely to believe it was secure (Perry et al. 2023), and the heavy LLM users in the essay study were satisfied with essays that no longer said what they thought.
+The direction is not always the same. A 2026 follow-up by the same group, with 57 developers and late-2025 tools, pointed toward a speedup rather than a slowdown, but its confidence intervals include zero and the authors themselves call the data unreliable (Becker et al. 2026). The main reason is telling: many developers declined to take part, or held back some of their tasks, because they did not want to work without AI, and the authors think this hides a larger speedup than they could measure. And in the Copilot experiment, users underestimated their gain. The lesson is not that AI always slows us down; it is that our feelings about it are not measurements. The same gap appears in security: people with an AI assistant wrote less secure code and were more likely to believe it was secure (Perry et al. 2023), and the heavy LLM users in the essay study were satisfied with essays that no longer said what they thought.
 
 ## How often LLM output is wrong
 
@@ -62,6 +62,18 @@ _**Figure 3.** Error rates of LLM output reported in published studies. Each bar
 Some of these errors are easy to miss. More than half of ChatGPT's answers to Stack Overflow questions contained incorrect information, yet in a small user study people overlooked the misinformation 39% of the time (Kabir et al. 2024). Code models invent package names that do not exist: among 576,000 code samples, at least 5.2% from commercial models and 21.7% from open-source models referred to a non-existent package (Spracklen et al. 2025). Attackers can register those names and wait for someone to install them. In writing, the classic failure is the invented citation: in 2023, 55% of the references produced by GPT-3.5 and 18% of those produced by GPT-4 did not exist, and 24% of GPT-4's real references contained substantive errors (Walters & Wilder 2023). Industry surveys point the same way at a larger scale: the DORA 2024 survey of about 39,000 software professionals found that higher AI adoption was associated with slightly better code quality and documentation, but lower delivery stability (Google Cloud DORA 2024).
 
 One gap in the evidence should be stated plainly. I found no rigorous trial comparing the factual error rate or peer-review outcome of scientific manuscripts written with and without LLM help. We are all, in effect, running that experiment on ourselves.
+
+## The evidence is older than the tools
+
+Almost every experiment above used GPT-3.5, GPT-4 or early versions of Copilot, and most were run in 2023 or 2024. The models have moved much faster than the experimental literature, so the specific numbers in this post probably understate what current models can do. The drop in invented references from GPT-3.5 to GPT-4 in a single year (55% to 18%) is a small example of how quickly such figures go out of date.
+
+Two benchmarks give a sense of the pace. METR measures the length of task, in hours of skilled human work, that a model can complete on its own half of the time. This "time horizon" doubled about every seven months from 2019 to early 2025 (Kwa et al. 2025), and METR's revised estimate puts the doubling time since 2023 at about four months (METR 2026). On GDPval, in which experienced professionals blindly compare model and expert deliverables for tasks that take an expert about seven hours, the best model in the original paper matched or beat the expert in 47.6% of comparisons (Patwardhan et al. 2025); a model released a few months later was reported at 70.9% (OpenAI 2025). The failed follow-up in the previous section points the same way: when experienced developers refuse to work without a tool, the tool is probably doing something for them.
+
+These numbers deserve the same scrutiny as any other. The METR tasks are self-contained software tasks, and METR itself notes that few of its tasks remain beyond the latest models and that the trend is somewhat sensitive to which tasks are included. GDPval was built by a model developer, and the 70.9% figure comes from that developer's product announcement rather than a peer-reviewed paper. And on GDPval tasks whose deliverable was plain text, closest to the writing this post is about, models did worst: the experts rated the model's deliverable better than their own in only 14% of comparisons for Claude Opus 4.1 and 23% for GPT-5 (Patwardhan et al. 2025).
+
+More importantly, benchmarks measure the model working alone. They do not test what the earlier sections are about: whether our arguments keep their strength, whether our writing stays our own, whether students still learn, and whether we notice when the model has crossed its frontier. A more capable model may even make some of these problems worse, because it is more tempting to hand it the thinking, and its errors become rarer and therefore harder to spot.
+
+I use these tools every day, and my own impression is that they have become far more useful in the past year than the studies above suggest. I think that impression is probably right. But it is also exactly the kind of evidence Figure 2 warns against, so the practical advice that follows does not change: measure, test and check.
 
 ## Detecting the errors
 
@@ -94,7 +106,7 @@ Putting the evidence together, this is the approach I suggest to students in my 
 
 - **Think first, then prompt.** Decide what you want to say, or what the code must do, before you open the chat window. The essay study shows that using an LLM for advice preserves your voice and your conclusions; letting it draft does not.
 - **Use the model as a critic, a tutor or a student, not as a ghostwriter.** In a small preliminary study, students who taught rhetorical strategies to an LLM playing a novice student used more of those strategies in their own essays and made fewer errors on a delayed test than after a video lecture (Miller & Bosch, in press). Explaining to the model is good for you; letting the model explain to the reader is not.
-- **Stay inside the frontier, or verify harder outside it.** LLMs are most reliable on common tasks with checkable answers. The further you are from that, the more you must check.
+- **Stay inside the frontier, or verify harder outside it.** LLMs are most reliable on common tasks with checkable answers. The further you are from that, the more you must check. The frontier moves outward with every model generation, so test it again for your own tasks rather than relying on what was true last year.
 - **Match the checking to the stakes.** A plotting script and a figure for a paper do not need the same scrutiny as a flood frequency analysis that will inform a design.
 - **Keep some work unaided.** Skills that are never exercised fade. Write some first drafts, derivations and functions yourself, especially while you are still learning them.
 - **Keep the responsibility.** The model is not an author. Whatever goes out under your name, you must be able to explain and defend line by line, and you should disclose how you used AI.
@@ -105,6 +117,7 @@ Putting the evidence together, this is the approach I suggest to students in my 
 - They also change what we say, make our writing more alike, can weaken learning, and make us worse on tasks just beyond their competence.
 - Our own impression of how much they helped is unreliable; only measurement and checking tell us.
 - Error rates in LLM output are well above zero. Tests for code and source checks for writing are not optional.
+- The tools are improving faster than the evidence. Current models are probably more capable than the studies here suggest, but benchmarks measure the model, not what happens to us when we use it.
 - Use LLMs to think better, not to think less.
 
 **Questions to think about**
@@ -112,10 +125,11 @@ Putting the evidence together, this is the approach I suggest to students in my 
 1. Pick a recent piece of your own writing that an LLM edited. Compare the two versions sentence by sentence. Did any claim change in strength or meaning?
 2. For the hydrological model you use most, what simple test (a water balance, an analytical case, a benchmark catchment) would tell you that AI-generated code is wrong?
 3. The developers in Figure 2 felt faster but were slower. How could you measure, honestly, whether an AI tool is helping your own research?
+4. Benchmarks say the models have improved dramatically since these studies. What evidence would convince you that your own use of them has improved as well?
 
 ---
 
-**한 줄 요약 (Korean summary).** LLM은 정해진 글쓰기와 코딩 작업을 빠르고 매끄럽게 해 주며, 특히 경험이 적은 사람에게 도움이 크다(전문직 글쓰기 시간 40% 단축·품질 18% 향상, 간단한 코딩 과제 55.8% 단축). 그러나 사람이 직접 쓴 글과 비교하면 잃는 것도 분명하다. 무작위 실험에서 LLM이 글 대부분을 쓰게 한 사람들의 에세이는 67%가 입장 없는 중립으로 끝났고(직접 쓴 경우 40%), 문법만 고치라고 해도 LLM은 단어와 주장, 어조를 바꾸었다. LLM과 함께 쓴 글은 서로 비슷해지고, 답을 그대로 주는 AI를 쓴 학생들은 AI 없이 치른 시험에서 17% 낮은 점수를 받았으며, 모델이 잘하지 못하는 과제에서는 오히려 정답률이 19%p 떨어졌다. 더 중요한 것은 체감과 실제가 다르다는 점이다. 숙련 개발자들은 AI 덕분에 20% 빨라졌다고 믿었지만 실제로는 19% 느려졌다. 연구마다 차이는 있지만 LLM 출력의 오류율(가짜 인용, 틀린 답, 보안 취약점, 존재하지 않는 패키지)은 결코 0이 아니다. 따라서 코드는 먼저 검증 기준(물수지, 해석해, 벤치마크)을 정하고 테스트하며, 글은 모든 인용과 수치를 원문에서 확인하고 수정 전후의 의미를 비교해야 한다. 같은 질문을 여러 번 해 답이 달라지거나 설명이 길고 얼버무리는 표현이 많으면 더 의심해야 한다. LLM은 대필자가 아니라 비평가·튜터·학생으로 쓰고, 먼저 스스로 생각한 뒤에 사용하며, 결과에 대한 책임은 끝까지 자신이 져야 한다.
+**한 줄 요약 (Korean summary).** LLM은 정해진 글쓰기와 코딩 작업을 빠르고 매끄럽게 해 주며, 특히 경험이 적은 사람에게 도움이 크다(전문직 글쓰기 시간 40% 단축·품질 18% 향상, 간단한 코딩 과제 55.8% 단축). 그러나 사람이 직접 쓴 글과 비교하면 잃는 것도 분명하다. 무작위 실험에서 LLM이 글 대부분을 쓰게 한 사람들의 에세이는 67%가 입장 없는 중립으로 끝났고(직접 쓴 경우 40%), 문법만 고치라고 해도 LLM은 단어와 주장, 어조를 바꾸었다. LLM과 함께 쓴 글은 서로 비슷해지고, 답을 그대로 주는 AI를 쓴 학생들은 AI 없이 치른 시험에서 17% 낮은 점수를 받았으며, 모델이 잘하지 못하는 과제에서는 오히려 정답률이 19%p 떨어졌다. 더 중요한 것은 체감과 실제가 다르다는 점이다. 숙련 개발자들은 AI 덕분에 20% 빨라졌다고 믿었지만 실제로는 19% 느려졌다. 연구마다 차이는 있지만 LLM 출력의 오류율(가짜 인용, 틀린 답, 보안 취약점, 존재하지 않는 패키지)은 결코 0이 아니다. 다만 이 실험들은 대부분 2023–2024년 모델을 썼고, 모델의 능력은 그보다 훨씬 빠르게 늘고 있다. 모델이 혼자 끝낼 수 있는 과제의 길이는 최근 약 4개월마다 두 배가 되었고, 전문가 수준 업무 평가(GDPval)에서 최신 모델은 전문가와 같거나 나은 결과를 70% 이상 냈다는 보고도 있다. 그래서 지금의 LLM은 이 글의 수치보다 유능할 가능성이 크다. 그러나 벤치마크는 모델 혼자의 능력을 잴 뿐, 우리가 쓸 때 주장과 목소리, 배움이 지켜지는지는 재지 않으며, 순수 텍스트 과제에서는 여전히 성적이 가장 낮았다. 따라서 코드는 먼저 검증 기준(물수지, 해석해, 벤치마크)을 정하고 테스트하며, 글은 모든 인용과 수치를 원문에서 확인하고 수정 전후의 의미를 비교해야 한다. 같은 질문을 여러 번 해 답이 달라지거나 설명이 길고 얼버무리는 표현이 많으면 더 의심해야 한다. LLM은 대필자가 아니라 비평가·튜터·학생으로 쓰고, 먼저 스스로 생각한 뒤에 사용하며, 결과에 대한 책임은 끝까지 자신이 져야 한다.
 
 ---
 
@@ -130,6 +144,8 @@ Baek, J., Yamazaki, T., Morihata, A., Mori, J., Yamakata, Y., Taura, K., & Chiba
 Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. _Proceedings of the National Academy of Sciences_, 122(26), e2422633122. [https://doi.org/10.1073/pnas.2422633122](https://doi.org/10.1073/pnas.2422633122)
 
 Becker, J., Rush, N., Barnes, E., & Rein, D. (2025). Measuring the impact of early-2025 AI on experienced open-source developer productivity. arXiv:2507.09089. [https://doi.org/10.48550/arXiv.2507.09089](https://doi.org/10.48550/arXiv.2507.09089)
+
+Becker, J., Rush, N., Cunningham, T., Rein, D., & Mahamud, K. (2026). We are changing our developer productivity experiment design. METR blog, 24 February 2026. Not peer-reviewed. [https://metr.org/blog/2026-02-24-uplift-update/](https://metr.org/blog/2026-02-24-uplift-update/)
 
 Dell'Acqua, F., McFowland III, E., Mollick, E. R., et al. (2023). Navigating the jagged technological frontier: Field experimental evidence of the effects of AI on knowledge worker productivity and quality. Harvard Business School Working Paper 24-013. [https://doi.org/10.2139/ssrn.4573321](https://doi.org/10.2139/ssrn.4573321)
 
@@ -147,6 +163,8 @@ Kabir, S., Udo-Imeh, D. N., Kou, B., & Zhang, T. (2024). Is Stack Overflow obsol
 
 Kosmyna, N., Hauptmann, E., Yuan, Y. T., et al. (2025). Your brain on ChatGPT: Accumulation of cognitive debt when using an AI assistant for essay writing task. arXiv:2506.08872. [https://doi.org/10.48550/arXiv.2506.08872](https://doi.org/10.48550/arXiv.2506.08872)
 
+Kwa, T., West, B., Becker, J., Deng, A., Garcia, K., Hasin, M., Jawhar, S., Kinniment, M., Rush, N., Von Arx, S., et al. (2025). Measuring AI ability to complete long software tasks. arXiv:2503.14499. [https://doi.org/10.48550/arXiv.2503.14499](https://doi.org/10.48550/arXiv.2503.14499)
+
 Lee, H.-P., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R., & Wilson, N. (2025). The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers. In _Proceedings of the CHI Conference on Human Factors in Computing Systems_, 1–22. [https://doi.org/10.1145/3706598.3713778](https://doi.org/10.1145/3706598.3713778)
 
 Lewenberg, Y., Sheftel, H., & Karov, Y. (2025). Plan before you write: Improve LLM writing by planning. _Advances in Neural Information Processing Systems 38 (NeurIPS 2025), Creative AI Track_.
@@ -159,9 +177,15 @@ Liang, W., Zhang, Y., Wu, Z., et al. (2025). Quantifying large language model us
 
 Liebe, L., Baum, J., Barz-Cech, T., Scheibel, W., & Döllner, J. (2026). Detecting and comparing LLM capabilities to human writers through linguistic analysis. _SN Computer Science_, 7, 621. [https://doi.org/10.1007/s42979-026-05131-0](https://doi.org/10.1007/s42979-026-05131-0)
 
+METR (2026). Time Horizon 1.1. METR blog, 29 January 2026. Not peer-reviewed. [https://metr.org/blog/2026-1-29-time-horizon-1-1/](https://metr.org/blog/2026-1-29-time-horizon-1-1/)
+
 Miller, S., & Bosch, N. (in press). Learning by teaching an LLM: A new approach to writing instruction.
 
 Noy, S., & Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. _Science_, 381(6654), 187–192. [https://doi.org/10.1126/science.adh2586](https://doi.org/10.1126/science.adh2586)
+
+OpenAI (2025). Introducing GPT-5.2. Product announcement, December 2025. Not peer-reviewed. [https://openai.com/index/introducing-gpt-5-2/](https://openai.com/index/introducing-gpt-5-2/)
+
+Patwardhan, T., Dias, R., Proehl, E., Kim, G., Wang, M., Watkins, O., Posada Fishman, S., Aljubeh, M., Thacker, P., Fauconnet, L., Kim, N. S., Chao, P., Miserendino, S., Chabot, G., Li, D., Sharman, M., Barr, A., Glaese, A., & Tworek, J. (2025). GDPval: Evaluating AI model performance on real-world economically valuable tasks. arXiv:2510.04374. [https://doi.org/10.48550/arXiv.2510.04374](https://doi.org/10.48550/arXiv.2510.04374)
 
 Pearce, H., Ahmad, B., Tan, B., Dolan-Gavitt, B., & Karri, R. (2022). Asleep at the keyboard? Assessing the security of GitHub Copilot's code contributions. In _2022 IEEE Symposium on Security and Privacy_, 754–768. [https://doi.org/10.1109/SP46214.2022.9833571](https://doi.org/10.1109/SP46214.2022.9833571)
 
