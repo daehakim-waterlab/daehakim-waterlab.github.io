@@ -20,11 +20,12 @@ latest_posts:
 
 <style>
   /* Home hero: the lab name and department are HTML text (the page header); the
-     illustration is a text-free image beside them on wide screens and below them on narrow ones. */
+     illustration (1008x555, aspect 1.816, left edge faded into the box colour) is a text-free
+     image beside them on wide screens and below them on narrow ones. */
   .post > .post-header {
     display: flex; flex-direction: column; justify-content: center;
-    min-height: 18.5rem; padding: 2.5rem 50% 2.5rem 2.5rem; margin: 0.5rem 0 1.75rem; border-radius: 0.75rem;
-    background: #fcf6ec url("/assets/img/home/hero-art.webp?v=2026-10-18") no-repeat right center / auto 100%;
+    min-height: 14.5rem; padding: 2rem calc(14.5rem * 1.816 + 1rem) 2rem 2.5rem; margin: 0.5rem 0 1.75rem; border-radius: 0.75rem;
+    background: #f7f1e7 url("/assets/img/home/hero-art.webp?v=2026-10-20") no-repeat right center / auto 100%;
   }
   .post > .post-header .post-title { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 2.6rem; line-height: 1.1; color: #2b2a28; margin: 0 0 0.75rem; }
   .post > .post-header .desc { color: #3b3a37; font-size: 1.1rem; margin: 0; }
@@ -34,12 +35,12 @@ latest_posts:
   .post article > h2 { font-size: 1.6rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 0.5rem; padding-top: 1.5rem; border-top: 1px solid var(--global-divider-color); }
   .post article > h2::first-letter { text-transform: uppercase; }
   @media (min-width: 768px) and (max-width: 991.98px) {
-    .post > .post-header { min-height: 15rem; padding: 2rem 53% 2rem 2rem; }
+    .post > .post-header { min-height: 12.5rem; padding: 1.75rem calc(12.5rem * 1.816 + 0.75rem) 1.75rem 2rem; }
     .post > .post-header .post-title { font-size: 2rem; }
     .post > .post-header .desc { font-size: 1rem; }
   }
   @media (max-width: 767.98px) {
-    .post > .post-header { min-height: 0; padding: 1.5rem 1.25rem calc(65.4% + 0.75rem); background-position: center bottom; background-size: 100% auto; }
+    .post > .post-header { min-height: 0; padding: 1.5rem 1.25rem calc(55.06% + 0.75rem); background-position: center bottom; background-size: 100% auto; }
     .post > .post-header .post-title { font-size: 2rem; }
     .post > .post-header .desc { font-size: 1rem; }
   }
