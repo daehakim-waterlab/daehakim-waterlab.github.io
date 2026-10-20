@@ -2,11 +2,10 @@
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
-      {%- comment -%} Site override: show the lab name on every page, including Home; a short
-        name (site.short_title) replaces it where the full name would not fit. {%- endcomment -%}
-      <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-        <span class="brand-full">{{ site.title }}</span>
-        {%- if site.short_title %}<span class="brand-short">{{ site.short_title }}</span>{% endif -%}
+      {%- comment -%} Site override: the lab logo (assets/img/logo/hydroclimate-lab.webp) on every
+        page, including Home, with the lab name as its text alternative. {%- endcomment -%}
+      <a class="navbar-brand" href="{{ site.baseurl }}/">
+        <img class="brand-logo" src="{{ '/assets/img/logo/hydroclimate-lab.webp' | relative_url }}" alt="{{ site.title }}" width="124" height="38">
       </a>
       <!-- Navbar Toggle -->
       <button
