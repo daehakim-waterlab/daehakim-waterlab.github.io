@@ -2,7 +2,7 @@
 # Data: odds ratios (95% confidence intervals) for choosing the pro-climate option, as reported in the
 # Results of Wyss, Guizar Rosales et al. (2026), Nature Climate Change, doi:10.1038/s41558-026-02765-z.
 # Rows 1-5 come from the models that add subjective attribution (Supplementary Table 17 of the paper;
-# attribution is mean-centred, so the exposure term is its effect at average attribution).
+# attribution is mean-centered, so the exposure term is its effect at average attribution).
 # Row 6 comes from a separate exploratory model with self-reported experience. Plotted by Daeha Kim.
 # Run from the repository root: python scripts/blog/2026-10-19-choice-odds.py
 import os, matplotlib

@@ -17,7 +17,7 @@ fig, ax = plt.subplots(figsize=(9, 5), facecolor=surf); ax.set_facecolor(surf)
 ax.plot([6.12, 6.12], [1.4, 8.0], color=ink2, lw=1.2)
 ax.scatter([6.12, 6.12], [1.4, 8.0], marker="_", s=90, color=ink2, linewidths=1.2)
 ax.scatter([6.12], [4.0], marker="_", s=260, color=ink2, linewidths=2.5, zorder=3)
-ax.text(6.0, 4.0, "commonly cited\nthreshold +4 °C\n(range 1.4–8 °C)", ha="right", va="center",
+ax.text(6.0, 4.0, "commonly cited\nthreshold +4°C\n(range 1.4–8°C)", ha="right", va="center",
         fontsize=9.5, color=ink2)
 
 # today's rate of CO2 rise
@@ -27,13 +27,13 @@ ax.text(2.68, 7.75, "today: +2.6 ppm/yr\n(Mauna Loa, 2015–2025)", fontsize=9.5
 # slow ramp: no collapse up to +5.5 C
 ax.annotate("", xy=(0.5, 5.6), xytext=(0.5, 0.15),
             arrowprops=dict(arrowstyle="-|>", color=blue, lw=3, mutation_scale=18))
-ax.text(0.68, 5.35, "+0.5 ppm/yr:\nAMOC stays strong\nup to +5.5 °C", color=blue, fontsize=10, va="top")
+ax.text(0.68, 5.35, "+0.5 ppm/yr:\nAMOC stays strong\nup to +5.5°C", color=blue, fontsize=10, va="top")
 
 # fast ramps: collapse onset at about +2 C
 for x, y in [(2.5, 2.02), (5.0, 1.99)]:
     ax.plot([x, x], [0.15, y], color=orange, lw=3, solid_capstyle="butt")
     ax.scatter([x], [y], marker="X", s=150, color=orange, edgecolor=surf, linewidth=1.2, zorder=4)
-ax.text(3.55, 2.55, "+2.5 and +5.0 ppm/yr:\ncollapse begins at about +2 °C", color=orange,
+ax.text(3.55, 2.55, "+2.5 and +5.0 ppm/yr:\ncollapse begins at about +2°C", color=orange,
         fontsize=10, ha="center")
 
 ax.set_xlim(0, 6.6); ax.set_ylim(0, 8.3)

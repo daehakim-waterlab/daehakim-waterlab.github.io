@@ -3,7 +3,7 @@ layout: post
 title: "From chatbot to coworker: three years of LLMs in hydrology"
 date: 2026-10-18 09:00:00
 description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet."
-tags: llm ai-agents hydrologic-modelling calibration education
+tags: llm ai-agents hydrologic-modeling calibration education
 categories: notes
 related_posts: false
 ---
@@ -32,7 +32,7 @@ The figure below summarizes how the role of the LLM has shifted across the three
 
 ![Three panels showing the role of the LLM in 2023 (writer), 2025 (decision-maker inside a calibration loop) and 2026 (orchestrator of an agentic workflow)](/assets/img/blog/2026-10-18-llm-roles.png){: style="width: 100%; height: auto;" data-zoomable="" }
 
-_**Figure 1.** How the role of the LLM changed across three studies. In 2023 the human did all the running and checking. In the GRL study, the LLM proposed parameters inside a loop built by the researchers. In the Journal of Hydrology study, agents planned, coded, ran and debugged entire modelling workflows within an expert-designed process. Original schematic by Daeha Kim, based on Foroumandi et al. (2023), Zhu et al. (2026) and Li et al. (2026)._
+_**Figure 1.** How the role of the LLM changed across three studies. In 2023 the human did all the running and checking. In the GRL study, the LLM proposed parameters inside a loop built by the researchers. In the Journal of Hydrology study, agents planned, coded, ran and debugged entire modeling workflows within an expert-designed process. Original schematic by Daeha Kim, based on Foroumandi et al. (2023), Zhu et al. (2026) and Li et al. (2026)._
 
 ## 2025: the LLM inside the calibration loop
 
@@ -46,13 +46,13 @@ Li et al. (2026, _Journal of Hydrology_), submitted in May 2026, used the next g
 
 Three findings stand out.
 
-- **It works most of the time.** Across 125 modelling tasks with five different LLMs, 92.8% of runs succeeded. On 531 CAMELS basins, the agent-built models reached a median NSE of 0.58 for basin-by-basin LSTMs (close to the 0.61 of the calibrated SAC-SMA benchmark) and 0.73 for a single LSTM trained on all basins, which is in line with published LSTM benchmarks.
+- **It works most of the time.** Across 125 modeling tasks with five different LLMs, 92.8% of runs succeeded. On 531 CAMELS basins, the agent-built models reached a median NSE of 0.58 for basin-by-basin LSTMs (close to the 0.61 of the calibrated SAC-SMA benchmark) and 0.73 for a single LSTM trained on all basins, which is in line with published LSTM benchmarks.
 - **Planning, not knowledge, is the bottleneck.** When the researchers removed the expert-designed workflow and let the agents organize the task themselves, the success rate fell to **0%**. Agents declared victory after one sub-step, looped on the same tool calls, or lost track of file paths after their context was summarized.
 - **Experts are still needed.** In one run, weak performance turned out to come from a data-loading error that withheld same-day weather inputs. When prompts pushed the agents toward "bigger" architectures, they switched to models that performed worse. Newer versions of some models also had to be used partway through the study, which makes exact reproduction harder.
 
 The cost appendix of the same paper makes the price competition concrete. A successful end-to-end run used between half a million and two million tokens, and the price of that run differed by a factor of 25 to 45 depending on the model, even though all five models completed the tasks at similar rates.
 
-![Dot plot of the API cost of one successful modelling run for five LLMs: about $0.09 for Qwen-Plus and DeepSeek-V3.2, and $2–4 for Claude Sonnet 4.5, GPT-5.5 and Gemini 2.5 Pro](/assets/img/blog/2026-10-18-agent-cost.png){: style="width: 100%; height: auto;" data-zoomable="" }
+![Dot plot of the API cost of one successful modeling run for five LLMs: about $0.09 for Qwen-Plus and DeepSeek-V3.2, and $2–4 for Claude Sonnet 4.5, GPT-5.5 and Gemini 2.5 Pro](/assets/img/blog/2026-10-18-agent-cost.png){: style="width: 100%; height: auto;" data-zoomable="" }
 
 _**Figure 2.** API cost of one representative successful run for each LLM and each of five task types. Data from Table A1 of Li et al. (2026); plotted by Daeha Kim. Costs reflect list prices at the time of the study and will change._
 
@@ -60,11 +60,11 @@ _**Figure 2.** API cost of one representative successful run for each LLM and ea
 
 Christopher Summerfield, a cognitive neuroscientist, wrote _These Strange New Minds_ in 2024. His closing chapter makes a few claims that are easy to check against what has happened since.
 
-He argued that LLMs are not minds like ours: they have no body, no friends and no motivation of their own, and so no built-in curiosity about the world. Nothing in the papers above contradicts that. In both studies, the question, the data, the success criterion and the judgement of what counts as physically plausible all came from people.
+He argued that LLMs are not minds like ours: they have no body, no friends and no motivation of their own, and so no built-in curiosity about the world. Nothing in the papers above contradicts that. In both studies, the question, the data, the success criterion and the judgment of what counts as physically plausible all came from people.
 
 He identified two engineering limits, short memory and weak long-term planning, and expected both to be solved soon. That has **partly** happened. Assistants now remember across conversations and agents routinely complete multi-step tasks. But the 0% result without an expert workflow shows that open-ended, long-horizon scientific work still breaks down unless someone gives the agent a structure to follow.
 
-He predicted that we would drift gradually toward AI that acts rather than merely answers, starting with simple, well-defined tasks. That is exactly the path we have seen. Software was first, because code can be run and tested automatically. Scientific modelling, with its many judgement calls, is following more slowly.
+He predicted that we would drift gradually toward AI that acts rather than merely answers, starting with simple, well-defined tasks. That is exactly the path we have seen. Software was first, because code can be run and tested automatically. Scientific modeling, with its many judgment calls, is following more slowly.
 
 He also cited early evidence that AI help lifts the least-skilled workers the most and could act as a leveller. In research, the early picture points the other way. In a 2026 survey of 1,260 social scientists, 81% had used AI chatbots for research, but only 20% used coding agents weekly. Use was concentrated among economists, doctoral students and researchers at top universities. That sample was self-selected, so the true share is probably lower, and I know of no equivalent survey for hydrology. My impression matches it: agentic workflows are still rare in our field.
 
@@ -92,7 +92,7 @@ The 2023 editorial ended with the advice to use AI as a tool for problem-solving
 **Questions to think about**
 
 1. The GRL study accepted parameter sets based on NSE alone. What could go wrong if an agent optimizes only one metric for you?
-2. Why might an agent that cannot plan on its own still succeed when given an expert workflow? What does that suggest about the value of writing down your own modelling procedures?
+2. Why might an agent that cannot plan on its own still succeed when given an expert workflow? What does that suggest about the value of writing down your own modeling procedures?
 3. If a cheap model and an expensive model both succeed 90% of the time, what else would you want to know before choosing one for a 500-basin study?
 
 ---

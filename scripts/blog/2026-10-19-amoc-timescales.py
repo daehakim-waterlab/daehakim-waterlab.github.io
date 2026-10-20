@@ -52,10 +52,10 @@ ax.text(2101, ys[1], "2057 (90% range 2025–2095), disputed because of data unc
         va="center", fontsize=9.5, color=ink2, bbox=BOX)
 
 collapse(ys[2], 2060, orange)
-ax.text(2062, ys[2] + 0.36, "onset ≈2060 at +2.8 °C → decline over ~a century → weak for centuries",
+ax.text(2062, ys[2] + 0.36, "onset ≈2060 at +2.8°C → decline over ~a century → weak for centuries",
         fontsize=9.3, color=orange, bbox=BOX)
 collapse(ys[3], 2110, orange)
-ax.text(2112, ys[3] + 0.36, "onset ≈2110 at +2.2 °C → weak to 2500 and beyond",
+ax.text(2112, ys[3] + 0.36, "onset ≈2110 at +2.2°C → weak to 2500 and beyond",
         fontsize=9.3, color=orange, bbox=BOX)
 bar(ys[4], 2006, 2500, green, alpha=0.45)
 ax.text(2112, ys[4] + 0.36, "weakens, then recovers", fontsize=9.3, color=green, bbox=BOX)

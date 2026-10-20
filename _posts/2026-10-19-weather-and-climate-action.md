@@ -57,7 +57,7 @@ Figure 2 summarizes the choice results. Party and attribution push toward the lo
 
 ## What I take from it as a hydrologist
 
-**A gauge record is not an experience.** In hydrology we describe a flood by its peak discharge and its return period. Those numbers are what our infrastructure is designed for, and they are the right numbers for that purpose. But people do not experience a 100-year flood; they experience a flooded street, a closed road, or a news report, and they file it under an explanation they already hold. This study is a reminder that the hazard we measure and the experience that shapes behaviour are different quantities. The link between them runs through interpretation.
+**A gauge record is not an experience.** In hydrology we describe a flood by its peak discharge and its return period. Those numbers are what our infrastructure is designed for, and they are the right numbers for that purpose. But people do not experience a 100-year flood; they experience a flooded street, a closed road, or a news report, and they file it under an explanation they already hold. This study is a reminder that the hazard we measure and the experience that shapes behavior are different quantities. The link between them runs through interpretation.
 
 **Event attribution is part of the service, not an extra.** Climate science can now say, within days of an event, how much more likely or intense climate change made it. This study, together with earlier work, suggests that this kind of information is where the leverage lies. In the United Kingdom, flood experience predicted support for mitigation only among people who attributed the floods to climate change (Ogunbode et al. 2019). In California, wildfire exposure increased pro-environment voting only in Democratic areas (Hazlett & Mildenberger 2020). A survey of nearly 72,000 people in 68 countries found the same pattern: attributing extreme weather to climate change was linked to support for climate policy, while exposure to most types of extreme weather was not (Cologna et al. 2025). For those of us who provide climate services, for example drought information for farmers, explaining **why** an event happened may be as important as reporting **that** it happened.
 
@@ -68,8 +68,8 @@ Figure 2 summarizes the choice results. Party and attribution push toward the lo
 The study is careful, but its scope is narrow.
 
 - **One country, two parties.** US politics is unusually polarized on climate. Independents were asked which party they lean toward and classified accordingly. The results may not carry over to Korea or Europe, where views on climate may be less tied to party identity.
-- **Small stakes.** Each choice involved cents and a few kilograms of CO₂. That is far from the decisions that matter most, such as buying a car, voting, or supporting a flood-defence levy.
-- **Attribution was measured, not manipulated.** The study shows that attribution is associated with attention and choice; it does not show that changing someone's attribution would change their behaviour.
+- **Small stakes.** Each choice involved cents and a few kilograms of CO₂. That is far from the decisions that matter most, such as buying a car, voting, or supporting a flood-defense levy.
+- **Attribution was measured, not manipulated.** The study shows that attribution is associated with attention and choice; it does not show that changing someone's attribution would change their behavior.
 - **County-level exposure is a proxy.** A storm recorded somewhere in a large county may never touch a given resident, which could dilute any real effect of exposure.
 - **About a quarter of the sample was excluded** under the pre-registered quality rules, although analyses with the full sample gave similar conclusions.
 

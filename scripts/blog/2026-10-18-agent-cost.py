@@ -5,7 +5,7 @@
 import os, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-cost = {  # USD per successful end-to-end modelling run (5 task groups)
+cost = {  # USD per successful end-to-end modeling run (5 task groups)
  "Qwen-Plus":         [0.085, 0.081, 0.093, 0.046, 0.090],
  "DeepSeek-V3.2":     [0.099, 0.066, 0.088, 0.066, 0.135],
  "Claude Sonnet 4.5": [1.821, 2.833, 1.842, 2.269, 2.550],
@@ -29,7 +29,7 @@ ax.set_yticks(range(len(names))); ax.set_yticklabels(names[::-1])
 ax.grid(axis="x", color=grid, lw=0.8); ax.set_axisbelow(True)
 for sp in ("top", "right", "left"): ax.spines[sp].set_visible(False)
 ax.tick_params(axis="y", length=0)
-ax.set_xlabel("API cost of one successful end-to-end modelling run (USD, log scale)", color=ink2)
+ax.set_xlabel("API cost of one successful end-to-end modeling run (USD, log scale)", color=ink2)
 ax.set_title("Same agentic workflow, a 25–45× difference in cost", loc="left", color=ink, fontsize=12.5)
 fig.tight_layout()
 os.makedirs("assets/img/blog", exist_ok=True)

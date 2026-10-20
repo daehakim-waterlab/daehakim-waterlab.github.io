@@ -64,7 +64,7 @@ From January 2026, the remaining budgets for a 50% chance of staying below each 
 
 _**Figure 2.** Remaining CO₂ budgets from January 2026 for a 50% chance of limiting warming to 1.5, 1.7 and 2.0°C. The two lighter bars are two published estimates, each updated to 2026; the dark bar is their average, used in the Global Carbon Budget 2025. The top axis converts the budgets into years at the 2025 emission rate. The dashed line marks the cumulative emissions of a straight-line path from today to net zero in 2050. Figure by Daeha Kim, drawn from numbers reported in Friedlingstein et al. (2026b)._
 
-Three things are worth noting. First, the estimates differ a lot, especially for 1.5°C (90 versus 250 GtCO₂), mainly because of how the warming from other gases such as methane is modelled. In [an earlier post on overshoot]({% post_url 2026-10-17-approaching-1p5-from-above %}) I used a UNEP figure of 130 GtCO₂; it sits inside this range. Deng et al. (2025), using different starting points, go as far as to say that the 1.5°C budget may already be used up.
+Three things are worth noting. First, the estimates differ a lot, especially for 1.5°C (90 versus 250 GtCO₂), mainly because of how the warming from other gases such as methane is modeled. In [an earlier post on overshoot]({% post_url 2026-10-17-approaching-1p5-from-above %}) I used a UNEP figure of 130 GtCO₂; it sits inside this range. Deng et al. (2025), using different starting points, go as far as to say that the 1.5°C budget may already be used up.
 
 Second, at today's emission rate, warming increases by about 0.023°C every year, or about a quarter of a degree per decade. The budget does not tell us when 1.5°C will be crossed in a given year, but it does tell us how fast the long-term level is rising.
 
