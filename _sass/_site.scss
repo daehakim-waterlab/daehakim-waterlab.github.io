@@ -229,6 +229,11 @@ $page: ".post:has(> .post-header .post-description)";
   font-size: 0.9rem;
   line-height: 1.5;
 }
+// Long URLs without break points (for example an X post in a reference list) may break anywhere,
+// so they never widen the page on phones.
+.post-content a {
+  overflow-wrap: anywhere;
+}
 
 // Phones.
 @media (max-width: 576px) {
