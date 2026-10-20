@@ -79,7 +79,7 @@ I use these tools every day, and my own impression is that they have become far 
 
 None of the following is new to anyone trained in science. LLMs simply make it more necessary.
 
-**For code**
+**For coding**
 
 - **Write the test before you ask for the code.** Decide what the correct output is, ideally with a case you can solve by hand, and run it. In hydrology that means checking that a water balance closes, that a model reproduces an analytical solution, or that it gives the published result for a benchmark catchment.
 - **Run everything, and read every line you keep.** If you cannot explain a line, you do not yet own it.
