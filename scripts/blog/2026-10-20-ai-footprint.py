@@ -46,7 +46,7 @@ panel(a2, "Water: AI in 2025 is in the range of the world's bottled water",
        ("Global bottled water", 446, None, ref),
        ("All data centers, 2023 (IEA)", 560, None, dc),
        ("All data centers, 2023 (alternative)", 1365, None, dc)],
-      1700, "Billion litres of water consumed per year")
+      1700, "Billion liters of water consumed per year")
 fig.tight_layout(h_pad=2.2)
 os.makedirs("assets/img/blog", exist_ok=True)
 fig.savefig("assets/img/blog/2026-10-20-ai-footprint.png", dpi=170, facecolor=surf)

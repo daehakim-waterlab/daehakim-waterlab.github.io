@@ -1,5 +1,5 @@
 # Figure for the blog post "How much water and carbon does AI use?" (2026-10-20).
-# Data: litres of water consumed per kWh, as reported or derived in de Vries-Gao (2026), Patterns 7, 101430,
+# Data: liters of water consumed per kWh, as reported or derived in de Vries-Gao (2026), Patterns 7, 101430,
 # doi:10.1016/j.patter.2025.101430:
 #   on site (direct): IEA implied WUE 0.56 (2023); weighted average of company reports 0.59 (2024);
 #   at the power plant (indirect): IEA implied 1.04 (2023); Meta 3.92 (2024); Apple, Google and Meta US data
@@ -15,7 +15,7 @@ direct, indirect = "#2a78d6", "#d6604d"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12, "axes.edgecolor": ink2,
                      "xtick.color": ink2, "ytick.color": ink})
 
-rows = [  # label, L/kWh, colour
+rows = [  # label, L/kWh, color
     ("On site: IEA global estimate (2023)", 0.56, direct),
     ("On site: tech company reports (2024)", 0.59, direct),
     ("Power plant: IEA global estimate (2023)", 1.04, indirect),
@@ -37,7 +37,7 @@ ax.axhline(1.8, color=grid, lw=1.2)
 ax.set_yticks(y); ax.set_yticklabels([r[0] for r in rows], fontsize=10.5)
 ax.invert_yaxis()
 ax.set_xlim(0, 6)
-ax.set_xlabel("Litres of water consumed per kWh", color=ink2)
+ax.set_xlabel("Liters of water consumed per kWh", color=ink2)
 ax.grid(axis="x", color=grid, lw=0.8); ax.set_axisbelow(True)
 for sp in ("top", "right"): ax.spines[sp].set_visible(False)
 ax.tick_params(axis="y", length=0)
