@@ -22,10 +22,10 @@ latest_posts:
   /* Home hero: the lab name and department are HTML text (the page header); the
      illustration (1008x555, aspect 1.816, left edge faded into the box colour) is a text-free
      image beside them on wide screens and below them on narrow ones. The negative top margin
-     collapses with the page's 3rem top margin, leaving 24px under the top bar (owner's request). */
+     collapses with the page's 3rem top margin, leaving 29px under the top bar (owner's request). */
   .post > .post-header {
     display: flex; flex-direction: column; justify-content: center;
-    min-height: 14.5rem; padding: 2rem calc(14.5rem * 1.816 + 1rem) 2rem 2.5rem; margin: -1.5rem 0 1.75rem; border-radius: 0.75rem;
+    min-height: 14.5rem; padding: 2rem calc(14.5rem * 1.816 + 1rem) 2rem 2.5rem; margin: -1.1875rem 0 1.75rem; border-radius: 0.75rem;
     background: #f7f1e7 url("/assets/img/home/hero-art.webp?v=2026-10-20c") no-repeat right center / auto 100%;
   }
   .post > .post-header .post-title { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 2.6rem; line-height: 1.1; color: #2b2a28; margin: 0 0 0.75rem; }
