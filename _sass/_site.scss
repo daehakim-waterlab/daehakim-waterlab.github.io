@@ -137,6 +137,10 @@ $page: ".post:has(> .post-header .post-description)";
   width: 6.5rem;
   white-space: nowrap;
 }
+// Latest posts carry the day too ("Oct 20, 2026"): several posts can share a month.
+.news .post-date {
+  width: 8rem;
+}
 .news-archive .news-year {
   font-size: 1.4rem;
   margin: 1.5rem 0 0.25rem;
@@ -268,6 +272,9 @@ $page: ".post:has(> .post-header .post-description)";
   }
   .news .news-date {
     width: 5.5rem;
+  }
+  .news .post-date {
+    width: 7rem;
   }
   .course > h2 {
     font-size: 1.3rem;

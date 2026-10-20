@@ -18,8 +18,8 @@ footer_text: >
 keywords: hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim # add your own keywords or leave empty
 timezone: Asia/Seoul # post dates are read as Korean time (otherwise UTC, which can hide a morning post as "future")
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 💧 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
+icon: favicon.png # favicon in /assets/img/: the ring-and-river mark from the lab logo (transparent, 96x96)
+apple_touch_icon: apple-touch-icon.png # 180x180 PNG on white (iOS shows transparency as black) for home-screen bookmarks
 
 url: https://hydroclimatol.com # the base hostname & protocol for your site (custom domain; see CNAME)
 baseurl: # blank on purpose: the site is served from the domain root
