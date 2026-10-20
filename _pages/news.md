@@ -14,7 +14,7 @@ description: All lab news, newest first.
   <table class="table table-sm table-borderless">
     {% for item in year.items %}
     <tr>
-      <th scope="row" class="news-date">{{ item.date | date: '%b %d' }}</th>
+      <th scope="row" class="news-date">{{ item.date | date: '%b %-d' }}</th>
       <td>
         {% if item.inline %}
           {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}

@@ -137,8 +137,8 @@ $page: ".post:has(> .post-header .post-description)";
   width: 6.5rem;
   white-space: nowrap;
 }
-// Latest posts carry the day too ("Oct 20, 2026"): several posts can share a month.
-.news .post-date {
+// News and latest posts on Home carry the full date ("Oct 20, 2026"): several items can share a month.
+.news .full-date {
   width: 8rem;
 }
 .news-archive .news-year {
@@ -273,7 +273,7 @@ $page: ".post:has(> .post-header .post-description)";
   .news .news-date {
     width: 5.5rem;
   }
-  .news .post-date {
+  .news .full-date {
     width: 7rem;
   }
   .course > h2 {
