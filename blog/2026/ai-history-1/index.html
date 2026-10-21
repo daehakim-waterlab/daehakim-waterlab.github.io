@@ -1,0 +1,328 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> A short history of AI, part 1: from Turing to Deep Blue (1936–1997) | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="The first of three posts on how artificial intelligence developed: Turing's machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | A short history of AI, part 1: from Turing to Deep Blue (1936–1997)"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/ai-history-1/"> <meta property="og:description" content="The first of three posts on how artificial intelligence developed: Turing's machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="A short history of AI, part 1: from Turing to Deep Blue (1936–1997)"> <meta name="twitter:description" content="The first of three posts on how artificial intelligence developed: Turing's machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/ai-history-1/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">A short history of AI, part 1: from Turing to Deep Blue (1936–1997)</h1> <p class="post-meta"> Created on October 21, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/history-of-science"> <i class="fa-solid fa-hashtag fa-sm"></i> history-of-science</a>   <a href="/blog/tag/machine-learning"> <i class="fa-solid fa-hashtag fa-sm"></i> machine-learning</a>   <a href="/blog/tag/neural-networks"> <i class="fa-solid fa-hashtag fa-sm"></i> neural-networks</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>My recent posts have been about how to use today’s AI tools well: what they do to our writing, how to catch their errors, and when <a href="/blog/2026/vibe-coding/">vibe coding</a> can be trusted. Several students asked a more basic question: how did we get here? This is the first of three posts on that question. This one covers the sixty years from Alan Turing’s paper machine to the computer that beat the world chess champion (1936–1997). The second will cover the turn to data and deep learning (1997–2017), and the third the transformer and the large language models of today (2017–2026).</p> <p>History is worth the detour for a practical reason. Many of the debates about AI in 2026 (whether a machine can think, whether rules or learning is the better path, how to tell real progress from hype, and how to measure intelligence at all) were first argued in the period covered here. Knowing how those arguments went the first time makes the current ones easier to judge.</p> <p><img src="/assets/img/blog/2026-10-21-ai-timeline-1.png" alt="A timeline of AI from 1936 to 1997" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> Milestones in AI from 1936 to 1997, discussed in this post. Rows are evenly spaced rather than drawn to scale in time. The two “AI winters,” periods of reduced funding and interest, are shown with approximate dates because historians date them differently. Figure by Daeha Kim, based on the sources cited below.</em></p> <h2 id="a-machine-on-paper-19361950">A machine on paper (1936–1950)</h2> <p>The story usually starts with a mathematician, not a computer. In 1936 Alan Turing, then 24, wanted to answer a question in logic: is there a mechanical procedure that can decide whether any given mathematical statement is provable? To make “mechanical procedure” precise, he imagined a machine that reads and writes symbols on a tape according to a short table of rules. He then showed that a single “universal” machine could imitate any other such machine if given its rule table as input (Turing 1937). That is, in essence, the idea of the stored-program computer, described a decade before one was built.</p> <p>Seven years later, the neurophysiologist Warren McCulloch and the logician Walter Pitts proposed that a nerve cell could be modeled as a simple logical unit that fires when the sum of its inputs passes a threshold, and that networks of such units could compute logical functions (McCulloch &amp; Pitts 1943). Their paper is the ancestor of every neural network in use today.</p> <p>In 1950, after his wartime codebreaking work, Turing returned to the question of thinking machines in the journal <em>Mind</em>. He judged the question “Can machines think?” too vague to answer, and replaced it with a game: an interrogator exchanges typed messages with a person and a machine and tries to tell which is which (Turing 1950). Turing predicted that in about fifty years a computer with a memory of about 10<sup>9</sup> bits would play the game well enough that an average interrogator would have no better than a 70% chance of identifying it correctly after five minutes of questioning. He also suggested that the most practical route to such a machine might be to build a “child machine” and educate it rather than program it directly, an idea that anticipates machine learning by decades. Turing died in 1954 and did not see the field he had imagined take shape.</p> <h2 id="naming-the-field-19551969">Naming the field (1955–1969)</h2> <p>The phrase “artificial intelligence” first appeared in a funding proposal dated 31 August 1955. John McCarthy, Marvin Minsky, Nathaniel Rochester and Claude Shannon asked the Rockefeller Foundation to support a two-month summer study at Dartmouth College, based on the conjecture that every aspect of learning and intelligence could in principle be described precisely enough for a machine to simulate it. They expected that a carefully chosen group working together for one summer could make a significant advance (McCarthy et al. 2006). The workshop took place in the summer of 1956. It did not produce the advance, but it gave the field its name and its founding generation.</p> <p>Progress in the following years was real and quick. Allen Newell and Herbert Simon’s Logic Theorist proved theorems from Whitehead and Russell’s <em>Principia Mathematica</em> by searching through possible chains of reasoning (Newell &amp; Simon 1956). Arthur Samuel’s checkers program improved by playing against itself and remembering which positions led to wins; his 1959 paper helped popularize the term “machine learning” (Samuel 1959). Frank Rosenblatt’s perceptron took McCulloch and Pitts’s artificial neuron one step further: instead of having its connection weights set by hand, it adjusted them automatically from examples until it classified them correctly (Rosenblatt 1958). Rosenblatt built it in hardware, and the press coverage was enthusiastic.</p> <p>The most famous program of the decade was also the simplest. Joseph Weizenbaum’s ELIZA imitated a psychotherapist by matching keywords in the user’s sentences and turning them into questions (Weizenbaum 1966). It understood nothing, and Weizenbaum said so, yet many users confided in it as if it did. He was disturbed enough by this to write a book arguing that some tasks should never be handed to computers (Weizenbaum 1976). Sixty years later, the tendency he observed, our readiness to attribute understanding to fluent text, is one of the main themes of my <a href="/blog/2026/llm-writing-coding/">previous post on writing with LLMs</a>.</p> <h2 id="limits-and-the-first-winter-19691980">Limits, and the first winter (1969–1980)</h2> <p>In 1969 Minsky and Seymour Papert published <em>Perceptrons</em>, a mathematical analysis of what a single layer of Rosenblatt-style neurons could and could not compute (Minsky &amp; Papert 1969). The best-known limitation is easy to draw. A single perceptron separates its inputs with one straight line (or plane), so it can learn AND and OR but not XOR, which outputs 1 when exactly one of its two inputs is 1. Adding a hidden layer of neurons solves the problem, but in 1969 nobody had a practical way to train the weights of such hidden layers.</p> <p><img src="/assets/img/blog/2026-10-21-xor.png" alt="Why a single perceptron cannot learn XOR" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 2.</strong> AND and OR can be computed by a single perceptron because one straight line separates the inputs that should give 1 from those that should give 0. For XOR no such line exists. Two hidden units, each drawing one line, solve the problem; training such hidden units became practical only in the 1980s. Figure by Daeha Kim; illustrative, no data.</em></p> <p>The book is often blamed for a decade of neglect of neural networks. Its authors doubted that multilayer networks would do much better, but what they proved concerned single-layer ones. The wider field was in trouble too. Early programs that worked on small, clean problems failed on realistic ones, because the number of possibilities to search grows explosively with the size of the problem. In 1973 the mathematician James Lighthill, asked by the UK Science Research Council to review the field, concluded that it had failed to deliver on its promises outside a few narrow areas (Lighthill 1973). Funding in the UK was cut sharply, and in the United States military funding moved toward projects with clear applications. The period of reduced support that followed, roughly the second half of the 1970s, came to be called the first “AI winter.”</p> <h2 id="expert-systems-and-the-second-winter-19801993">Expert systems, and the second winter (1980–1993)</h2> <p>AI recovered in the 1980s by narrowing its ambition. Instead of general intelligence, researchers built “expert systems” that encoded the knowledge of specialists as hundreds or thousands of if-then rules. The best-known commercial success was R1 (later called XCON), which configured orders for Digital Equipment Corporation’s VAX computers, a task that had required experienced engineers (McDermott 1982). Companies founded AI groups, specialized “LISP machines” were sold to run AI software, and in 1982 Japan launched its ambitious Fifth Generation Computer Systems project.</p> <p>The boom did not last. Expert systems were brittle: they failed abruptly on cases their rules did not anticipate, and keeping thousands of rules consistent as the world changed proved expensive. Cheaper general-purpose workstations made the specialized hardware obsolete, and the market for it collapsed around 1987. The second AI winter, from the late 1980s to the early 1990s, was as much a commercial collapse as a scientific one.</p> <p>Meanwhile, the neural network tradition had quietly solved its 1969 problem. In 1986 David Rumelhart, Geoffrey Hinton and Ronald Williams showed how to train networks with hidden layers by propagating the output error backward through the network and adjusting each weight in proportion to its contribution to the error (Rumelhart et al. 1986). The method, backpropagation, had been described earlier by others, but this paper made it widely known and showed that hidden units learned useful internal representations. Multilayer networks could now learn XOR and much more.</p> <h2 id="learning-from-data-and-a-chess-match-1990s">Learning from data, and a chess match (1990s)</h2> <p>In the 1990s, much of AI quietly changed character. Instead of writing rules, researchers increasingly fitted statistical models to data, and judged them by how well they predicted cases they had not seen. Hydrology was an early adopter. Kuolin Hsu, Hoshin Gupta and Soroosh Sorooshian trained a three-layer neural network to simulate daily streamflow in the Leaf River basin in Mississippi and found that it represented the rainfall-runoff relationship better than both a linear time-series model and the conceptual Sacramento soil moisture accounting model. They added that, because its components had no physical meaning, it was no substitute for conceptual watershed modeling (Hsu et al. 1995). By 2000 an ASCE task committee had written a two-part review of neural networks in hydrology (ASCE Task Committee 2000). The tension they named, between models that predict well and models we can interpret, has never left our field.</p> <p>The decade, and this first part of the story, ended with a symbolic victory for the older tradition. In May 1997 IBM’s Deep Blue beat the world chess champion Garry Kasparov 3.5–2.5 in a six-game match. Deep Blue did not learn chess in the modern sense. Its builders credit a massively parallel computer with hundreds of special-purpose chess chips, an emphasis on deep search, a complex evaluation function and a database of grandmaster games (Campbell et al. 2002). It was a triumph of search and engineering on a problem with clear rules and a clear score, exactly the kind of problem the Dartmouth founders had in mind, forty years later than they had hoped.</p> <h2 id="what-the-first-sixty-years-teach">What the first sixty years teach</h2> <p><strong>Two traditions, both still alive.</strong> From the start there were two ideas of how to build intelligence: write down the rules (logic, search, expert systems) or let the machine learn them from examples (artificial neurons, perceptrons, backpropagation). The first dominated until the 1990s; the second dominates today. But today’s systems still combine them, for example when a language model is asked to call a calculator or run a test suite.</p> <p><strong>Promises ran ahead of data and computing power.</strong> Both winters followed periods in which researchers and funders expected general intelligence within a decade or two. The ideas were often sound; what was missing was enough data and computing power to make them work at scale. That is worth remembering whenever a forecast about AI sounds certain, in either direction.</p> <p><strong>Turing’s question is still the hard one.</strong> Turing replaced “can it think?” with “can we tell the difference?”, a test based on behavior. The benchmark debates in my recent posts are versions of the same move, and they inherit the same weakness: passing a test is not the same as having the ability the test was meant to measure.</p> <p><strong>Hydrology has been here before.</strong> The 1995 neural network that beat a conceptual model, and the authors’ caution about what it could not tell us, anticipate today’s debates about machine learning in hydrology almost exactly.</p> <h2 id="bottom-line">Bottom line</h2> <ul> <li>Turing defined the computer (1936) and proposed a behavioral test of machine intelligence (1950), including the idea of a machine that learns.</li> <li>The field was named in 1955 and grew quickly, but early optimism ran into the explosion of possibilities in real problems and into the limits of single-layer perceptrons.</li> <li>Two AI winters followed: in the late 1970s after early promises failed, and around 1987–1993 after the expert-system boom collapsed.</li> <li>Backpropagation (1986) made multilayer neural networks trainable, and in the 1990s learning from data, including in hydrology, began to replace writing rules.</li> <li>Deep Blue’s 1997 win was a triumph of search and engineering, not of learning, and it closed the first era.</li> </ul> <p><strong>Questions to think about</strong></p> <ol> <li>Turing replaced “can machines think?” with a behavioral test. What would be a good behavioral test of whether an AI “understands” a hydrological model, and what could it miss?</li> <li>Why can one perceptron learn AND but not XOR? Try drawing it before looking at Figure 2.</li> <li>Hsu and colleagues found that a neural network predicted streamflow better than a conceptual model but warned that it was no substitute for one. Do you agree, thirty years later?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> 인공지능의 역사를 세 편으로 정리하는 연재의 첫 편으로, 앨런 튜링부터 딥 블루까지(1936–1997)를 다룬다. 튜링은 1936년 기호를 읽고 쓰는 가상의 기계와 어떤 기계든 흉내 낼 수 있는 “보편 기계”를 제안해 컴퓨터의 개념을 세웠고, 1950년에는 “기계가 생각할 수 있는가”라는 질문을 사람과 기계를 구별할 수 있는지 묻는 행동 시험(이미테이션 게임)으로 바꾸면서 학습하는 기계라는 생각까지 내놓았다. 1955년 다트머스 연구 제안서에서 “인공지능”이라는 말이 처음 쓰였고, 논리 이론가, 스스로 배우는 체커 프로그램, 예시로부터 가중치를 조정하는 퍼셉트론, 대화 흉내를 낸 ELIZA가 잇따라 나왔다. 그러나 실제 문제에서는 탐색해야 할 경우의 수가 폭발적으로 늘었고, 1969년 민스키와 페퍼트는 단층 퍼셉트론이 XOR 같은 문제를 풀 수 없음을 보였다. 1973년 라이트힐 보고서 이후 첫 번째 “AI 겨울”이 왔고, 1980년대 전문가 시스템 붐도 규칙의 경직성과 유지 비용 때문에 무너지며 두 번째 겨울(약 1987–1993)로 이어졌다. 그 사이 1986년 역전파 알고리즘이 은닉층을 가진 신경망을 학습시킬 수 있게 했고, 1990년대에는 규칙을 쓰는 대신 데이터로 학습하는 방식이 퍼졌다. 수문학도 일찍 이를 받아들여 1995년 신경망이 강우-유출 관계를 시계열 모형과 개념적 모형보다 잘 재현했지만, 저자들은 물리적 의미가 없어 개념적 모형을 대신할 수 없다고 경고했다. 1997년 딥 블루가 체스 세계 챔피언 카스파로프를 이긴 것은 학습이 아니라 탐색과 공학의 승리였다. 규칙과 학습이라는 두 전통, 데이터와 계산 능력을 앞질러 간 기대, 그리고 지능을 어떻게 측정할 것인가라는 튜링의 질문은 지금도 그대로 남아 있다.</p> <hr> <p><strong>References</strong></p> <p>ASCE Task Committee on Application of Artificial Neural Networks in Hydrology (2000). Artificial neural networks in hydrology. I: Preliminary concepts. <em>Journal of Hydrologic Engineering</em>, 5(2), 115–123. <a href="https://doi.org/10.1061/(ASCE)1084-0699(2000)5:2(115)" rel="external nofollow noopener" target="_blank">https://doi.org/10.1061/(ASCE)1084-0699(2000)5:2(115)</a></p> <p>Campbell, M., Hoane, A. J., &amp; Hsu, F.-h. (2002). Deep Blue. <em>Artificial Intelligence</em>, 134(1–2), 57–83. <a href="https://doi.org/10.1016/S0004-3702(01)00129-1" rel="external nofollow noopener" target="_blank">https://doi.org/10.1016/S0004-3702(01)00129-1</a></p> <p>Hsu, K., Gupta, H. V., &amp; Sorooshian, S. (1995). Artificial neural network modeling of the rainfall-runoff process. <em>Water Resources Research</em>, 31(10), 2517–2530. <a href="https://doi.org/10.1029/95WR01955" rel="external nofollow noopener" target="_blank">https://doi.org/10.1029/95WR01955</a></p> <p>Lighthill, J. (1973). Artificial intelligence: A general survey. In <em>Artificial Intelligence: A Paper Symposium</em>. Science Research Council, London.</p> <p>McCarthy, J., Minsky, M. L., Rochester, N., &amp; Shannon, C. E. (2006). A proposal for the Dartmouth summer research project on artificial intelligence, August 31, 1955. <em>AI Magazine</em>, 27(4), 12–14. <a href="https://doi.org/10.1609/aimag.v27i4.1904" rel="external nofollow noopener" target="_blank">https://doi.org/10.1609/aimag.v27i4.1904</a></p> <p>McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. <em>Bulletin of Mathematical Biophysics</em>, 5(4), 115–133. <a href="https://doi.org/10.1007/BF02478259" rel="external nofollow noopener" target="_blank">https://doi.org/10.1007/BF02478259</a></p> <p>McDermott, J. (1982). R1: A rule-based configurer of computer systems. <em>Artificial Intelligence</em>, 19(1), 39–88. <a href="https://doi.org/10.1016/0004-3702(82)90021-2" rel="external nofollow noopener" target="_blank">https://doi.org/10.1016/0004-3702(82)90021-2</a></p> <p>Minsky, M., &amp; Papert, S. (1969). <em>Perceptrons: An Introduction to Computational Geometry</em>. MIT Press. Reissued 2017. <a href="https://doi.org/10.7551/mitpress/11301.001.0001" rel="external nofollow noopener" target="_blank">https://doi.org/10.7551/mitpress/11301.001.0001</a></p> <p>Newell, A., &amp; Simon, H. A. (1956). The logic theory machine: A complex information processing system. <em>IRE Transactions on Information Theory</em>, 2(3), 61–79. <a href="https://doi.org/10.1109/TIT.1956.1056797" rel="external nofollow noopener" target="_blank">https://doi.org/10.1109/TIT.1956.1056797</a></p> <p>Rosenblatt, F. (1958). The perceptron: A probabilistic model for information storage and organization in the brain. <em>Psychological Review</em>, 65(6), 386–408. <a href="https://doi.org/10.1037/h0042519" rel="external nofollow noopener" target="_blank">https://doi.org/10.1037/h0042519</a></p> <p>Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning representations by back-propagating errors. <em>Nature</em>, 323, 533–536. <a href="https://doi.org/10.1038/323533a0" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/323533a0</a></p> <p>Samuel, A. L. (1959). Some studies in machine learning using the game of checkers. <em>IBM Journal of Research and Development</em>, 3(3), 210–229. <a href="https://doi.org/10.1147/rd.33.0210" rel="external nofollow noopener" target="_blank">https://doi.org/10.1147/rd.33.0210</a></p> <p>Turing, A. M. (1937). On computable numbers, with an application to the Entscheidungsproblem. <em>Proceedings of the London Mathematical Society</em>, s2-42(1), 230–265 (read in 1936). <a href="https://doi.org/10.1112/plms/s2-42.1.230" rel="external nofollow noopener" target="_blank">https://doi.org/10.1112/plms/s2-42.1.230</a></p> <p>Turing, A. M. (1950). Computing machinery and intelligence. <em>Mind</em>, 59(236), 433–460. <a href="https://doi.org/10.1093/mind/LIX.236.433" rel="external nofollow noopener" target="_blank">https://doi.org/10.1093/mind/LIX.236.433</a></p> <p>Weizenbaum, J. (1966). ELIZA: A computer program for the study of natural language communication between man and machine. <em>Communications of the ACM</em>, 9(1), 36–45. <a href="https://doi.org/10.1145/365153.365168" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/365153.365168</a></p> <p>Weizenbaum, J. (1976). <em>Computer Power and Human Reason: From Judgment to Calculation</em>. W. H. Freeman.</p> <p><em>Both figures are original. The Python scripts that produce them are available on GitHub: <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-21-ai-timeline-1.py" rel="external nofollow noopener" target="_blank">Figure 1</a> and <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-21-xor.py" rel="external nofollow noopener" target="_blank">Figure 2</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
