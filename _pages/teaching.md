@@ -16,10 +16,6 @@ children:
     permalink: /teaching/physical-hydrology/
   - title: Statistical Hydrology
     permalink: /teaching/statistical-hydrology/
-  - title: Terrestrial Hydrometeorology
-    permalink: /teaching/terrestrial-hydrometeorology/
-  - title: Earth System Science
-    permalink: /teaching/earth-system-science/
   - title: A Brief History of Fluid Mechanics and Water Sciences
     permalink: /water-history/
 ---
