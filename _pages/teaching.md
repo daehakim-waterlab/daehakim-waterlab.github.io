@@ -18,6 +18,10 @@ children:
     permalink: /teaching/physical-hydrology/
   - title: Statistical Hydrology
     permalink: /teaching/statistical-hydrology/
+  - title: Terrestrial Hydrometeorology
+    permalink: /teaching/terrestrial-hydrometeorology/
+  - title: Earth System Science
+    permalink: /teaching/earth-system-science/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:
