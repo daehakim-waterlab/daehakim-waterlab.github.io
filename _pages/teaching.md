@@ -8,6 +8,8 @@ nav_order: 5
 dropdown: true
 _styles: ".course-description p { margin-bottom: 0.75rem; }"
 children:
+  - title: A Brief History of Fluid Mechanics and Water Sciences
+    permalink: /water-history/
   - title: Engineering Hydrology
     permalink: /teaching/engineering-hydrology/
   - title: Hydraulics
@@ -16,8 +18,6 @@ children:
     permalink: /teaching/physical-hydrology/
   - title: Statistical Hydrology
     permalink: /teaching/statistical-hydrology/
-  - title: A Brief History of Fluid Mechanics and Water Sciences
-    permalink: /water-history/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:
