@@ -19,4 +19,4 @@ children:
 - [Book Chapters](/publications/book-chapters/)
 - [Technical Reports](/publications/technical-reports/)
 
-Journal articles link to the publisher's version through their DOI.
+In each list, a linked title opens the paper on the publisher's site.
