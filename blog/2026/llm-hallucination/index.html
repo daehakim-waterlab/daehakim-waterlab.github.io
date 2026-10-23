@@ -1,0 +1,407 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Why LLMs make things up, and what you can do about it | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | Why LLMs make things up, and what you can do about it"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/llm-hallucination/"> <meta property="og:description" content="A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Why LLMs make things up, and what you can do about it"> <meta name="twitter:description" content="A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/llm-hallucination/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/teaching/terrestrial-hydrometeorology/">Terrestrial Hydrometeorology</a> <a class="dropdown-item " href="/teaching/earth-system-science/">Earth System Science</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Why LLMs make things up, and what you can do about it</h1> <p class="post-meta"> Created on October 24, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/large-language-models"> <i class="fa-solid fa-hashtag fa-sm"></i> large-language-models</a>   <a href="/blog/tag/hallucination"> <i class="fa-solid fa-hashtag fa-sm"></i> hallucination</a>   <a href="/blog/tag/research-practice"> <i class="fa-solid fa-hashtag fa-sm"></i> research-practice</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>Anyone who uses large language models (LLMs) for research has met the problem: a confident answer, a plausible citation, and then the discovery that the paper does not exist. This is usually called hallucination. Here is what we know about why it happens, how much it has improved, and what users can do about it.</p> <h2 id="hallucination-or-confabulation">Hallucination, or confabulation</h2> <p>“Hallucination” is the popular term, but many researchers prefer <strong>confabulation</strong>, a word borrowed from neurology. A patient who confabulates fills gaps in memory with invented details and believes them, with no intent to deceive. That is close to what an LLM does: it produces fluent, specific and wrong content, with the same confidence as when it is right.</p> <p>Farquhar et al. (2024) use confabulation for a narrower case: answers that are both wrong and arbitrary, so that asking the same question again gives a different answer. That distinction turns out to be useful, as we will see below.</p> <h2 id="why-it-happens">Why it happens</h2> <p>A 2025 analysis by Kalai and colleagues at OpenAI gives the clearest explanation so far (Kalai et al. 2025). It has two parts.</p> <p><strong>Pretraining makes some errors unavoidable.</strong> A model learns by predicting text. For facts that appear many times in the training data, such as the boiling point of water, it learns the pattern. For facts that appear only once or rarely, such as a particular researcher’s birthday or the page numbers of a 2003 paper, there is no pattern to learn. The authors show that the error rate on such facts is tied to how many of them appear only once in training data. Bibliographic details, numbers, names and niche facts are exactly this kind of knowledge.</p> <p><strong>Training and evaluation reward guessing.</strong> Most benchmarks score an answer as right or wrong. “I don’t know” scores zero, the same as a wrong answer, so a model that always guesses scores higher than one that admits uncertainty. The authors compare it to a multiple-choice exam with no penalty for wrong answers: the rational strategy is to never leave a blank. Models were, in effect, trained to be good test-takers.</p> <h2 id="why-reasoning-models-do-it-less">Why reasoning models do it less</h2> <p>Hallucination has dropped markedly over the past year, but not simply because models now “think” before answering. When OpenAI released its first strong reasoning model, o3, in 2025, it hallucinated more than its predecessor on an internal test of facts about people: 33% versus 16% for o1, because it made more claims overall (OpenAI 2025a). Reasoning gives a model more chances to be right and more chances to be wrong.</p> <p>What changed is better explained by three things.</p> <ol> <li> <strong>Rewarding abstention.</strong> After the diagnosis above, labs began training models to decline when unsure. OpenAI reported that in its GPT-5 thinking model, the share of factual claims containing errors was 65% lower than in o3 (OpenAI 2025b).</li> <li> <strong>Using reasoning to check.</strong> Thinking time helps when a model uses it to test its own answer, not only to build a longer argument.</li> <li> <strong>Tools.</strong> Models that can search the web or read a supplied document answer from evidence instead of memory. Much of the improvement in everyday use comes from this.</li> </ol> <p>The result shows clearly on AA-Omniscience, a benchmark by Artificial Analysis that asks hard factual questions without web access and, unusually, does not penalize “I don’t know” (Figure 1).</p> <p><img src="/assets/img/blog/2026-10-24-hallucination-answers.png" alt="Correct, wrong and declined answers on AA-Omniscience for current and earlier LLMs" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> Out of 100 hard factual questions answered without web search, how many each model got right, got wrong, or declined (or answered only partly), for current models and two models released in November 2025. Wrong answers are computed as accuracy minus the AA-Omniscience Index. Gemini 4 Argon was not yet public when these results were recorded. Figure by Daeha Kim, drawn from AA-Omniscience results (Artificial Analysis) as compiled on 4 October 2026.</em></p> <h2 id="which-model-hallucinates-least">Which model hallucinates least?</h2> <p>As of October 2026, the answer depends on what you want.</p> <ul> <li> <strong>Fewest wrong answers among frontier models:</strong> Gemini 4 Argon. It gets about half the questions right, declines most of the rest, and gives a wrong answer to only 8 in 100.</li> <li> <strong>Best balance of knowing and admitting:</strong> Claude Opus 5.5 leads the AA-Omniscience Index (correct minus wrong), with GPT-6 Astra close behind. These models know more, so they answer more questions correctly, but they still guess on about 20 in 100.</li> <li> <strong>Large differences remain:</strong> some capable models still answer almost every question and get about half of them wrong.</li> </ul> <p>A year earlier, the leading models gave wrong answers to 33–40 questions in 100. The improvement is real. Two caveats apply. Rankings change every few months, and they differ between tasks: on summarizing a supplied document faithfully, a different leaderboard (Vectara’s) ranks models in another order. And no model is at zero.</p> <h2 id="what-you-can-do">What you can do</h2> <p>Even with the best model, the habits of the user matter more than the choice of model. These are the ones I find most effective, most of them also recommended by the model developers themselves (Anthropic 2026).</p> <ol> <li> <strong>Give it the source.</strong> Paste the paper, report or data, and ask it to answer only from that material. Asking for exact quotes first, and building the answer on them, works especially well for long documents.</li> <li> <strong>Give permission not to know.</strong> Say explicitly: “If you are not sure, say so.” This simple sentence counters the guessing habit described above.</li> <li> <strong>Turn on search for facts, and open the links.</strong> A cited source is only useful if it exists and says what the model claims. Check DOIs and page numbers yourself; this is where fabrication is most common.</li> <li> <strong>Ask twice.</strong> Ask the same factual question in a new conversation, or rephrase it. If the answers disagree, treat both as unverified. This is the practical version of Farquhar’s method, which detects confabulations from inconsistency across repeated answers.</li> <li> <strong>Ask for a separate check.</strong> After a draft, ask the model to list each factual claim and verify it, ideally in a fresh session. Splitting generation and verification reduces errors (Dhuliawala et al. 2023).</li> <li> <strong>Don’t lead the witness.</strong> “Isn’t it true that…?” invites agreement. Ask neutral questions, and be suspicious when the model simply confirms what you hoped.</li> <li> <strong>Know the danger zones.</strong> References, numbers, names, dates, recent events and very specialized facts are where models fail most. Reasoning, coding and explaining well-documented concepts are much safer.</li> </ol> <h2 id="bottom-line">Bottom line</h2> <p>Hallucination is not a mysterious bug. It follows from how models learn rare facts and from training that rewarded guessing. The newest models hallucinate much less, mainly because they have learned to say “I don’t know” and to check with tools, not just because they reason longer. The best defense is still on the user’s side: give the model the evidence, allow it to be uncertain, and verify anything that matters, especially citations and numbers.</p> <p><strong>Questions to think about</strong></p> <ol> <li>Would you prefer a model that answers 66 of 100 questions correctly and 20 wrongly, or one that answers 50 correctly and 8 wrongly? Does your answer depend on the task?</li> <li>Kalai and colleagues argue that benchmarks should penalize wrong answers more than abstentions. How would that change how we grade students?</li> <li>Which of the seven habits above could you build into your group’s standard workflow for literature reviews?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> LLM이 그럴듯하지만 틀린 내용을 자신 있게 만들어내는 현상을 흔히 환각(hallucination)이라고 부르지만, 기억의 빈틈을 지어낸 내용으로 메우는 신경학 용어를 빌려 작화(confabulation)라고도 한다. Kalai 등(2025)에 따르면 원인은 두 가지다. 학습 데이터에 드물게 등장하는 사실(서지 정보, 수치, 인명 등)은 패턴으로 학습할 수 없고, 대부분의 평가가 “모른다”를 오답과 똑같이 0점 처리해 추측을 보상해 왔다. 추론 모델이라고 저절로 나아진 것은 아니어서, 2025년 o3는 이전 모델보다 오히려 더 많이 틀렸다. 최근의 큰 개선은 모를 때 답을 거절하도록 한 학습, 추론을 자기 검증에 쓰는 것, 검색 같은 도구 사용 덕분이다. 2026년 10월 기준 웹 검색 없이 어려운 사실 질문 100개를 풀게 하면, 틀린 답이 가장 적은 최상위 모델은 Gemini 4 Argon(약 8개)이고, 정답과 오답의 차이가 가장 큰 모델은 Claude Opus 5.5와 GPT-6 Astra(정답 63–66개, 오답 약 20개)이다. 1년 전 주요 모델은 오답이 33–40개였다. 사용자가 할 수 있는 일로는 원문 자료를 주고 그 안에서만 답하게 하기, “모르면 모른다고 하라”고 명시하기, 검색을 켜고 인용 링크와 DOI를 직접 확인하기, 같은 질문을 새 대화에서 다시 해 보기, 별도의 검증 단계를 두기, 유도 질문 피하기, 그리고 참고문헌·수치·인명·최신 정보처럼 오류가 잦은 영역을 특히 조심하기가 있다.</p> <hr> <p><strong>References</strong></p> <p>Anthropic (2026). Reduce hallucinations. <em>Claude Platform Documentation</em>. <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" rel="external nofollow noopener" target="_blank">https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations</a></p> <p>Artificial Analysis (2026). AA-Omniscience: knowledge and hallucination benchmark. <a href="https://artificialanalysis.ai/evaluations/omniscience" rel="external nofollow noopener" target="_blank">https://artificialanalysis.ai/evaluations/omniscience</a></p> <p>Dhuliawala, S., Komeili, M., Xu, J., Raileanu, R., Li, X., Celikyilmaz, A., &amp; Weston, J. (2023). Chain-of-verification reduces hallucination in large language models. <em>arXiv</em>, 2309.11495. <a href="https://doi.org/10.48550/arXiv.2309.11495" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2309.11495</a></p> <p>Farquhar, S., Kossen, J., Kuhn, L., &amp; Gal, Y. (2024). Detecting hallucinations in large language models using semantic entropy. <em>Nature</em>, 630, 625–630. <a href="https://doi.org/10.1038/s41586-024-07421-0" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/s41586-024-07421-0</a></p> <p>Kalai, A. T., Nachum, O., Vempala, S. S., &amp; Zhang, E. (2025). Why language models hallucinate. <em>arXiv</em>, 2509.04664. <a href="https://doi.org/10.48550/arXiv.2509.04664" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2509.04664</a></p> <p>OpenAI (2025a). OpenAI o3 and o4-mini system card. <a href="https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf" rel="external nofollow noopener" target="_blank">https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf</a></p> <p>OpenAI (2025b). GPT-5 system card. <em>arXiv</em>, 2601.03267. <a href="https://doi.org/10.48550/arXiv.2601.03267" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2601.03267</a></p> <p><em>The figure is original. The Python script that produces it is available on <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-24-hallucination-answers.py" rel="external nofollow noopener" target="_blank">GitHub</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-terrestrial-hydrometeorology",
+              title: "Terrestrial Hydrometeorology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/terrestrial-hydrometeorology/";
+              },
+            },{id: "dropdown-earth-system-science",
+              title: "Earth System Science",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/earth-system-science/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-why-llms-make-things-up-and-what-you-can-do-about-it",
+        
+          title: "Why LLMs make things up, and what you can do about it",
+        
+        description: "A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-hallucination/";
+          
+        },
+      },{id: "post-farm-lime-turns-out-to-be-a-carbon-sink",
+        
+          title: "Farm lime turns out to be a carbon sink",
+        
+        description: "Climate inventories count agricultural lime as a CO₂ source. A century of Mississippi River chemistry says the opposite: measured against the acids that farming and pollution add to soils, liming has removed CO₂ from the air.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/liming-carbon-sink/";
+          
+        },
+      },{id: "post-heat-and-the-mind-what-we-know-about-climate-change-and-mental-health",
+        
+          title: "Heat and the mind: what we know about climate change and mental health...",
+        
+        description: "A summary of the umbrella review by Radua et al. (2024) in World Psychiatry: which links between heat, extreme weather, air pollution and mental health hold up, how large they are, why even young and healthy people should care, and what the evidence cannot yet say.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-and-mind/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-3-transformers-and-large-language-models-2017-2026",
+        
+          title: "A short history of AI, part 3: transformers and large language models (2017–2026)...",
+        
+        description: "The last of three posts on how artificial intelligence developed: pre-training, the scaling era, ChatGPT and the assistants that followed, models that reason and act, AI for weather and floods, and where things stand in late 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-3/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-2-data-gpus-and-deep-learning-1997-2017",
+        
+          title: "A short history of AI, part 2: data, GPUs and deep learning (1997–2017)...",
+        
+        description: "The second of three posts on how artificial intelligence developed: the turn to statistical learning, the return of neural networks, ImageNet and AlexNet, AlphaGo, and the attention mechanism that set the stage for today&#39;s language models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-2/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-earth-system-science",
+          title: 'Earth System Science',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/earth-system-science/";
+            },},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{id: "teachings-terrestrial-hydrometeorology",
+          title: 'Terrestrial Hydrometeorology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/terrestrial-hydrometeorology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
