@@ -1,0 +1,462 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Model distillation: how AI models learn from each other, and what they lose | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | Model distillation: how AI models learn from each other, and what they lose"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/model-distillation/"> <meta property="og:description" content="What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Model distillation: how AI models learn from each other, and what they lose"> <meta name="twitter:description" content="What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/model-distillation/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/teaching/terrestrial-hydrometeorology/">Terrestrial Hydrometeorology</a> <a class="dropdown-item " href="/teaching/earth-system-science/">Earth System Science</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Model distillation: how AI models learn from each other, and what they lose</h1> <p class="post-meta"> Created on October 27, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/large-language-models"> <i class="fa-solid fa-hashtag fa-sm"></i> large-language-models</a>   <a href="/blog/tag/distillation"> <i class="fa-solid fa-hashtag fa-sm"></i> distillation</a>   <a href="/blog/tag/research-practice"> <i class="fa-solid fa-hashtag fa-sm"></i> research-practice</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>In July 2026, the White House science adviser accused the Chinese company Moonshot AI of building its Kimi K3 model by “distilling” Anthropic’s Claude Fable. China’s embassy in Washington called the allegation “entirely unfounded” (Business Today 2026), and several AI researchers doubted it, noting that K3 appeared only about two weeks after Fable became public and that distillation alone is unlikely to produce such a strong model so quickly (AI Weekly 2026). True or not, the episode shows how central one technique has become to the competition between AI labs. This post explains what distillation is, why it works, whether it can be stopped, and what models built this way tend to lack.</p> <h2 id="what-distillation-is">What distillation is</h2> <p>Distillation means training a smaller or newer model, the “student,” to imitate a stronger one, the “teacher.” The idea was popularized by Hinton and colleagues in 2015 (Hinton et al. 2015). Their key observation was that a teacher’s full output carries more information than its final answer. When a language model completes “The capital of Australia is …,” it assigns a high probability to Canberra, but also a noticeable probability to Sydney and almost none to Perth (Figure 1a). Those small numbers encode how the teacher sees the world, which mistakes are plausible and which are not. Hinton called it “dark knowledge.” A student trained to match the whole distribution learns faster and from fewer examples than one trained only on correct answers.</p> <p>Inside a lab, distillation is routine and legitimate. The fast, cheap versions of frontier models are typically distilled from larger ones, and DeepSeek released a family of small open models distilled from its R1 reasoning model (DeepSeek-AI 2025).</p> <p>The controversial version works from the outside. A competitor cannot see another lab’s probabilities, but it can send millions of questions through the public interface, collect the answers, and train its own model on them. The student then sees much less than in the classic setup: one sampled answer instead of a full distribution, and often no reasoning at all (Figure 1b).</p> <p><img src="/assets/img/blog/2026-10-27-distill-signal.png" alt="Teacher probability distribution and what a student model can see" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> (a) An illustrative next-word distribution from a teacher model: besides the right answer, it shows which wrong answers are close. (b) What a student model can learn from, from a lab distilling its own model to a competitor working through a chat interface. The probabilities and bar lengths are illustrative. Figure by Daeha Kim, a schematic based on Hinton et al. (2015).</em></p> <h2 id="why-it-has-become-a-dispute">Why it has become a dispute</h2> <p>The attraction is obvious: answers from a frontier model are far cheaper to collect than the compute, data and expertise needed to develop the same abilities independently. In February 2026, Anthropic reported that three Chinese labs, DeepSeek, Moonshot AI and MiniMax, had generated more than 16 million exchanges with Claude through about 24,000 fraudulent accounts, targeting its strongest abilities: agentic reasoning, tool use and coding (Anthropic 2026; Figure 2). These are Anthropic’s attributions; the labs have not confirmed them. The July accusation about Kimi K3 went further, but its evidence has not been made public.</p> <p><img src="/assets/img/blog/2026-10-27-distill-campaigns.png" alt="Exchanges with Claude attributed to distillation campaigns by three labs" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 2.</strong> Exchanges with Claude that Anthropic attributed to distillation campaigns by three AI labs, as reported in February 2026. According to Anthropic, the campaigns targeted agentic coding and tool use (MiniMax); agentic reasoning, tool use, coding, computer use and vision (Moonshot AI); and reasoning and the grading of answers for reinforcement learning (DeepSeek). Figure by Daeha Kim, drawn from numbers reported in Anthropic (2026).</em></p> <p>The dispute has an uncomfortable side for the accusers, too. Frontier models were themselves trained on vast amounts of text written by others, and the line between learning from public outputs and copying is contested. What makes the current cases different, in the labs’ view, is the use of fake accounts and the violation of terms of service to extract a competitor’s specific capabilities at scale.</p> <h2 id="can-it-be-prevented">Can it be prevented?</h2> <p>Not completely. Anything a model shows its users, it also shows a potential student. What labs can do is make distillation slower, costlier and less useful:</p> <ul> <li> <strong>Detection.</strong> Classifiers that recognize distillation patterns, such as huge numbers of similar prompts or systematic attempts to extract reasoning, and that link many accounts to one operator (Anthropic 2026).</li> <li> <strong>Access control.</strong> Stronger identity checks for the account types most often abused, and sharing of indicators between labs and cloud providers.</li> <li> <strong>Hiding the reasoning.</strong> Since 2024, several labs show only a summary of their models’ step-by-step reasoning. OpenAI cited competitive advantage, alongside safety monitoring, when it decided not to show the raw reasoning of its o1 models (OpenAI 2024).</li> <li> <strong>Poisoned outputs.</strong> Researchers have proposed “antidistillation sampling,” which subtly changes how a model picks its words so that the answers remain useful to people but are much less useful as training data for a student (Savani et al. 2025).</li> </ul> <p>Each defense has a cost for legitimate users, who also want to see the reasoning and use the model at scale. The realistic goal is to keep distillation from being a shortcut, not to make it impossible.</p> <h2 id="what-distilled-models-lack">What distilled models lack</h2> <p>Distillation lets a model catch up quickly. But copying has limits.</p> <p><strong>Style transfers more easily than substance.</strong> In a careful 2023 study, researchers fine-tuned open models on ChatGPT outputs. Human raters judged the imitations close to ChatGPT, because they had learned its confident, well-structured style, yet on targeted tests of factual knowledge, coding and problem solving they improved little or not at all (Gudibande et al. 2024). The authors concluded that closing the gap requires a stronger base model, not more imitation. A distilled model can therefore look better than it is, which also makes some benchmark scores and first impressions misleading.</p> <p><strong>The student learns only what it is asked.</strong> A campaign aimed at coding and agents transfers coding and agents. Rare facts, niche fields, other languages and unusual situations are covered thinly, and the student sees only sampled answers without the teacher’s uncertainty. As discussed in an <a href="/blog/2026/llm-hallucination/">earlier post on hallucination</a>, rare facts are exactly where models make things up.</p> <p><strong>It inherits mistakes, and copies of copies degrade.</strong> A student copies its teacher’s errors and biases along with its strengths. When models are trained repeatedly on the output of other models, the rare parts of the original data, the tails of the distribution, gradually disappear, a process known as model collapse (Shumailov et al. 2024).</p> <p><strong>It stays one step behind.</strong> A student rarely surpasses its teacher in what it copies, and it can only copy what already exists. Distillation is a way to follow the frontier, not to move it.</p> <p><strong>Safety behavior may not come along.</strong> Anthropic argues that illicitly distilled models are unlikely to keep the safeguards built into the original, such as refusals to help with weapons or cyberattacks (Anthropic 2026).</p> <p><strong>Provenance becomes a risk.</strong> For companies, universities and public agencies, a model built in violation of another provider’s terms carries legal and reputational risk, and possibly sanctions. That matters when choosing a model for sensitive work.</p> <h2 id="bottom-line">Bottom line</h2> <p>Distillation is an old and useful idea: a small model learns faster from a teacher’s full judgments than from right answers alone. Done from the outside, through millions of questions, it lets new models catch up with the frontier at a fraction of the cost, which is why it has become a source of accusations between labs and governments. It cannot be fully prevented, only made harder. And it has clear limits: distilled models copy style more easily than substance, cover what they were asked and little else, inherit their teachers’ errors and stay one step behind. For users, the lesson is to test such models on their own tasks, especially rare and specialized ones, before trusting their benchmark scores.</p> <p><strong>Questions to think about</strong></p> <ol> <li>If a model’s benchmark scores come partly from imitating a stronger model, how would you design a test that reveals the difference?</li> <li>Where should the line be drawn between learning from public outputs, which all models do, and illicit distillation?</li> <li>Would you use a model of uncertain provenance for research with sensitive data? What would you need to know first?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> 증류(distillation)는 작거나 새로운 모델(학생)이 더 강한 모델(교사)의 출력을 따라 하며 배우는 방법으로, 교사가 정답뿐 아니라 어떤 오답이 그럴듯한지까지 담은 확률 분포를 학생에게 전해 준다. 연구소 안에서 작고 빠른 모델을 만드는 데는 흔히 쓰이지만, 경쟁사가 수백만 개의 질문을 보내 답만 모아 학습하는 외부 증류는 최근 큰 분쟁이 되었다. Anthropic은 2026년 2월 중국의 세 연구소가 약 2만 4천 개의 가짜 계정으로 Claude와 1,600만 회 이상 대화했다고 밝혔고, 7월에는 미국 정부가 Kimi K3가 Claude Fable을 증류해 만들어졌다고 주장했지만 근거는 공개되지 않았다. 증류는 탐지, 계정 확인, 추론 과정 숨기기 등으로 어렵게 만들 수는 있어도 완전히 막을 수는 없다. 이렇게 만든 모델은 빠르게 따라잡을 수 있다는 장점이 있지만, 내용보다 말투를 더 쉽게 배우고, 질문받은 분야 밖의 드문 지식에 약하며, 교사의 오류를 물려받고, 늘 한발 뒤처진다는 한계가 있다.</p> <hr> <p><strong>References</strong></p> <p>AI Weekly (2026). Researchers doubt Kimi K3 was distilled from Anthropic’s Fable. 24 July 2026 (after TechCrunch). <a href="https://aiweekly.co/alerts/researchers-doubt-kimi-k3-was-distilled-from-anthropics-fable" rel="external nofollow noopener" target="_blank">https://aiweekly.co/alerts/researchers-doubt-kimi-k3-was-distilled-from-anthropics-fable</a></p> <p>Anthropic (2026). Detecting and preventing distillation attacks. 23 February 2026. <a href="https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks" rel="external nofollow noopener" target="_blank">https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks</a></p> <p>Business Today (2026). US claims China’s Moonshot AI used Anthropic’s Fable 5 to build Kimi K3 AI model. 23 July 2026. <a href="https://www.businesstoday.in/technology/artificial-intelligence/story/us-claims-chinas-moonshot-ai-used-anthropics-fable-5-to-build-kimi-k3-ai-model-544664-2026-07-23" rel="external nofollow noopener" target="_blank">https://www.businesstoday.in/technology/artificial-intelligence/story/us-claims-chinas-moonshot-ai-used-anthropics-fable-5-to-build-kimi-k3-ai-model-544664-2026-07-23</a></p> <p>DeepSeek-AI (2025). DeepSeek-R1: incentivizing reasoning capability in LLMs via reinforcement learning. <em>arXiv</em>, 2501.12948. <a href="https://doi.org/10.48550/arXiv.2501.12948" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2501.12948</a></p> <p>Gudibande, A., Wallace, E., Snell, C., Geng, X., Liu, H., Abbeel, P., Levine, S., &amp; Song, D. (2024). The false promise of imitating proprietary LLMs. <em>International Conference on Learning Representations (ICLR 2024)</em>. <a href="https://doi.org/10.48550/arXiv.2305.15717" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2305.15717</a></p> <p>Hinton, G., Vinyals, O., &amp; Dean, J. (2015). Distilling the knowledge in a neural network. <em>arXiv</em>, 1503.02531. <a href="https://doi.org/10.48550/arXiv.1503.02531" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.1503.02531</a></p> <p>OpenAI (2024). Learning to reason with LLMs. 12 September 2024. <a href="https://openai.com/index/learning-to-reason-with-llms/" rel="external nofollow noopener" target="_blank">https://openai.com/index/learning-to-reason-with-llms/</a></p> <p>Savani, Y., Trockman, A., Feng, Z., Xu, Y. E., Schwarzschild, A., Robey, A., Finzi, M., &amp; Kolter, J. Z. (2025). Antidistillation sampling. <em>arXiv</em>, 2504.13146. <a href="https://doi.org/10.48550/arXiv.2504.13146" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2504.13146</a></p> <p>Shumailov, I., Shumaylov, Z., Zhao, Y., Papernot, N., Anderson, R., &amp; Gal, Y. (2024). AI models collapse when trained on recursively generated data. <em>Nature</em>, 631, 755–759. <a href="https://doi.org/10.1038/s41586-024-07566-y" rel="external nofollow noopener" target="_blank">https://doi.org/10.1038/s41586-024-07566-y</a></p> <p><em>Both figures are original. The Python scripts that produce them are available on GitHub: <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-27-distill-signal.py" rel="external nofollow noopener" target="_blank">Figure 1</a>, <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-27-distill-campaigns.py" rel="external nofollow noopener" target="_blank">Figure 2</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-terrestrial-hydrometeorology",
+              title: "Terrestrial Hydrometeorology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/terrestrial-hydrometeorology/";
+              },
+            },{id: "dropdown-earth-system-science",
+              title: "Earth System Science",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/earth-system-science/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-model-distillation-how-ai-models-learn-from-each-other-and-what-they-lose",
+        
+          title: "Model distillation: how AI models learn from each other, and what they lose...",
+        
+        description: "What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/model-distillation/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-ii-reinforcing-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part II: reinforcing in A Brief History of...",
+        
+        description: "Notes on the second of Max Bennett&#39;s five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning-2/";
+          
+        },
+      },{id: "post-heat-stressed-workers-add-about-41-to-the-social-cost-of-carbon",
+        
+          title: "Heat-stressed workers add about $41 to the social cost of carbon",
+        
+        description: "A reading of Moore et al. (2026) in Nature Climate Change: lost labour productivity under heat stress costs about 41 US dollars per ton of CO₂, a revised agriculture estimate falls from 95 to 29 dollars, and the total social cost of carbon settles near 180 dollars with much less uncertainty.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-labour-carbon-cost/";
+          
+        },
+      },{id: "post-wind-makes-ecosystems-spend-more-water-for-the-same-carbon",
+        
+          title: "Wind makes ecosystems spend more water for the same carbon",
+        
+        description: "A hydrologist&#39;s reading of Wang et al. (2026) in Nature Climate Change: across 146 flux towers, windier days lower ecosystem water use efficiency, mostly by speeding up evaporation, and the decline of global winds (&#39;stilling&#39;) has been quietly raising it.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wind-water-use-efficiency/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-i-steering-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part I: steering in A Brief History of...",
+        
+        description: "Notes on the first of Max Bennett&#39;s five breakthroughs: how the first neurons and brains appeared, how bilaterian worms learned to steer by good and bad, and how even their simple learning already faced problems that AI still struggles with.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning/";
+          
+        },
+      },{id: "post-why-llms-make-things-up-and-what-you-can-do-about-it",
+        
+          title: "Why LLMs make things up, and what you can do about it",
+        
+        description: "A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-hallucination/";
+          
+        },
+      },{id: "post-farm-lime-turns-out-to-be-a-carbon-sink",
+        
+          title: "Farm lime turns out to be a carbon sink",
+        
+        description: "Climate inventories count agricultural lime as a CO₂ source. A century of Mississippi River chemistry says the opposite: measured against the acids that farming and pollution add to soils, liming has removed CO₂ from the air.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/liming-carbon-sink/";
+          
+        },
+      },{id: "post-heat-and-the-mind-what-we-know-about-climate-change-and-mental-health",
+        
+          title: "Heat and the mind: what we know about climate change and mental health...",
+        
+        description: "A summary of the umbrella review by Radua et al. (2024) in World Psychiatry: which links between heat, extreme weather, air pollution and mental health hold up, how large they are, why even young and healthy people should care, and what the evidence cannot yet say.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-and-mind/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-3-transformers-and-large-language-models-2017-2026",
+        
+          title: "A short history of AI, part 3: transformers and large language models (2017–2026)...",
+        
+        description: "The last of three posts on how artificial intelligence developed: pre-training, the scaling era, ChatGPT and the assistants that followed, models that reason and act, AI for weather and floods, and where things stand in late 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-3/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-2-data-gpus-and-deep-learning-1997-2017",
+        
+          title: "A short history of AI, part 2: data, GPUs and deep learning (1997–2017)...",
+        
+        description: "The second of three posts on how artificial intelligence developed: the turn to statistical learning, the return of neural networks, ImageNet and AlexNet, AlphaGo, and the attention mechanism that set the stage for today&#39;s language models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-2/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-earth-system-science",
+          title: 'Earth System Science',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/earth-system-science/";
+            },},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{id: "teachings-terrestrial-hydrometeorology",
+          title: 'Terrestrial Hydrometeorology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/terrestrial-hydrometeorology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
