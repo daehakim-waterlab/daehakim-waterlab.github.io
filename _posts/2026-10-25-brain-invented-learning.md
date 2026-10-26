@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How the brain invented learning: steering and reinforcing in A Brief History of Intelligence"
+title: "How the brain invented learning, part I: steering and reinforcing in A Brief History of Intelligence"
 date: 2026-10-25 21:00:00 +0900
 description: "Notes on the first two of Max Bennett's five breakthroughs: how bilaterian worms learned to steer by good and bad, how early vertebrates learned by trial and error, and why dopamine turned out to be the TD error of reinforcement learning."
 tags: artificial-intelligence neuroscience reinforcement-learning book-notes
