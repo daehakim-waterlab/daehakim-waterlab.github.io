@@ -108,7 +108,7 @@ Steering and synaptic plasticity gave the first brains two things: a way to sort
 
 ---
 
-**한 줄 요약 (Korean summary).** AI 기업가 Max Bennett는 『A Brief History of Intelligence』에서 지능의 진화를 다섯 번의 돌파 과정(steering, reinforcing, simulating, mentalizing, speaking)으로 정리하며, AI 연구자들이 막혔던 문제를 진화가 어떤 순서로 풀었는지를 다룬다. 이 글은 첫 단계인 조향(steering)을 다룬다. 약 6억 년 전 좌우대칭동물은 좋고 나쁨(valence)에 따라 다가가거나 피하기 시작했고, 함께 활동한 신경세포 사이의 연결이 강해지는 방식으로 경험에서 배우게 되었다. 이 단순한 학습조차 무엇 덕분에 좋은 결과가 왔는지 가려내는 문제와, 새로 배우면서 옛 지식을 지키는 문제라는 오늘날 AI의 난제에 이미 부딪혔다.
+**한 줄 요약 (Korean summary).** AI 기업가 Max Bennett는 『A Brief History of Intelligence』에서 지능의 진화를 다섯 번의 돌파 과정(steering, reinforcing, simulating, mentalizing, speaking)으로 정리하며, AI 연구자들이 막혔던 문제를 진화가 어떤 순서로 풀었는지를 다룬다. 이 글은 첫 단계인 조향(steering)을 다룬다. 약 6억 년 전 좌우대칭동물은 좋고 나쁨(valence)에 따라 다가가거나 피하기 시작했고, 함께 활동한 신경세포 사이의 연결이 강해지는 방식으로 경험에서 배우게 되었다. 그런데 이 단순한 학습도 오늘날 AI가 겪는 두 가지 어려움을 이미 안고 있었다. 하나는 먹이를 찾기 직전에 냄새, 빛, 온도 같은 여러 자극이 함께 있었다면 그중 어느 것을 기억해야 하는지 가려내는 일(신용 할당)이고, 다른 하나는 새로운 것을 배울 때 예전에 배운 것이 지워지지 않게 하는 일(지속 학습)이다.
 
 ---
 
