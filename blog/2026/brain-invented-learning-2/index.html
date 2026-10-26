@@ -1,0 +1,451 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> How the brain invented learning, part II: reinforcing in A Brief History of Intelligence | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="Notes on the second of Max Bennett's five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | How the brain invented learning, part II: reinforcing in A Brief History of Intelligence"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/brain-invented-learning-2/"> <meta property="og:description" content="Notes on the second of Max Bennett's five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="How the brain invented learning, part II: reinforcing in A Brief History of Intelligence"> <meta name="twitter:description" content="Notes on the second of Max Bennett's five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/brain-invented-learning-2/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/teaching/terrestrial-hydrometeorology/">Terrestrial Hydrometeorology</a> <a class="dropdown-item " href="/teaching/earth-system-science/">Earth System Science</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">How the brain invented learning, part II: reinforcing in A Brief History of Intelligence</h1> <p class="post-meta"> Created on October 26, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/neuroscience"> <i class="fa-solid fa-hashtag fa-sm"></i> neuroscience</a>   <a href="/blog/tag/reinforcement-learning"> <i class="fa-solid fa-hashtag fa-sm"></i> reinforcement-learning</a>   <a href="/blog/tag/book-notes"> <i class="fa-solid fa-hashtag fa-sm"></i> book-notes</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>In <a href="/blog/2026/brain-invented-learning/">part I</a>, we followed the first of the five breakthroughs in Max Bennett’s <em>A Brief History of Intelligence</em> (2023): steering. Bilaterian worms learned to move toward the good and away from the bad, and to store experience in the strength of their synapses. Their dopamine meant only “something good is nearby.”</p> <p>This post covers the second breakthrough, reinforcing: how early vertebrates acquired trial-and-error learning, how AI researchers ran into the same problem, and how the same molecule, dopamine, was turned into a learning signal. As before, the summary is my own paraphrase of the book’s argument.</p> <h2 id="1-breakthrough-2-reinforcing-try-it-then-learn-from-the-result">1. Breakthrough 2, Reinforcing: try it, then learn from the result</h2> <p>The stage for the second breakthrough is the early vertebrates that emerged about 500 million years ago, after the Cambrian explosion. The brains of these fish-like ancestors already had the basic blueprint that persists all the way to the human brain: a precursor of the cortex (the pallium), the basal ganglia, thalamus, hypothalamus, midbrain, and hindbrain.</p> <p>What this blueprint made possible was trial-and-error learning. The nematode’s associative learning was about learning that “good things follow this stimulus.” Vertebrates learn that “good things follow when I do this.” They learn the consequences not of stimuli but of their own actions.</p> <h3 id="from-thorndike-to-minsky">From Thorndike to Minsky</h3> <p>In 1898, Edward Thorndike placed cats in puzzle boxes and watched. At first they poked at everything until they happened to release the latch, but with repetition their escape times fell. Actions followed by satisfying outcomes are repeated; actions followed by unpleasant ones fade. This is the law of effect, and fish learn the same way.</p> <p>The trouble surfaced when people tried to put this principle into machines. In the early 1950s Marvin Minsky built SNARC, a neural-network machine that learned by reinforcement, and he later named the critical obstacle: the temporal credit assignment problem. When you win a game of chess, which of the dozens of earlier moves contributed to the win? The later the reward arrives, the harder it is to know which action to reinforce.</p> <h3 id="suttons-answer-learn-from-changes-in-prediction-not-from-the-reward-itself">Sutton’s answer: learn from changes in prediction, not from the reward itself</h3> <p>Temporal difference (TD) learning, formalized by Richard Sutton in the 1980s, sidesteps the problem elegantly. Instead of waiting for the final reward, the learner keeps a running prediction of how good things are going to be, and learns from the difference between successive predictions. If the position suddenly looks better, the action just taken was probably a good one.</p> \[\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)\] <p>Here \(V(s)\) is the predicted value of state \(s\), \(r\) is the immediate reward, and \(\gamma\) is the discount factor. \(\delta\), the TD error, measures how much better things turned out than expected. The architecture is often split in two: a critic that evaluates states, and an actor that adjusts its policy using the critic’s error.</p> <p>In 1992, Gerald Tesauro at IBM used this method to build TD-Gammon, a neural network that plays backgammon. Learning by playing against itself, it reached a level close to the best human players. It was the first striking evidence that reinforcement learning really works.</p> <h2 id="2-dopamine-is-the-td-error">2. Dopamine is the TD error</h2> <p>The most dramatic moment in the book is the discovery that an algorithm AI researchers had devised on paper was already running inside the brain.</p> <p>In the 1980s and 1990s, Wolfram Schultz recorded the activity of dopamine neurons in the monkey midbrain. The setup was simple: a light (the cue) comes on, and a few seconds later juice (the reward) arrives. But the dopamine neurons’ behavior could not be explained as a response to reward.</p> <ul> <li> <strong>Before learning:</strong> when juice arrives unexpectedly, dopamine neurons fire strongly.</li> <li> <strong>After learning:</strong> they fire when the light comes on, and do not respond when the juice itself arrives.</li> <li> <strong>When the light is not followed by juice:</strong> firing drops below baseline at the moment the juice should have come.</li> </ul> <p>In all three cases, dopamine tracks not the reward received but the difference between the reward received and the reward expected.</p> <p>These three patterns are exactly how the TD error \(\delta\) behaves. An unexpected reward is a positive error, a predicted reward is zero error, and the absence of an expected reward is a negative error. And the moment a prediction of “something good is coming” first appears, when the light comes on, is precisely when the outlook improves. When Schultz, Peter Dayan, and Read Montague published this correspondence in <em>Science</em> in 1997, the view took hold that dopamine is not a “pleasure chemical” but a reward prediction error signal.</p> <h3 id="dopamine-changed-its-meaning">Dopamine changed its meaning</h3> <p>Seen through Bennett’s evolutionary lens, the finding becomes even more interesting. In the nematode, dopamine was a state signal: “something good is nearby.” In vertebrates, the same molecule is repurposed as a learning signal: “things just got better than expected.” Evolution did not invent a new molecule. It changed the meaning of an existing broadcast channel.</p> <p>The structure that receives this signal and adjusts behavior is the basal ganglia. The basal ganglia select one action from the available options and reinforce choices followed by a positive dopamine signal, so that those choices become easier to repeat. In reinforcement-learning terms, the basal ganglia play the actor, and the dopamine signal is the critic’s error.</p> <h3 id="curiosity-surviving-in-a-world-of-sparse-rewards">Curiosity: surviving in a world of sparse rewards</h3> <p>Bennett argues that vertebrates also became curious at this stage. Fish explore novel things, and dopamine neurons respond not only to reward but also to novel stimuli. Novelty itself works as a kind of reward.</p> <p>AI ran into the same problem. In environments where reward is very rare, such as the Atari game <em>Montezuma’s Revenge</em>, random exploration never reaches the first reward, so learning never gets started. Researchers’ fix was intrinsic motivation: a bonus for visiting states not seen before, in effect artificial curiosity. It is the same answer evolution reached 500 million years earlier.</p> <h2 id="3-the-correspondence-at-a-glance">3. The correspondence at a glance</h2> <p>The table below pairs each biological mechanism with its AI counterpart. The last column is my own judgment of how close the match is.</p> <table> <thead> <tr> <th>Biological mechanism</th> <th>AI counterpart</th> <th>How close</th> </tr> </thead> <tbody> <tr> <td>Law of effect (trial and error)</td> <td>Policy reinforcement</td> <td>Direct</td> </tr> <tr> <td>Dopamine as reward prediction error</td> <td>TD error δ</td> <td>Quantitative match (Schultz et al., 1997)</td> </tr> <tr> <td>Action selection in the basal ganglia</td> <td>Actor (actor-critic)</td> <td>Rough match; details debated</td> </tr> <tr> <td>Dopamine response to novelty</td> <td>Intrinsic motivation, exploration bonus</td> <td>Functional match</td> </tr> </tbody> </table> <h2 id="4-closing-similar-but-not-the-same">4. Closing: similar, but not the same</h2> <p>Following the two breakthroughs reveals a single thread. Neurons arose for fast response, the bilaterian brain for steering by good and bad, synaptic plasticity for storing experience, and dopamine’s reinterpretation for learning from delayed reward. Each step reuses the parts of the one before rather than discarding them.</p> <p>Still, it is too early to say that “the brain is a reinforcement learning algorithm.” A few differences are clear.</p> <ul> <li> <strong>Learning rule:</strong> synapses change using only local information. Whether the brain has anything like backpropagation, which sends the output error precisely back through the layers, remains an open question.</li> <li> <strong>Data efficiency:</strong> TD-Gammon needed hundreds of thousands of self-play games. A fish learns in a handful of trials.</li> <li> <strong>Forgetting:</strong> animals keep old memories in suppressed form while learning new ones. Artificial networks are still weak here.</li> <li> <strong>Dopamine’s other faces:</strong> dopamine does more than signal reward prediction error. It is involved in movement, motivation, and novelty, and how to interpret the signal is still an active research question.</li> </ul> <p>Even so, the correspondence is illuminating. AI researchers did not reach these answers by copying the brain; they reached them by trying to solve the same problems. That evolution and engineering converged independently on the same solutions suggests that those solutions may come from the structure of the problems themselves.</p> <p>Bennett’s next breakthrough, simulating, concerns the mammalian neocortex and its ability to simulate the future in the mind: trying things out in imagination rather than in reality. That is the story of model-based reinforcement learning, and I plan to take it up in the next post.</p> <p><strong>Questions to think about</strong></p> <ol> <li>Dopamine changed from a state signal in worms to a learning signal in vertebrates. What other cases do you know where evolution, or engineering, repurposed an existing channel for a new job?</li> <li>A fish learns in a handful of trials, while TD-Gammon needed hundreds of thousands of games. What might explain the difference?</li> <li>TD learning learns from changes in prediction rather than from the final outcome. Where in your own field could a model learn from forecast updates rather than from observed outcomes alone?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> 약 5억 년 전 초기 척추동물은 자신의 행동 결과로부터 배우는 시행착오 학습(reinforcing)을 얻었다. Schultz 등(1997)은 원숭이의 도파민 뉴런이 보상 자체가 아니라 “예상보다 얼마나 좋았는가”에 반응한다는 것을 보였고, 이는 Sutton이 고안한 시간차(TD) 학습의 오차 신호와 같다. 진화는 새로운 물질을 만들지 않고, 선충 때부터 있던 도파민 신호의 뜻을 “근처에 좋은 것이 있다”에서 “예상보다 좋았다”로 바꾸었다. 뇌와 강화학습 사이에는 차이도 많지만, 둘이 서로 모른 채 같은 해법에 이르렀다는 것은 그 해법이 문제 자체의 성격에서 나온다는 것을 시사한다.</p> <hr> <p><strong>References</strong></p> <p>Bennett, M. (2023). <em>A Brief History of Intelligence: Evolution, AI, and the Five Breakthroughs That Made Our Brains</em>. Mariner Books.</p> <p>Schultz, W., Dayan, P., &amp; Montague, P. R. (1997). A neural substrate of prediction and reward. <em>Science</em>, 275, 1593–1599. <a href="https://doi.org/10.1126/science.275.5306.1593" rel="external nofollow noopener" target="_blank">https://doi.org/10.1126/science.275.5306.1593</a></p> <p>Sutton, R. S. (1988). Learning to predict by the methods of temporal differences. <em>Machine Learning</em>, 3, 9–44. <a href="https://doi.org/10.1007/BF00115009" rel="external nofollow noopener" target="_blank">https://doi.org/10.1007/BF00115009</a></p> <p>Tesauro, G. (1995). Temporal difference learning and TD-Gammon. <em>Communications of the ACM</em>, 38, 58–68. <a href="https://doi.org/10.1145/203330.203343" rel="external nofollow noopener" target="_blank">https://doi.org/10.1145/203330.203343</a></p> <p>Sutton, R. S., &amp; Barto, A. G. (2018). <em>Reinforcement Learning: An Introduction</em> (2nd ed.). MIT Press.</p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-terrestrial-hydrometeorology",
+              title: "Terrestrial Hydrometeorology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/terrestrial-hydrometeorology/";
+              },
+            },{id: "dropdown-earth-system-science",
+              title: "Earth System Science",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/earth-system-science/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-how-the-brain-invented-learning-part-ii-reinforcing-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part II: reinforcing in A Brief History of...",
+        
+        description: "Notes on the second of Max Bennett&#39;s five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning-2/";
+          
+        },
+      },{id: "post-heat-stressed-workers-add-about-41-to-the-social-cost-of-carbon",
+        
+          title: "Heat-stressed workers add about $41 to the social cost of carbon",
+        
+        description: "A reading of Moore et al. (2026) in Nature Climate Change: lost labour productivity under heat stress costs about 41 US dollars per ton of CO₂, a revised agriculture estimate falls from 95 to 29 dollars, and the total social cost of carbon settles near 180 dollars with much less uncertainty.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-labour-carbon-cost/";
+          
+        },
+      },{id: "post-wind-makes-ecosystems-spend-more-water-for-the-same-carbon",
+        
+          title: "Wind makes ecosystems spend more water for the same carbon",
+        
+        description: "A hydrologist&#39;s reading of Wang et al. (2026) in Nature Climate Change: across 146 flux towers, windier days lower ecosystem water use efficiency, mostly by speeding up evaporation, and the decline of global winds (&#39;stilling&#39;) has been quietly raising it.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wind-water-use-efficiency/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-i-steering-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part I: steering in A Brief History of...",
+        
+        description: "Notes on the first of Max Bennett&#39;s five breakthroughs: how the first neurons and brains appeared, how bilaterian worms learned to steer by good and bad, and how even their simple learning already faced problems that AI still struggles with.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning/";
+          
+        },
+      },{id: "post-why-llms-make-things-up-and-what-you-can-do-about-it",
+        
+          title: "Why LLMs make things up, and what you can do about it",
+        
+        description: "A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-hallucination/";
+          
+        },
+      },{id: "post-farm-lime-turns-out-to-be-a-carbon-sink",
+        
+          title: "Farm lime turns out to be a carbon sink",
+        
+        description: "Climate inventories count agricultural lime as a CO₂ source. A century of Mississippi River chemistry says the opposite: measured against the acids that farming and pollution add to soils, liming has removed CO₂ from the air.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/liming-carbon-sink/";
+          
+        },
+      },{id: "post-heat-and-the-mind-what-we-know-about-climate-change-and-mental-health",
+        
+          title: "Heat and the mind: what we know about climate change and mental health...",
+        
+        description: "A summary of the umbrella review by Radua et al. (2024) in World Psychiatry: which links between heat, extreme weather, air pollution and mental health hold up, how large they are, why even young and healthy people should care, and what the evidence cannot yet say.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-and-mind/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-3-transformers-and-large-language-models-2017-2026",
+        
+          title: "A short history of AI, part 3: transformers and large language models (2017–2026)...",
+        
+        description: "The last of three posts on how artificial intelligence developed: pre-training, the scaling era, ChatGPT and the assistants that followed, models that reason and act, AI for weather and floods, and where things stand in late 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-3/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-2-data-gpus-and-deep-learning-1997-2017",
+        
+          title: "A short history of AI, part 2: data, GPUs and deep learning (1997–2017)...",
+        
+        description: "The second of three posts on how artificial intelligence developed: the turn to statistical learning, the return of neural networks, ImageNet and AlexNet, AlphaGo, and the attention mechanism that set the stage for today&#39;s language models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-2/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-earth-system-science",
+          title: 'Earth System Science',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/earth-system-science/";
+            },},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{id: "teachings-terrestrial-hydrometeorology",
+          title: 'Terrestrial Hydrometeorology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/terrestrial-hydrometeorology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
