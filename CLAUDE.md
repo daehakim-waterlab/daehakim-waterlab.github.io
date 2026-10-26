@@ -45,6 +45,7 @@ Every post in `_posts/` follows the same structure, so that fonts and sizes stay
 - **References:** after a `---` rule, a bold paragraph `**References**` (or `**Reference**` for one), then one paragraph per reference in the same APA-like format: authors (year). Title. _Journal_, volume, pages or article number. If a DOI exists, end with the link written as `[https://doi.org/...](https://doi.org/...)`. Do not use lists for references.
 - **Closing line:** one italic paragraph crediting the figures, linking each script on GitHub (`scripts/blog/<date>-<name>.py`).
 - **Links between posts:** `{% post_url YYYY-MM-DD-slug %}`.
+- **Math and dollar signs:** MathJax runs on every page with `$…$` as inline math (`al_math`, `enable_math: true`). Write equations as `$$…$$`. Two dollar amounts in one paragraph ("$41 … $39") otherwise turn into a garbled equation that widens the page on phones: in the body write `\\$41` (rendered as "$41"), and keep `$` out of `description` (shown on the Blog page); a single `$` in the title is safe.
 - **Check:** after building, verify at 390px that body text, reference entries and the Korean summary share one size, and only figure captions are smaller.
 
 ## Change workflow (follow for every change)
