@@ -234,6 +234,12 @@ $page: ".post:has(> .post-header .post-description)";
 .post-content a {
   overflow-wrap: anywhere;
 }
+// Tables in posts: long words (for example "backpropagation") may hyphenate so that a
+// three-column table fits a phone screen instead of scrolling sideways.
+.post-content td,
+.post-content th {
+  hyphens: auto;
+}
 
 // Phones.
 @media (max-width: 576px) {
