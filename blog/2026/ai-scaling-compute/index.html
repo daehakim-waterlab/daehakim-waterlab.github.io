@@ -1,0 +1,473 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> More compute, better AI: how much better? | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="What neural scaling laws actually predict when hardware and compute grow, where the extra compute comes from, how much thinking longer adds, and the limits of power, data and money, checked against the primary sources as of October 2026."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | More compute, better AI: how much better?"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/ai-scaling-compute/"> <meta property="og:description" content="What neural scaling laws actually predict when hardware and compute grow, where the extra compute comes from, how much thinking longer adds, and the limits of power, data and money, checked against the primary sources as of October 2026."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="More compute, better AI: how much better?"> <meta name="twitter:description" content="What neural scaling laws actually predict when hardware and compute grow, where the extra compute comes from, how much thinking longer adds, and the limits of power, data and money, checked against the primary sources as of October 2026."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/ai-scaling-compute/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/teaching/terrestrial-hydrometeorology/">Terrestrial Hydrometeorology</a> <a class="dropdown-item " href="/teaching/earth-system-science/">Earth System Science</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">More compute, better AI: how much better?</h1> <p class="post-meta"> Created on October 29, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/large-language-models"> <i class="fa-solid fa-hashtag fa-sm"></i> large-language-models</a>   <a href="/blog/tag/scaling-laws"> <i class="fa-solid fa-hashtag fa-sm"></i> scaling-laws</a>   <a href="/blog/tag/computing"> <i class="fa-solid fa-hashtag fa-sm"></i> computing</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>“Scaling laws” are the reason AI companies are building gigawatt data centers. The idea is that a language model improves predictably as it gets more computing power, more parameters and more data. But how much better? If we had ten or a hundred times more computing power than today, what would we get? This post works through the answer using the original papers and the latest data, as of October 2026.</p> <h2 id="the-scaling-law-in-one-sentence">The scaling law in one sentence</h2> <p>In 2020, Kaplan and colleagues at OpenAI showed that a language model’s loss, a measure of how badly it predicts the next word, falls as a power law of training compute, over eight orders of magnitude (Kaplan et al. 2020). In 2022, DeepMind’s “Chinchilla” study refined the recipe: for a given compute budget, parameters and training data should grow together, roughly 20 tokens of text per parameter (Hoffmann et al. 2022). A later replication by Epoch AI corrected the fitted constants but confirmed the 20-to-1 rule (Besiroglu et al. 2024).</p> <p>The corrected fit makes the returns concrete. Loss has an irreducible floor, set by the inherent unpredictability of text, and only the gap above that floor can be closed. <strong>Each 10× increase in compute closes about a third of the remaining gap; 100× closes about half</strong> (Figure 1a, my calculation from the fit). In other words, every halving of what is left to gain costs about a hundredfold more compute.</p> <p><img src="/assets/img/blog/2026-10-29-scaling-loss.png" alt="Predicted loss and training data needed versus training compute" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> (a) Pretraining loss predicted by the Chinchilla scaling law (with Epoch AI’s corrected constants) when compute is allocated optimally between model size and data, with the approximate training compute of some well-known models and of the largest run Epoch AI judges feasible by 2030. (b) The number of training tokens the same law calls for, compared with the estimated stock of public human-written text. The fit describes one family of models; it shows the shape of the curve, not the exact loss of any frontier model. Figure by Daeha Kim, calculated from Besiroglu et al. (2024), with compute estimates from Brown et al. (2020) and Epoch AI, and the data stock from Villalobos et al. (2024).</em></p> <h2 id="does-lower-loss-mean-a-smarter-model">Does lower loss mean a smarter model?</h2> <p>Loss falls smoothly, but people experience abilities, and abilities sometimes seem to appear suddenly with scale. A 2023 study showed that most of these apparent jumps are artifacts of all-or-nothing scoring: more than 92% of the claimed “emergent abilities” came from just two metrics that give credit only for a perfectly right answer (Schaeffer et al. 2023). Measured with continuous scores, the same abilities improve gradually.</p> <p>Real-world capability has nonetheless improved fast. METR measures the length of software tasks, in human working time, that AI agents can complete half the time. That “time horizon” doubled about every seven months between 2019 and 2025 (Kwa et al. 2025), and on METR’s updated task suite the doubling time shortened to about 130 days since 2023 and 89 days since 2024 (METR 2026). By mid-2026 the best models were near the ceiling of what the suite can measure. METR stopped updating its measurements in September, so there is no reliable figure for the months since.</p> <h2 id="faster-chips-are-only-part-of-the-story">Faster chips are only part of the story</h2> <p>The obvious way to get more compute is better hardware, but chips alone improve slowly. Epoch AI decomposed the growth of frontier training compute, about 4.2× per year since 2018 (Epoch AI 2025; Figure 2):</p> <ul> <li>more chips per training run: 1.7× per year;</li> <li>longer training runs: 1.5× per year;</li> <li>faster chips: 1.4× per year.</li> </ul> <p>In log terms, faster chips supply only about a quarter of the growth. At 1.4× per year, a tenfold improvement from chips alone takes about seven years. The frontier gets ten times more compute about every year and a half mainly by spending more: the cost of the largest training runs has grown about 2.4× per year (Cottier et al. 2024), and the largest single data centers now draw about a gigawatt.</p> <p>Better algorithms add a further multiplier. The compute needed to reach a given level of language-model performance has halved about every eight months, equivalent to about 2.8× more “effective” compute every year (Ho et al. 2024). Combining both, effective compute has grown roughly tenfold or more per year, my calculation.</p> <p><img src="/assets/img/blog/2026-10-29-scaling-sources.png" alt="Growth factors of frontier training compute and its components" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 2.</strong> Median yearly growth of training compute for frontier models since 2018 and its three components, and the yearly gain from better algorithms expressed as equivalent compute. Figure by Daeha Kim, drawn from numbers reported by Epoch AI (2025) and Ho et al. (2024).</em></p> <h2 id="a-second-axis-thinking-longer">A second axis: thinking longer</h2> <p>Since 2024, a second kind of scaling has mattered as much as the first. Reasoning models such as OpenAI’s o1 improve when they are allowed to spend more compute on each question. On the AIME 2024 math competition, o1 solved 74% of problems with one attempt, 83% with a majority vote over 64 attempts, and 93% when a learned scorer picked the best of 1,000 (OpenAI 2024). On the ARC-AGI puzzle benchmark, o3 rose from 75.7% to 87.5% when given about 172 times more compute per task (ARC Prize 2024).</p> <p>The pattern is the same as in pretraining: gains are roughly linear in the logarithm of compute, so each additional step costs ten to a hundred times more (Figure 3). Reinforcement learning, the training method behind these reasoning models, shows a similar shape but levels off at a ceiling set by the training recipe (Khatri et al. 2025).</p> <p><img src="/assets/img/blog/2026-10-29-scaling-inference.png" alt="Accuracy versus number of samples per problem for o1 and o3" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 3.</strong> Accuracy of OpenAI’s o1 on AIME 2024 and of o3 (preview) on ARC-AGI-1 as more samples are used per problem. The o1 points use different ways of combining samples (a single attempt, a majority vote and re-ranking by a learned scorer). Figure by Daeha Kim, drawn from numbers reported by OpenAI (2024) and ARC Prize (2024).</em></p> <h2 id="the-limits-ahead-power-data-and-money">The limits ahead: power, data and money</h2> <p>Epoch AI estimates that a training run of about 2×10²⁹ FLOP, roughly 400 times the largest known run of 2025, is likely feasible by 2030, but power is the first constraint to bind: such a run would need about 6 gigawatts, while today’s largest single sites draw about one (Sevilla et al. 2024).</p> <p>Data may bind even earlier. The stock of public human-written text is estimated at about 300 trillion tokens (Villalobos et al. 2024). A compute-optimal run of 10²⁸ FLOP would already need about 150 trillion tokens, half of it (Figure 1b). Repeating data helps for a while, since up to about four passes over the same text is nearly as good as new data (Muennighoff et al. 2023), and synthetic data and reinforcement learning on checkable tasks are partly a response to this limit.</p> <h2 id="have-the-returns-diminished">Have the returns diminished?</h2> <p>In late 2024 and 2025, reports suggested that simply making pretraining bigger was paying off less than expected, and OpenAI’s GPT-4.5 was widely seen as a modest step. In November 2025, Ilya Sutskever described the period from 2020 to 2025 as an “age of scaling” now giving way to an “age of research.” Yet over the same period, measured capability accelerated: an Epoch AI analysis found that several capability indices, including METR’s time horizon, sped up around 2024, driven largely by reasoning models and concentrated in code and mathematics (Epoch AI 2026).</p> <p>Both observations fit the scaling law. Returns to pretraining compute were always diminishing in the sense shown in Figure 1, so a few times more compute buys a modest step. What changed is that labs found a second, cheaper axis, reinforcement learning and inference-time compute, and better algorithms on top.</p> <h2 id="so-how-much-does-more-hardware-buy">So how much does more hardware buy?</h2> <ul> <li> <strong>On paper:</strong> each 10× in training compute closes about a third of the remaining gap in loss. Large, steady gains require exponential increases in compute.</li> <li> <strong>In practice:</strong> that 10× arrives about every 18 months, but mostly from more chips and more money; faster chips alone would take about seven years to deliver it.</li> <li> <strong>Beyond pretraining:</strong> letting models think longer adds similar log-linear gains per question, at a cost paid every time the model is used.</li> <li> <strong>Limits:</strong> power and data, not chip speed, are the constraints most likely to bind before 2030.</li> </ul> <p>Scaling laws do not promise that more hardware makes AI arbitrarily capable. They promise steady improvement for exponentially rising cost, and so far that bargain, combined with better algorithms, has been good enough to keep progress fast.</p> <p><strong>Questions to think about</strong></p> <ol> <li>If each halving of the remaining loss costs a hundredfold more compute, what would make it worth paying?</li> <li>Inference-time compute is paid every time a model is used. How does that change the economics compared with training compute, which is paid once?</li> <li>Many scientific models also improve with resolution and data following power laws. Where in your own field have you seen diminishing returns of this kind?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> 스케일링 법칙에 따르면 언어 모델의 손실은 학습 연산량의 거듭제곱 법칙으로 줄어들지만, 줄일 수 있는 부분에는 바닥이 있어 연산량을 10배 늘릴 때마다 남은 격차의 약 3분의 1, 100배 늘리면 약 절반이 줄어든다. 최첨단 모델의 학습 연산량은 해마다 약 4배씩 늘었지만 칩 성능 향상(연 1.4배)의 기여는 4분의 1 정도이고, 나머지는 더 많은 칩, 더 긴 학습, 더 큰 투자에서 나왔으며, 알고리즘 개선이 해마다 약 2.8배의 연산 효과를 더했다. 2024년 이후에는 답하기 전에 더 오래 생각하게 하는 추론 연산이 두 번째 축이 되었지만, 이 역시 연산량의 로그에 비례해 좋아져 한 단계 나아갈 때마다 10–100배의 비용이 든다. 앞으로는 칩 속도보다 전력(2030년 규모의 학습에 약 6 GW)과 데이터(공개 텍스트 약 300조 토큰)가 먼저 한계가 될 가능성이 크다.</p> <hr> <p><strong>References</strong></p> <p>ARC Prize (2024). OpenAI o3 breakthrough high score on ARC-AGI-Pub. 20 December 2024 (costs revised in 2025). <a href="https://arcprize.org/blog/oai-o3-pub-breakthrough" rel="external nofollow noopener" target="_blank">https://arcprize.org/blog/oai-o3-pub-breakthrough</a></p> <p>Besiroglu, T., Erdil, E., Barnett, M., &amp; You, J. (2024). Chinchilla scaling: a replication attempt. <em>arXiv</em>, 2404.10102. <a href="https://doi.org/10.48550/arXiv.2404.10102" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2404.10102</a></p> <p>Cottier, B., Rahman, R., Fattorini, L., Maslej, N., Besiroglu, T., &amp; Owen, D. (2024). The rising costs of training frontier AI models. <em>arXiv</em>, 2405.21015. <a href="https://doi.org/10.48550/arXiv.2405.21015" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2405.21015</a></p> <p>Epoch AI (2025). Training compute growth is driven by larger clusters and longer training runs. 8 January 2025. <a href="https://epoch.ai/data-insights/training-compute-decomposition" rel="external nofollow noopener" target="_blank">https://epoch.ai/data-insights/training-compute-decomposition</a></p> <p>Epoch AI (2026). Have AI capabilities accelerated? 16 April 2026. <a href="https://epoch.ai/publications/have-ai-capabilities-accelerated" rel="external nofollow noopener" target="_blank">https://epoch.ai/publications/have-ai-capabilities-accelerated</a></p> <p>Ho, A., Besiroglu, T., Erdil, E., Owen, D., Rahman, R., Guo, Z. C., Atkinson, D., Thompson, N., &amp; Sevilla, J. (2024). Algorithmic progress in language models. <em>arXiv</em>, 2403.05812. <a href="https://doi.org/10.48550/arXiv.2403.05812" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2403.05812</a></p> <p>Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Cai, T., Rutherford, E., et al. (2022). Training compute-optimal large language models. <em>arXiv</em>, 2203.15556. <a href="https://doi.org/10.48550/arXiv.2203.15556" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2203.15556</a></p> <p>Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., et al. (2020). Scaling laws for neural language models. <em>arXiv</em>, 2001.08361. <a href="https://doi.org/10.48550/arXiv.2001.08361" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2001.08361</a></p> <p>Khatri, D., et al. (2025). The art of scaling reinforcement learning compute for LLMs. <em>arXiv</em>, 2510.13786. <a href="https://doi.org/10.48550/arXiv.2510.13786" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2510.13786</a></p> <p>Kwa, T., West, B., Becker, J., et al. (2025). Measuring AI ability to complete long tasks. <em>arXiv</em>, 2503.14499. <a href="https://doi.org/10.48550/arXiv.2503.14499" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2503.14499</a></p> <p>METR (2026). Time Horizon 1.1. 29 January 2026. <a href="https://metr.org/blog/2026-01-29-time-horizon-1-1/" rel="external nofollow noopener" target="_blank">https://metr.org/blog/2026-01-29-time-horizon-1-1/</a></p> <p>Muennighoff, N., Rush, A. M., Barak, B., Le Scao, T., Piktus, A., Tazi, N., Pyysalo, S., Wolf, T., &amp; Raffel, C. (2023). Scaling data-constrained language models. <em>arXiv</em>, 2305.16264. <a href="https://doi.org/10.48550/arXiv.2305.16264" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2305.16264</a></p> <p>OpenAI (2024). Learning to reason with LLMs. 12 September 2024. <a href="https://openai.com/index/learning-to-reason-with-llms/" rel="external nofollow noopener" target="_blank">https://openai.com/index/learning-to-reason-with-llms/</a></p> <p>Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2023). Are emergent abilities of large language models a mirage? <em>Advances in Neural Information Processing Systems</em>, 36. <a href="https://doi.org/10.48550/arXiv.2304.15004" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2304.15004</a></p> <p>Sevilla, J., et al. (2024). Can AI scaling continue through 2030? Epoch AI, 20 August 2024. <a href="https://epoch.ai/blog/can-ai-scaling-continue-through-2030" rel="external nofollow noopener" target="_blank">https://epoch.ai/blog/can-ai-scaling-continue-through-2030</a></p> <p>Villalobos, P., Ho, A., Sevilla, J., Besiroglu, T., Heim, L., &amp; Hobbhahn, M. (2024). Will we run out of data? Limits of LLM scaling based on human-generated data. <em>arXiv</em>, 2211.04325. <a href="https://doi.org/10.48550/arXiv.2211.04325" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2211.04325</a></p> <p><em>All three figures are original. The Python scripts that produce them are available on GitHub: <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-29-scaling-loss.py" rel="external nofollow noopener" target="_blank">Figure 1</a>, <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-29-scaling-sources.py" rel="external nofollow noopener" target="_blank">Figure 2</a>, <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-10-29-scaling-inference.py" rel="external nofollow noopener" target="_blank">Figure 3</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-terrestrial-hydrometeorology",
+              title: "Terrestrial Hydrometeorology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/terrestrial-hydrometeorology/";
+              },
+            },{id: "dropdown-earth-system-science",
+              title: "Earth System Science",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/earth-system-science/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-more-compute-better-ai-how-much-better",
+        
+          title: "More compute, better AI: how much better?",
+        
+        description: "What neural scaling laws actually predict when hardware and compute grow, where the extra compute comes from, how much thinking longer adds, and the limits of power, data and money, checked against the primary sources as of October 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-scaling-compute/";
+          
+        },
+      },{id: "post-model-distillation-how-ai-models-learn-from-each-other-and-what-they-lose",
+        
+          title: "Model distillation: how AI models learn from each other, and what they lose...",
+        
+        description: "What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/model-distillation/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-ii-reinforcing-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part II: reinforcing in A Brief History of...",
+        
+        description: "Notes on the second of Max Bennett&#39;s five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning-2/";
+          
+        },
+      },{id: "post-heat-stressed-workers-add-about-41-to-the-social-cost-of-carbon",
+        
+          title: "Heat-stressed workers add about $41 to the social cost of carbon",
+        
+        description: "A reading of Moore et al. (2026) in Nature Climate Change: lost labour productivity under heat stress costs about 41 US dollars per ton of CO₂, a revised agriculture estimate falls from 95 to 29 dollars, and the total social cost of carbon settles near 180 dollars with much less uncertainty.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-labour-carbon-cost/";
+          
+        },
+      },{id: "post-wind-makes-ecosystems-spend-more-water-for-the-same-carbon",
+        
+          title: "Wind makes ecosystems spend more water for the same carbon",
+        
+        description: "A hydrologist&#39;s reading of Wang et al. (2026) in Nature Climate Change: across 146 flux towers, windier days lower ecosystem water use efficiency, mostly by speeding up evaporation, and the decline of global winds (&#39;stilling&#39;) has been quietly raising it.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wind-water-use-efficiency/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-i-steering-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part I: steering in A Brief History of...",
+        
+        description: "Notes on the first of Max Bennett&#39;s five breakthroughs: how the first neurons and brains appeared, how bilaterian worms learned to steer by good and bad, and how even their simple learning already faced problems that AI still struggles with.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning/";
+          
+        },
+      },{id: "post-why-llms-make-things-up-and-what-you-can-do-about-it",
+        
+          title: "Why LLMs make things up, and what you can do about it",
+        
+        description: "A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-hallucination/";
+          
+        },
+      },{id: "post-farm-lime-turns-out-to-be-a-carbon-sink",
+        
+          title: "Farm lime turns out to be a carbon sink",
+        
+        description: "Climate inventories count agricultural lime as a CO₂ source. A century of Mississippi River chemistry says the opposite: measured against the acids that farming and pollution add to soils, liming has removed CO₂ from the air.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/liming-carbon-sink/";
+          
+        },
+      },{id: "post-heat-and-the-mind-what-we-know-about-climate-change-and-mental-health",
+        
+          title: "Heat and the mind: what we know about climate change and mental health...",
+        
+        description: "A summary of the umbrella review by Radua et al. (2024) in World Psychiatry: which links between heat, extreme weather, air pollution and mental health hold up, how large they are, why even young and healthy people should care, and what the evidence cannot yet say.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-and-mind/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-3-transformers-and-large-language-models-2017-2026",
+        
+          title: "A short history of AI, part 3: transformers and large language models (2017–2026)...",
+        
+        description: "The last of three posts on how artificial intelligence developed: pre-training, the scaling era, ChatGPT and the assistants that followed, models that reason and act, AI for weather and floods, and where things stand in late 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-3/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-2-data-gpus-and-deep-learning-1997-2017",
+        
+          title: "A short history of AI, part 2: data, GPUs and deep learning (1997–2017)...",
+        
+        description: "The second of three posts on how artificial intelligence developed: the turn to statistical learning, the return of neural networks, ImageNet and AlexNet, AlphaGo, and the attention mechanism that set the stage for today&#39;s language models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-2/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-earth-system-science",
+          title: 'Earth System Science',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/earth-system-science/";
+            },},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{id: "teachings-terrestrial-hydrometeorology",
+          title: 'Terrestrial Hydrometeorology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/terrestrial-hydrometeorology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
