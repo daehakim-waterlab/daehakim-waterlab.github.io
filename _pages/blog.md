@@ -48,7 +48,8 @@ pagination:
       {% for c in site.display_categories %}{% if site.categories[c] %}{% assign shown_categories = shown_categories | push: c %}{% endif %}{% endfor %}
       {% for category in shown_categories %}
         <li>
-          <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
+          {% assign category_icon = site.data.category_icons[category] | default: 'fa-solid fa-tag' %}
+          <i class="{{ category_icon }} fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
         </li>
         {% unless forloop.last %}
           <p>&bull;</p>
@@ -167,8 +168,9 @@ pagination:
           {% if categories != "" %}
           &nbsp; &middot; &nbsp;
             {% for category in post.categories %}
+            {% assign category_icon = site.data.category_icons[category] | default: 'fa-solid fa-tag' %}
             <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
-              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
+              <i class="{{ category_icon }} fa-sm"></i> {{ category }}</a>
               {% unless forloop.last %}
                 &nbsp;
               {% endunless %}

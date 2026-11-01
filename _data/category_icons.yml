@@ -1,0 +1,4 @@
+# Font Awesome icon for each blog category on the Blog page (category list and post list).
+# A category not listed here falls back to the theme's tag icon.
+paper-highlights: fa-solid fa-file-lines
+notes: fa-solid fa-pen-to-square
