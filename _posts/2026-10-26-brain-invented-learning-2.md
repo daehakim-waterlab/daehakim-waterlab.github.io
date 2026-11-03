@@ -86,7 +86,7 @@ Still, it is too early to say that "the brain is a reinforcement learning algori
 
 Even so, the correspondence is illuminating. AI researchers did not reach these answers by copying the brain; they reached them by trying to solve the same problems. That evolution and engineering converged independently on the same solutions suggests that those solutions may come from the structure of the problems themselves.
 
-Bennett's next breakthrough, simulating, concerns the mammalian neocortex and its ability to simulate the future in the mind: trying things out in imagination rather than in reality. That is the story of model-based reinforcement learning, and I plan to take it up in the next post.
+Bennett's next breakthrough, simulating, concerns the mammalian neocortex and its ability to simulate the future in the mind: trying things out in imagination rather than in reality. That is the story of model-based reinforcement learning, taken up in [part III]({% post_url 2026-11-03-brain-invented-learning-3 %}).
 
 **Questions to think about**
 
