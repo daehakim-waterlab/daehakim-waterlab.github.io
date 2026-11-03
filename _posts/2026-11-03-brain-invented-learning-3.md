@@ -92,7 +92,7 @@ Bennett's next breakthrough, mentalizing, turns the simulator inward and toward 
 
 ---
 
-**한 줄 요약 (Korean summary).** 『A Brief History of Intelligence』의 세 번째 breakthrough는 초기 포유류가 신피질을 통해 얻은 시뮬레이션(simulating) 능력이다. 시행착오 학습은 실제로 해 봐야만 배울 수 있지만, 세계의 모형을 가진 동물은 머릿속에서 먼저 시도해 보고 고를 수 있다. 실제로 쥐는 갈림길에서 멈춰 두 길을 번갈아 살피며, 이때 해마의 위치세포가 앞으로 갈 경로를 차례로 미리 훑는다. 이 생각은 AI에서 모형 기반 강화학습이 되었고, 상상한 경험으로도 학습하는 Dyna에서 바둑의 AlphaGo, 스스로 규칙을 배워 계획하는 MuZero로 이어졌다.
+**한 줄 요약 (Korean summary).** 『A Brief History of Intelligence』의 세 번째 돌파 과정은 초기 포유류가 신피질을 통해 얻은 시뮬레이션(simulating) 능력이다. 시행착오 학습은 실제로 해 봐야만 배울 수 있지만, 세계의 모형을 가진 동물은 머릿속에서 먼저 시도해 보고 고를 수 있다. 실제로 쥐는 갈림길에서 멈춰 두 길을 번갈아 살피며, 이때 해마의 위치세포가 앞으로 갈 경로를 차례로 미리 훑는다. 이 생각은 AI에서 모형 기반 강화학습이 되었고, 상상한 경험으로도 학습하는 Dyna에서 바둑의 AlphaGo, 스스로 규칙을 배워 계획하는 MuZero로 이어졌다.
 
 ---
 
