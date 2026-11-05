@@ -1,0 +1,506 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> An AI that reasons like a physician? The Science study, and how far models have come since | Hydroclimate Lab </title> <meta name="author" content="Daeha Kim"> <meta name="description" content="A summary of Brodeur et al. (2026) in Science, which tested OpenAI's o1 against hundreds of physicians on clinical reasoning and in a real emergency department, with the models and dates involved and my view of how today's models would compare."> <meta name="keywords" content="hydrology, water resources, civil engineering, Jeonbuk National University, Daeha Kim"> <meta property="og:site_name" content="Hydroclimate Lab"> <meta property="og:type" content="article"> <meta property="og:title" content="Hydroclimate Lab | An AI that reasons like a physician? The Science study, and how far models have come since"> <meta property="og:url" content="https://hydroclimatol.com/blog/2026/llm-physician-reasoning/"> <meta property="og:description" content="A summary of Brodeur et al. (2026) in Science, which tested OpenAI's o1 against hundreds of physicians on clinical reasoning and in a real emergency department, with the models and dates involved and my view of how today's models would compare."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="An AI that reasons like a physician? The Science study, and how far models have come since"> <meta name="twitter:description" content="A summary of Brodeur et al. (2026) in Science, which tested OpenAI's o1 against hundreds of physicians on clinical reasoning and in a real emergency department, with the models and dates involved and my view of how today's models would compare."> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.png?v=2a917d71d3f5dc803c831fcb82f1cf37"> <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=92e8b0878466f92fd2b5c76a80695d6c"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://hydroclimatol.com/blog/2026/llm-physician-reasoning/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand" href="/"> <img class="brand-logo" src="/assets/img/logo/hydroclimate-lab.webp" alt="Hydroclimate Lab" width="117" height="38"> </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">Home </a> </li> <li class="nav-item "> <a class="nav-link" href="/research/">Research </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">People </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Publications </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/journal-articles/">Peer-reviewed Journal Articles</a> <a class="dropdown-item " href="/publications/book-chapters/">Book Chapters</a> <a class="dropdown-item " href="/publications/technical-reports/">Technical Reports</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Teaching </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/water-history/">A Brief History of Fluid Mechanics and Water Sciences</a> <a class="dropdown-item " href="/teaching/engineering-hydrology/">Engineering Hydrology</a> <a class="dropdown-item " href="/teaching/hydraulics/">Hydraulics</a> <a class="dropdown-item " href="/teaching/physical-hydrology/">Physical Hydrology</a> <a class="dropdown-item " href="/teaching/statistical-hydrology/">Statistical Hydrology</a> <a class="dropdown-item " href="/teaching/terrestrial-hydrometeorology/">Terrestrial Hydrometeorology</a> <a class="dropdown-item " href="/teaching/earth-system-science/">Earth System Science</a> </div> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/join/">Join us </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">An AI that reasons like a physician? The Science study, and how far models have come since</h1> <p class="post-meta"> Created on November 06, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/artificial-intelligence"> <i class="fa-solid fa-hashtag fa-sm"></i> artificial-intelligence</a>   <a href="/blog/tag/large-language-models"> <i class="fa-solid fa-hashtag fa-sm"></i> large-language-models</a>   <a href="/blog/tag/medicine"> <i class="fa-solid fa-hashtag fa-sm"></i> medicine</a>   <a href="/blog/tag/evaluation"> <i class="fa-solid fa-hashtag fa-sm"></i> evaluation</a>   <a href="/blog/tag/research-practice"> <i class="fa-solid fa-hashtag fa-sm"></i> research-practice</a>   ·   <a href="/blog/category/paper-highlights"> <i class="fa-solid fa-tag fa-sm"></i> paper-highlights</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>In 1959, Robert Ledley and Lee Lusted argued in <em>Science</em> that computers could help with medical diagnosis, and that the right test was to give them difficult clinical cases (Ledley and Lusted 1959). For more than sixty years, every generation of diagnostic software, from Bayesian calculators to rule-based expert systems, was measured against that standard. In April 2026, <em>Science</em> published what may become a landmark answer: a study in which a large language model outperformed physicians on most tasks of clinical reasoning, including second opinions on real patients in an emergency department (Brodeur et al. 2026).</p> <h2 id="what-makes-this-study-different">What makes this study different</h2> <p>Earlier studies of language models in medicine mostly used multiple-choice exam questions or narrow tasks, often without any human comparison. This study, led by researchers at Beth Israel Deaconess Medical Center, Harvard Medical School and Stanford, did three things differently. It compared the model with baselines from hundreds of physicians. It had physicians score the model’s answers with validated rating scales, often without knowing whether a human or the AI had written them. And it went beyond published cases to real, unstructured patient records from an emergency department in Boston.</p> <h2 id="the-six-experiments">The six experiments</h2> <p><strong>Difficult published cases.</strong> On 143 clinicopathological case conferences from the <em>New England Journal of Medicine</em> (NEJM), the long-standing test bed for diagnostic software, the model listed the correct diagnosis among its possibilities in 78% of cases and named it first in 52%. Counting very close or helpful answers, it was useful in 98%. Performance did not differ significantly between cases published before and after the model’s training data cutoff, which suggests it was not simply recalling answers. On 70 cases previously given to GPT-4, the exact or a very close diagnosis appeared in 89% of the new model’s answers versus 73% of GPT-4’s. Asked which test to order next, it chose the right one in 88% of cases.</p> <p><strong>Showing its reasoning.</strong> On 20 virtual patient cases used to teach clinical reasoning, the model’s written reasoning earned a perfect score on 78 of 80 attempts, against 47 of 80 for GPT-4, 28 of 80 for attending physicians and 16 of 72 for residents. It was not, however, significantly better at listing the “cannot-miss” diagnoses that must be ruled out early.</p> <p><strong>Management decisions.</strong> On five cases asking what to do next, scored against a consensus of 25 expert physicians, the model’s median score was 89%, compared with 42% for GPT-4, 41% for physicians using GPT-4 and 34% for physicians using conventional resources.</p> <p><strong>Unpublished diagnostic cases.</strong> On six cases deliberately never released, to rule out memorization, the model scored a median of 97%, but this was not significantly higher than GPT-4 (92%) or physicians (74–76%).</p> <p><strong>Probabilistic reasoning.</strong> Asked to estimate the probability of disease before and after a test, a task given to 553 clinicians in an earlier study, the model performed similarly to GPT-4 and was far less variable than the clinicians.</p> <p><strong>Real emergency department patients.</strong> Finally, the team took 76 randomly selected patients from the emergency department and asked the model and two experienced attending physicians for a differential diagnosis at three points: triage, the first physician evaluation, and admission. Two other attending physicians scored the answers without knowing their source, and mostly could not tell which were written by AI. The model’s top five diagnoses contained the exact or a very close diagnosis in 67% of cases at triage, against 55% and 50% for the two physicians, and it stayed ahead at the later points (72% and 82%), although the gap narrowed as more information became available (Figure 1).</p> <p><img src="/assets/img/blog/2026-11-06-physician-llm.png" alt="o1 compared with GPT-4 and physicians across four experiments" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 1.</strong> Selected results: (a) the exact or a very close diagnosis among the model’s possibilities on 70 NEJM cases; (b) share of perfect scores for documented clinical reasoning; (c) median score on management cases; (d) the exact or a very close diagnosis in the top five at emergency department triage for 76 real patients. Figure by Daeha Kim, drawn from numbers reported in Brodeur et al. (2026).</em></p> <h2 id="which-model-and-when">Which model, and when</h2> <p>This matters for interpreting the results. Five of the six experiments used <strong>o1-preview</strong>, the first of OpenAI’s “reasoning” models, released on 12 September 2024. The emergency department study used the full <strong>o1</strong> model and, for comparison, <strong>GPT-4o</strong>. The work first appeared as a preprint on 14 December 2024, then covering only the o1-preview experiments, under the title “Superhuman performance of a large language model on the reasoning tasks of a physician”. The emergency department study was added in 2025, the paper was submitted to <em>Science</em> on 2 June 2025, accepted on 23 February 2026 and published on 30 April 2026. The word “superhuman” was dropped from the published title.</p> <p>In other words, the paper published in 2026 describes models from late 2024. By the authors’ own account, o1-preview had already been superseded by newer models such as o3, and they expected performance to be sustained or improved.</p> <h2 id="what-the-authors-caution">What the authors caution</h2> <ul> <li>The study covers text only. Real clinical work also relies on what a physician sees and hears, from imaging to a patient’s level of distress.</li> <li>The cases came mostly from internal and emergency medicine, and many were curated for teaching, which may overstate performance on messy real-world records.</li> <li>The emergency department task, a second opinion at fixed points, is a proof of concept. Emergency care is mostly about triage, disposition and immediate treatment, not diagnostic accuracy alone.</li> <li>The model was not always clearly better, notably on cannot-miss diagnoses and on the unreleased cases.</li> <li>What is needed now is prospective trials that test whether such tools improve patient outcomes.</li> </ul> <h2 id="how-would-todays-models-do">How would today’s models do?</h2> <p>This section is my own view, not the paper’s.</p> <p><strong>On these tasks, almost certainly better, but the benchmarks are running out of room.</strong> Medical results published since the study point in one direction. On HealthBench, a set of 5,000 realistic health conversations scored with rubrics written by physicians, OpenAI reported that its scores rose from 32% for GPT-4o to 60% for o3 within about a year (Arora et al. 2025). Microsoft’s diagnostic orchestrator, running on o3 and working through 304 hard NEJM cases step by step, reached 80–86% accuracy, against an average of 20% for generalist physicians on the same cases (Nori et al. 2025; Figure 2). The same group that wrote the <em>Science</em> paper later built an AI system that produced the first AI-generated diagnosis published in the century-long history of the NEJM case conferences (Buckley et al. 2025). Today’s frontier models, two generations further on, also hallucinate considerably less on hard factual questions than the models of 2024, as discussed in an <a href="/blog/2026/llm-hallucination/">earlier post</a>. But when a 2024 model already writes perfect clinical reasoning 97% of the time, there is little room left to show improvement. The authors’ warning about “benchmark saturation” applies even more today.</p> <p><img src="/assets/img/blog/2026-11-06-healthbench.png" alt="HealthBench scores and step-by-step diagnosis accuracy for later models" style="width: 100%; height: auto;" data-zoomable=""></p> <p><em><strong>Figure 2.</strong> Two later results: (a) HealthBench scores reported by OpenAI for three successive models; (b) accuracy on 304 NEJM cases solved step by step, for generalist physicians and for Microsoft’s MAI-DxO orchestrator running on o3. The two benchmarks measure different things and cannot be compared with Figure 1 directly. Figure by Daeha Kim, drawn from numbers reported in Arora et al. (2025) and Nori et al. (2025).</em></p> <p><strong>The bottleneck has moved from the model to everything around it.</strong> The most telling number in the paper may be this one: physicians who had GPT-4 available scored no better than GPT-4 alone (41% versus 42%) on management cases. A more capable model does not automatically make a more capable doctor. Whether physicians and AI together do better than either alone, how to handle incomplete and noisy records, how to combine text with images and examinations, and who is responsible for a wrong suggestion are questions that better models do not answer. Those require the prospective trials the authors call for.</p> <h2 id="what-scientists-in-other-fields-can-take-from-it">What scientists in other fields can take from it</h2> <p>The study is also a model of how to evaluate AI fairly, useful well beyond medicine. It compared the model with real experts rather than only with older models; it had blinded experts score open-ended answers; it held back unreleased cases to rule out memorization; and it checked performance before and after the training cutoff. The same design would serve any field, hydrology included, that asks whether an AI can do expert work.</p> <h2 id="bottom-line">Bottom line</h2> <p>Brodeur and colleagues showed, with hundreds of physicians as a baseline and real emergency patients, that OpenAI’s o1 models matched or exceeded physicians on most text-based tasks of diagnostic and management reasoning, and clearly exceeded GPT-4. The models tested date from late 2024; today’s models are very likely better still, but many of these benchmarks are close to their ceiling. The open question is no longer whether a language model can reason through a clinical case on paper, but whether doctors working with one will make better decisions for real patients.</p> <p><strong>Questions to think about</strong></p> <ol> <li>Physicians with access to GPT-4 did no better than GPT-4 alone. What would have to change for a human and an AI together to outperform either one?</li> <li>If a benchmark is saturated, how would you design a harder, fairer test of clinical reasoning?</li> <li>Which expert task in your own field could be evaluated with the same design: expert baselines, blinded scoring and unreleased cases?</li> </ol> <hr> <p><strong>한 줄 요약 (Korean summary).</strong> Brodeur 등(2026)은 OpenAI의 추론 모델 o1-preview와 o1을 수백 명의 의사와 비교해, 어려운 임상 사례의 진단, 임상 추론의 기술, 치료 결정, 확률 추론, 그리고 보스턴 응급실의 실제 환자 76명에 대한 진단 소견까지 대부분의 과제에서 의사와 GPT-4를 앞섰음을 보였다. 실험에 쓰인 모델은 2024년 9월에 공개된 o1-preview(사례 실험 다섯 가지)와 o1, GPT-4o(응급실 실험)이며, 2024년 12월 프리프린트로 처음 공개되고 2025년 6월 투고, 2026년 4월 출판되었다. 제 의견으로는 지금의 최신 모델은 이 과제들에서 거의 확실히 더 나을 것이지만, 이미 정답률이 97%에 이른 과제도 있을 만큼 벤치마크의 여유가 남아 있지 않다. 이제 핵심 질문은 모델의 실력이 아니라, GPT-4를 쓴 의사도 GPT-4 단독보다 낫지 않았다는 결과가 보여주듯 의사와 AI가 함께 실제 환자를 더 잘 돌볼 수 있느냐이며, 이는 전향적 임상시험으로만 답할 수 있다.</p> <hr> <p><strong>References</strong></p> <p>Brodeur, P. G., Buckley, T. A., Kanjee, Z., Goh, E., Ling, E. B., Jain, P., et al. (2026). Performance of a large language model on the reasoning tasks of a physician. <em>Science</em>, 392, 524–527. <a href="https://doi.org/10.1126/science.adz4433" rel="external nofollow noopener" target="_blank">https://doi.org/10.1126/science.adz4433</a></p> <p>Arora, R. K., et al. (2025). HealthBench: evaluating large language models towards improved human health. <em>arXiv</em>, 2505.08775. <a href="https://doi.org/10.48550/arXiv.2505.08775" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2505.08775</a></p> <p>Buckley, T. A., et al. (2025). Teaching large language models to reason like expert diagnosticians. <em>arXiv</em>, 2509.12194. <a href="https://doi.org/10.48550/arXiv.2509.12194" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2509.12194</a></p> <p>Ledley, R. S., &amp; Lusted, L. B. (1959). Reasoning foundations of medical diagnosis. <em>Science</em>, 130, 9–21. <a href="https://doi.org/10.1126/science.130.3366.9" rel="external nofollow noopener" target="_blank">https://doi.org/10.1126/science.130.3366.9</a></p> <p>Nori, H., et al. (2025). Sequential diagnosis with language models. <em>arXiv</em>, 2506.22405. <a href="https://doi.org/10.48550/arXiv.2506.22405" rel="external nofollow noopener" target="_blank">https://doi.org/10.48550/arXiv.2506.22405</a></p> <p><em>Both figures are original. The Python scripts that produce them are available on GitHub: <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-11-06-physician-llm.py" rel="external nofollow noopener" target="_blank">Figure 1</a>, <a href="https://github.com/daehakim-waterlab/daehakim-waterlab.github.io/blob/main/scripts/blog/2026-11-06-healthbench.py" rel="external nofollow noopener" target="_blank">Figure 2</a>.</em></p> </div> </article> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2026 Daeha Kim. Department of Civil Engineering, Jeonbuk National University · #257, Engineering Building I, 567 Baekje-daero, Deokjin-gu, Jeonju-si, Jeonbuk State 54896, Republic of Korea<br> Office +82-63-270-2426 · <a href="mailto:daeha.kim@jbnu.ac.kr">daeha.kim@jbnu.ac.kr</a><br> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-home",
+    title: "Home",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-research",
+          title: "Research",
+          description: "Hydrologic processes and water resources management under climatic and socioeconomic uncertainty.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
+          },
+        },{id: "nav-people",
+          title: "People",
+          description: "Principal investigator, lab members, and alumni.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-peer-reviewed-journal-articles",
+              title: "Peer-reviewed Journal Articles",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/journal-articles/";
+              },
+            },{id: "dropdown-book-chapters",
+              title: "Book Chapters",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/book-chapters/";
+              },
+            },{id: "dropdown-technical-reports",
+              title: "Technical Reports",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/publications/technical-reports/";
+              },
+            },{id: "nav-projects",
+          title: "Projects",
+          description: "Funded research projects, ongoing and completed.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "dropdown-a-brief-history-of-fluid-mechanics-and-water-sciences",
+              title: "A Brief History of Fluid Mechanics and Water Sciences",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/water-history/";
+              },
+            },{id: "dropdown-engineering-hydrology",
+              title: "Engineering Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/engineering-hydrology/";
+              },
+            },{id: "dropdown-hydraulics",
+              title: "Hydraulics",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/hydraulics/";
+              },
+            },{id: "dropdown-physical-hydrology",
+              title: "Physical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/physical-hydrology/";
+              },
+            },{id: "dropdown-statistical-hydrology",
+              title: "Statistical Hydrology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/statistical-hydrology/";
+              },
+            },{id: "dropdown-terrestrial-hydrometeorology",
+              title: "Terrestrial Hydrometeorology",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/terrestrial-hydrometeorology/";
+              },
+            },{id: "dropdown-earth-system-science",
+              title: "Earth System Science",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/teaching/earth-system-science/";
+              },
+            },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-join-us",
+          title: "Join us",
+          description: "For prospective graduate students and undergraduate researchers.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/join/";
+          },
+        },{id: "post-an-ai-that-reasons-like-a-physician-the-science-study-and-how-far-models-have-come-since",
+        
+          title: "An AI that reasons like a physician? The Science study, and how far...",
+        
+        description: "A summary of Brodeur et al. (2026) in Science, which tested OpenAI&#39;s o1 against hundreds of physicians on clinical reasoning and in a real emergency department, with the models and dates involved and my view of how today&#39;s models would compare.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-physician-reasoning/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-iii-simulating-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part III: simulating in A Brief History of...",
+        
+        description: "Notes on the third of Max Bennett&#39;s five breakthroughs: how early mammals built models of the world and of themselves, what simulation let them do, from planning and counterfactual learning to episodic memory and planned movement, and how the same idea became model-based reinforcement learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning-3/";
+          
+        },
+      },{id: "post-why-climate-science-and-economics-talk-past-each-other",
+        
+          title: "Why climate science and economics talk past each other",
+        
+        description: "A reading of a Nature Climate Change comment by Sherwood and colleagues: why the gap between physical climate science and economics distorts the climate costs that reach policy and finance, and four ways to close it.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/climate-economics-gap/";
+          
+        },
+      },{id: "post-more-compute-better-ai-how-much-better",
+        
+          title: "More compute, better AI: how much better?",
+        
+        description: "What neural scaling laws actually predict when hardware and compute grow, where the extra compute comes from, how much thinking longer adds, and the limits of power, data and money, checked against the primary sources as of October 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-scaling-compute/";
+          
+        },
+      },{id: "post-model-distillation-how-ai-models-learn-from-each-other-and-what-they-lose",
+        
+          title: "Model distillation: how AI models learn from each other, and what they lose...",
+        
+        description: "What distillation is, why it lets new models catch up with the frontier so quickly, why it has become a dispute between AI labs, whether it can be prevented, and the limits of models built this way.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/model-distillation/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-ii-reinforcing-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part II: reinforcing in A Brief History of...",
+        
+        description: "Notes on the second of Max Bennett&#39;s five breakthroughs: how early vertebrates learned by trial and error, how reinforcement learning ran into the same problem, and why dopamine turned out to be the TD error.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning-2/";
+          
+        },
+      },{id: "post-heat-stressed-workers-add-about-41-to-the-social-cost-of-carbon",
+        
+          title: "Heat-stressed workers add about $41 to the social cost of carbon",
+        
+        description: "A reading of Moore et al. (2026) in Nature Climate Change: lost labour productivity under heat stress costs about 41 US dollars per ton of CO₂, a revised agriculture estimate falls from 95 to 29 dollars, and the total social cost of carbon settles near 180 dollars with much less uncertainty.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-labour-carbon-cost/";
+          
+        },
+      },{id: "post-wind-makes-ecosystems-spend-more-water-for-the-same-carbon",
+        
+          title: "Wind makes ecosystems spend more water for the same carbon",
+        
+        description: "A hydrologist&#39;s reading of Wang et al. (2026) in Nature Climate Change: across 146 flux towers, windier days lower ecosystem water use efficiency, mostly by speeding up evaporation, and the decline of global winds (&#39;stilling&#39;) has been quietly raising it.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wind-water-use-efficiency/";
+          
+        },
+      },{id: "post-how-the-brain-invented-learning-part-i-steering-in-a-brief-history-of-intelligence",
+        
+          title: "How the brain invented learning, part I: steering in A Brief History of...",
+        
+        description: "Notes on the first of Max Bennett&#39;s five breakthroughs: how the first neurons and brains appeared, how bilaterian worms learned to steer by good and bad, and how even their simple learning already faced problems that AI still struggles with.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/brain-invented-learning/";
+          
+        },
+      },{id: "post-why-llms-make-things-up-and-what-you-can-do-about-it",
+        
+          title: "Why LLMs make things up, and what you can do about it",
+        
+        description: "A short guide to LLM hallucination (confabulation): what it is, why it happens, why reasoning-era models do it less, which models do it least as of October 2026, and practical habits that cut the errors you see.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-hallucination/";
+          
+        },
+      },{id: "post-farm-lime-turns-out-to-be-a-carbon-sink",
+        
+          title: "Farm lime turns out to be a carbon sink",
+        
+        description: "Climate inventories count agricultural lime as a CO₂ source. A century of Mississippi River chemistry says the opposite: measured against the acids that farming and pollution add to soils, liming has removed CO₂ from the air.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/liming-carbon-sink/";
+          
+        },
+      },{id: "post-heat-and-the-mind-what-we-know-about-climate-change-and-mental-health",
+        
+          title: "Heat and the mind: what we know about climate change and mental health...",
+        
+        description: "A summary of the umbrella review by Radua et al. (2024) in World Psychiatry: which links between heat, extreme weather, air pollution and mental health hold up, how large they are, why even young and healthy people should care, and what the evidence cannot yet say.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/heat-and-mind/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-3-transformers-and-large-language-models-2017-2026",
+        
+          title: "A short history of AI, part 3: transformers and large language models (2017–2026)...",
+        
+        description: "The last of three posts on how artificial intelligence developed: pre-training, the scaling era, ChatGPT and the assistants that followed, models that reason and act, AI for weather and floods, and where things stand in late 2026.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-3/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-2-data-gpus-and-deep-learning-1997-2017",
+        
+          title: "A short history of AI, part 2: data, GPUs and deep learning (1997–2017)...",
+        
+        description: "The second of three posts on how artificial intelligence developed: the turn to statistical learning, the return of neural networks, ImageNet and AlexNet, AlphaGo, and the attention mechanism that set the stage for today&#39;s language models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-2/";
+          
+        },
+      },{id: "post-a-short-history-of-ai-part-1-from-turing-to-deep-blue-1936-1997",
+        
+          title: "A short history of AI, part 1: from Turing to Deep Blue (1936–1997)...",
+        
+        description: "The first of three posts on how artificial intelligence developed: Turing&#39;s machine and his test, the founding of the field, the perceptron and its limits, expert systems, two AI winters, and the chess match that closed the century.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-history-1/";
+          
+        },
+      },{id: "post-vibe-coding-vibe-writing-vibe-working-what-decides-whether-it-works",
+        
+          title: "Vibe coding, vibe writing, vibe working: what decides whether it works",
+        
+        description: "Where the term vibe coding came from, how its accuracy is measured, the factors that decide whether AI-generated code is right, and how far the same approach goes for writing and for office work.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/vibe-coding/";
+          
+        },
+      },{id: "post-writing-and-coding-with-llms-what-we-gain-what-we-lose-and-how-to-catch-the-errors",
+        
+          title: "Writing and coding with LLMs: what we gain, what we lose, and how...",
+        
+        description: "What the evidence says about using large language models to write and to code: where they help, where human-only work is still better, why our own sense of how well it went is unreliable, and practical ways to detect the errors.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/llm-writing-coding/";
+          
+        },
+      },{id: "post-how-much-water-and-carbon-does-ai-use",
+        
+          title: "How much water and carbon does AI use?",
+        
+        description: "Four recent papers on the water and carbon footprints of AI data centers: where the water goes, why most of it is hidden at the power plant, why the local picture matters more than the global one, and why transparency is the first thing to fix.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-water-carbon/";
+          
+        },
+      },{id: "post-where-our-co-goes-and-how-much-is-left-to-emit",
+        
+          title: "Where our CO₂ goes, and how much is left to emit",
+        
+        description: "A hydrologist&#39;s reading of the Global Carbon Budget 2025 and two companion papers: the carbon cycle as a mass balance, why the land sink is weaker than we thought, what the remaining carbon budget means, and which sectors emit how much.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/carbon-budget/";
+          
+        },
+      },{id: "post-does-living-through-extreme-weather-make-people-act-on-climate",
+        
+          title: "Does living through extreme weather make people act on climate?",
+        
+        description: "A new Registered Report in Nature Climate Change linked 1,451 Americans&#39; real carbon choices to the extreme weather recorded in their counties. Party affiliation shaped what people paid attention to; the weather itself did not, unless people read it as climate change.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/weather-and-climate-action/";
+          
+        },
+      },{id: "post-will-the-atlantic-overturning-tip-and-how-fast-would-we-feel-it",
+        
+          title: "Will the Atlantic overturning tip, and how fast would we feel it?",
+        
+        description: "A check-up on the Atlantic Meridional Overturning Circulation based on two new papers: what the observations show, why the models are probably too optimistic, why the speed of emissions matters, and whether a collapse would be sudden or slow.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/amoc-diagnosis/";
+          
+        },
+      },{id: "post-from-chatbot-to-coworker-three-years-of-llms-in-hydrology",
+        
+          title: "From chatbot to coworker: three years of LLMs in hydrology",
+        
+        description: "Re-reading a 2023 editorial on ChatGPT in hydrology next to two new papers and a book on AI: what LLMs could not do then, what agents can do now, and why most research has not switched yet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/from-chatbot-to-coworker/";
+          
+        },
+      },{id: "post-approaching-1-5-c-from-above",
+        
+          title: "Approaching 1.5°C from above",
+        
+        description: "What UNEP&#39;s Limiting Overshoot report says about exceeding 1.5°C, why every five years of delay costs about 0.1°C, and what a temperature that rises and then falls means for water engineering.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/approaching-1p5-from-above/";
+          
+        },
+      },{id: "news-dr-jong-ahn-chun-apec-climate-center-gave-a-seminar-at-the-lab",
+          title: 'Dr. Jong Ahn Chun (APEC Climate Center) gave a seminar at the lab....',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-univariate-climate-response-function-approach-for-evaluating-structural-adaptation-strategies-in-the-dongjin-river-basin-doi-https-doi-org-10-3741-jkwra-2025-58-4-287",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a univariate climate...',
+          description: "",
+          section: "News",},{id: "news-seoung-cheol-lee-received-the-best-paper-award-at-the-korea-water-resources-association-kwra-conference",
+          title: 'Seoung Cheol Lee received the Best Paper Award at the Korea Water Resources...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-testing-new-potential-evaporation-formulations-for-identifying-soil-moisture-deficiency-in-agricultural-areas-under-global-warming-doi-https-doi-org-10-1016-j-jhydrol-2025-133760",
+          title: 'New paper in _Journal of Hydrology_ testing new potential evaporation formulations for identifying...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrometeorology-showing-that-parameter-estimation-methods-have-minimal-impact-on-drought-identification-with-the-complementary-evaporation-principle-doi-https-doi-org-10-1175-jhm-d-24-0136-1",
+          title: 'New paper in _Journal of Hydrometeorology_ showing that parameter estimation methods have minimal...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-evaluating-rainfall-estimates-derived-from-soil-moisture-using-soil-hydraulic-properties-over-the-korean-peninsula-doi-https-doi-org-10-1016-j-jhydrol-2025-134267",
+          title: 'New paper in _Journal of Hydrology_ evaluating rainfall estimates derived from soil moisture...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-a-global-scale-drought-assessment-that-accounts-for-vegetation-response-to-atmospheric-co-doi-https-doi-org-10-3741-jkwra-2025-58-9-781",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on a global-scale drought...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-regional-studies-comparing-a-hybrid-approach-with-conventional-and-machine-learning-daily-streamflow-prediction-in-ungauged-basins-doi-https-doi-org-10-1016-j-ejrh-2025-102854",
+          title: 'New paper in _Journal of Hydrology: Regional Studies_ comparing a hybrid approach with...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-korea-water-resources-association-on-south-korea-39-s-dependency-on-global-agricultural-sectors-and-the-impacts-of-supply-shocks-using-a-multi-regional-input-output-analysis-doi-https-doi-org-10-3741-jkwra-2025-58-11-1047",
+          title: 'New paper in _Journal of Korea Water Resources Association_ on South Korea&amp;#39;s dependency...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-npj-climate-and-atmospheric-science-a-structural-correction-to-atmospheric-evaporative-demand-narrows-the-gap-between-offline-aridity-diagnostics-and-earth-system-model-projections-doi-https-doi-org-10-1038-s41612-025-01306-3",
+          title: 'New paper in _npj Climate and Atmospheric Science_: a structural correction to atmospheric...',
+          description: "",
+          section: "News",},{id: "news-lab-members-presented-posters-at-the-egu-general-assembly-2026-in-vienna",
+          title: 'Lab members presented posters at the EGU General Assembly 2026 in Vienna.',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-weather-and-climate-extremes-on-two-regimes-of-north-american-heatwaves-and-how-they-change-in-the-future-doi-https-doi-org-10-1016-j-wace-2026-100912",
+          title: 'New paper in _Weather and Climate Extremes_ on two regimes of North American...',
+          description: "",
+          section: "News",},{id: "news-new-data-descriptor-in-scientific-data-global-cmip6-based-datasets-of-vegetation-responsive-and-feedback-deflated-potential-evapotranspiration-doi-https-doi-org-10-1038-s41597-026-07553-0",
+          title: 'New data descriptor in _Scientific Data_: global CMIP6-based datasets of vegetation-responsive and feedback-deflated...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-journal-of-hydrology-on-the-persistent-performance-of-the-power-function-complementary-relationship-in-earth-system-models-under-a-warming-scenario-doi-https-doi-org-10-1016-j-jhydrol-2026-135813",
+          title: 'New paper in _Journal of Hydrology_ on the persistent performance of the power-function...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-hydrological-processes-on-the-roles-of-atmospheric-demand-and-water-availability-in-flash-drought-development-across-northeast-asia-doi-https-doi-org-10-1002-hyp-70618",
+          title: 'New paper in _Hydrological Processes_ on the roles of atmospheric demand and water...',
+          description: "",
+          section: "News",},{id: "news-new-paper-in-climate-services-on-integrating-crop-simulation-and-climate-service-delivery-for-food-security-in-pacific-island-countries-with-a-taro-case-study-in-vanuatu-doi-https-doi-org-10-1016-j-cliser-2026-100708",
+          title: 'New paper in _Climate Services_ on integrating crop simulation and climate service delivery...',
+          description: "",
+          section: "News",},{id: "news-ph-d-student-seoung-cheol-lee-was-selected-as-an-outstanding-doctoral-scholar-in-science-and-engineering-by-the-ministry-of-science-and-ict",
+          title: 'Ph.D. student Seoung Cheol Lee was selected as an Outstanding Doctoral Scholar in...',
+          description: "",
+          section: "News",},{id: "teachings-earth-system-science",
+          title: 'Earth System Science',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/earth-system-science/";
+            },},{id: "teachings-engineering-hydrology",
+          title: 'Engineering Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/engineering-hydrology/";
+            },},{id: "teachings-hydraulics",
+          title: 'Hydraulics',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/hydraulics/";
+            },},{id: "teachings-physical-hydrology",
+          title: 'Physical Hydrology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/physical-hydrology/";
+            },},{id: "teachings-statistical-hydrology",
+          title: 'Statistical Hydrology',
+          description: "Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/statistical-hydrology/";
+            },},{id: "teachings-terrestrial-hydrometeorology",
+          title: 'Terrestrial Hydrometeorology',
+          description: "Graduate course, Department of Civil Engineering, Jeonbuk National University",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teaching/terrestrial-hydrometeorology/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%64%61%65%68%61.%6B%69%6D@%6A%62%6E%75.%61%63.%6B%72", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/daehakim-waterlab", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
