@@ -81,7 +81,7 @@ The table below pairs each biological mechanism with its AI counterpart. The las
 
 Looking back over the series, each breakthrough solved a problem by building on the previous one. Steering needed a sense of good and bad; reinforcing used that sense to learn from experience; simulating let animals learn from experience they never had; mentalizing turned the simulator toward minds; and speaking let minds share their simulations, so that learning could continue beyond a single lifetime. Again and again, AI researchers have arrived at similar solutions, often without knowing that evolution had found them first.
 
-The book ends by asking what a sixth breakthrough might be, and the obvious candidate is the one being built now: minds that are not made of neurons at all. If Bennett's history teaches anything, it is that each new kind of intelligence was built from the parts of the old ones. It will be interesting to see which of the five our machines are still missing.
+The book ends by asking what a sixth breakthrough might be, and the obvious candidate is the one being built now: minds that are not made of neurons at all. If Bennett's history teaches anything, it is that each new kind of intelligence was built from the parts of the old ones. It will be interesting to see which of the five our machines are still missing. I take up that question in [part VI]({% post_url 2026-11-08-brain-invented-learning-6 %}), the last post of this series.
 
 **Questions to think about**
 
