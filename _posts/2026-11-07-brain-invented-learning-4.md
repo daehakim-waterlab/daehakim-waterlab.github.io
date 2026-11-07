@@ -94,7 +94,7 @@ The table below pairs each biological mechanism with its AI counterpart. The las
 
 Mentalizing let primates step outside their own point of view, into another individual's head, another's body, or their own future self. With it came reading the intentions of others, learning skills by watching, and preparing today for tomorrow's hunger, which together made primates better foragers and better politicians.
 
-Bennett places this breakthrough in a long timeline. If the 600 million years since the first brains were compressed into one calendar year, our last common ancestor with chimpanzees, who lived about 7 million years ago, would appear only in the last week of December. Everything that separates us from other apes, from foraging for fruit to launching rockets, happened in those final days. Bennett's fifth and last breakthrough, speaking, is where that story begins, and it will be the subject of part V.
+Bennett places this breakthrough in a long timeline. If the 600 million years since the first brains were compressed into one calendar year, our last common ancestor with chimpanzees, who lived about 7 million years ago, would appear only in the last week of December. Everything that separates us from other apes, from foraging for fruit to launching rockets, happened in those final days. Bennett's fifth and last breakthrough, speaking, is where that story begins, and it is the subject of [part V]({% post_url 2026-11-08-brain-invented-learning-5 %}).
 
 **Questions to think about**
 
