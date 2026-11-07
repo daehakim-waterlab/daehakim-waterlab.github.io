@@ -108,7 +108,7 @@ The table below pairs each biological mechanism with its AI counterpart. The las
 
 Simulation made mammals flexible learners. With a model of the world and a model of themselves, small mammals could outplan predators far larger than themselves, learn from experiences they never had, credit the real causes of good and bad outcomes, remember specific episodes and plan their own movements. But simulation is slow and costly, which is why habits remain, and a simulation is only as good as the model behind it. A wrong model produces confident plans that fail, a problem that model-based AI shares.
 
-Bennett's next breakthrough, mentalizing, turns the simulator inward and toward others: primates began to model not just the world but minds, including their own. That is the subject of part IV.
+Bennett's next breakthrough, mentalizing, turns the simulator inward and toward others: primates began to model not just the world but minds, including their own. That is the subject of [part IV]({% post_url 2026-11-07-brain-invented-learning-4 %}).
 
 **Questions to think about**
 
