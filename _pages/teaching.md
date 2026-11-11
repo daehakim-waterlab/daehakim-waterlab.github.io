@@ -22,6 +22,8 @@ children:
     permalink: /teaching/terrestrial-hydrometeorology/
   - title: Earth System Science
     permalink: /teaching/earth-system-science/
+  - title: Urban Science
+    permalink: /teaching/urban-science/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:
