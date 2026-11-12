@@ -3,7 +3,7 @@ layout: course
 title: Terrestrial Hydrometeorology
 title_ko: 지표수문기상학
 permalink: /teaching/terrestrial-hydrometeorology/
-order: 5
+order: 6
 graduate: true
 instructor: Daeha Kim
 description: Graduate course, Department of Civil Engineering, Jeonbuk National University

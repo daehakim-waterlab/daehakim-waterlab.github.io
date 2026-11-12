@@ -3,7 +3,7 @@ layout: course
 title: Earth System Science
 title_ko: 지구시스템과학
 permalink: /teaching/earth-system-science/
-order: 6
+order: 7
 graduate: true
 instructor: Daeha Kim
 description: Graduate course, Department of Civil Engineering, Jeonbuk National University

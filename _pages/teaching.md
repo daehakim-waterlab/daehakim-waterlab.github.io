@@ -18,14 +18,14 @@ children:
     permalink: /teaching/physical-hydrology/
   - title: Statistical Hydrology
     permalink: /teaching/statistical-hydrology/
+  - title: Bayesian Data Analysis
+    permalink: /teaching/bayesian-data-analysis/
   - title: Terrestrial Hydrometeorology
     permalink: /teaching/terrestrial-hydrometeorology/
   - title: Earth System Science
     permalink: /teaching/earth-system-science/
   - title: Urban Science
     permalink: /teaching/urban-science/
-  - title: Bayesian Data Analysis
-    permalink: /teaching/bayesian-data-analysis/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:

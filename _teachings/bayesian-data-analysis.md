@@ -3,7 +3,7 @@ layout: course
 title: Bayesian Data Analysis
 title_ko: 베이지안 자료분석
 permalink: /teaching/bayesian-data-analysis/
-order: 8
+order: 5
 graduate: true
 instructor: Daeha Kim
 description: Graduate course, Department of Civil Engineering, Jeonbuk National University

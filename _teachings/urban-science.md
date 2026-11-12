@@ -3,7 +3,7 @@ layout: course
 title: Urban Science
 title_ko: 도시과학
 permalink: /teaching/urban-science/
-order: 7
+order: 8
 graduate: true
 instructor: Daeha Kim
 description: Graduate course, Department of Civil Engineering, Jeonbuk National University
