@@ -24,6 +24,8 @@ children:
     permalink: /teaching/earth-system-science/
   - title: Urban Science
     permalink: /teaching/urban-science/
+  - title: Bayesian Data Analysis
+    permalink: /teaching/bayesian-data-analysis/
 ---
 
 <!-- Each course is one file in _teachings/. Online textbooks are separate Jupyter Book sites:
