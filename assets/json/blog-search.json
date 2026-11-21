@@ -1,0 +1,22 @@
+---
+layout: null
+sitemap: false
+---
+{%- comment -%}
+Full-text index for the search box on the Blog page (assets/js/blog-search.js): one entry per
+post with its title, date, description, tags, categories and plain text (including the Korean
+summary). Fetched only when a visitor starts typing in the box.
+{%- endcomment -%}
+[
+{%- for post in site.posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "date": {{ post.date | date: "%B %-d, %Y" | jsonify }},
+    "description": {{ post.description | jsonify }},
+    "tags": {{ post.tags | join: " " | replace: "-", " " | jsonify }},
+    "categories": {{ post.categories | join: " " | replace: "-", " " | jsonify }},
+    "text": {{ post.content | strip_html | normalize_whitespace | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+]

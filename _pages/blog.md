@@ -59,6 +59,17 @@ pagination:
   </div>
   {% endif %}{% endif %}
 
+{% if site.posts.size > 0 %}
+
+  <div class="blog-search" role="search">
+    <label for="blog-search-input" class="sr-only">Search the blog</label>
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    <input id="blog-search-input" type="search" placeholder="Search all posts (title, text, tags)" autocomplete="off" data-index="{{ '/assets/json/blog-search.json' | relative_url }}">
+  </div>
+  <div id="blog-search-results" aria-live="polite" hidden></div>
+  <script defer src="{{ '/assets/js/blog-search.js' | relative_url }}"></script>
+  {% endif %}
+
 {% assign featured_posts = site.posts | where: "featured", "true" %}
 {% if featured_posts.size > 0 %}
 <br>

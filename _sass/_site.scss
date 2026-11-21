@@ -200,6 +200,49 @@ $page: ".post:has(> .post-header .post-description)";
   margin-top: 1.25rem;
 }
 
+// Full-text search box on the Blog page (assets/js/blog-search.js); matches replace the list.
+.blog-search {
+  position: relative;
+  margin-top: 0.75rem;
+  i {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+    pointer-events: none;
+  }
+  input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.55rem 0.8rem 0.55rem 2.3rem;
+    color: var(--global-text-color);
+    background-color: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.4rem;
+    &:focus {
+      outline: none;
+      border-color: var(--global-theme-color);
+    }
+  }
+}
+#blog-search-results {
+  margin-top: 1rem;
+  .blog-search-count {
+    color: var(--global-text-color-light);
+    margin-bottom: 0.5rem;
+  }
+  .blog-search-snippet {
+    margin-bottom: 0.25rem;
+  }
+  mark {
+    padding: 0 0.1em;
+    background-color: rgba(36, 107, 172, 0.18);
+    color: inherit;
+  }
+}
+
 // Course pages (_teachings): a tighter header block, roomier body text, and a section
 // heading sized like other body headings with clear space above it.
 .post:has(.course) .post-header .post-description {
